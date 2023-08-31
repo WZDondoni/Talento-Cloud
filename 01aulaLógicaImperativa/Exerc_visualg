@@ -1,0 +1,80 @@
+//Elabore um algoritmo que possa descobrir, através de perguntas e respostas, em qual área de um restaurante uma pessoa ou grupo de pessoas precisa ser alocada.
+// O restaurante tem três áreas: térreo, 1ro andar, e área externa. 
+//Clientes fumantes ou com animais de estimação precisam ser alocadas na área externa.
+// Grupos de 5 ou mais precisam ser alocados no 1º andar, pois não dá para juntar mesas no térreo.
+//Qualquer outro grupo de pessoas pode ser alocado no térreo. 
+
+//perguntas e respostas;
+//3 áreas para alocar clientes: térreo, 1ro andar e área externa;
+// fumantes || com animais : área externa;
+// >=5pessoas:1andar
+// qualquer número no térreo
+
+//problema: ALOCAR PESSOAS EM ÁREAS DISTINTAS POR CARACTERÍSTICAS;
+
+
+
+
+var
+numClientes : inteiro
+temFumante : logico
+temPet : logico   
+
+Inicio
+
+escreva("Mesa para quantas pessoas?")
+leia(numClientes)
+escreva("É fumante ou será acompanhado de algum? ")
+leia(temFumante)
+escreva("Terá a companhia de algum PET? ")
+leia(temPet)
+
+se( temFumante == verdadeiro || temPet == verdadeiro) entao
+escreva("Área externa")
+senao
+se ( temFumante == falso E temPet == falso E numClientes >=5 ) entao
+escreva("1ro Andar")
+senao
+escreva("Térreo")
+fimse
+fimse
+
+
+FimdoPrograma 
+
+var
+numClientes : inteiro
+temFumante : logico
+temPet : logico   
+
+Inicio
+
+escreva("Mesa para quantas pessoas?")
+leia(numClientes)
+escreva("É fumante ou está acompanhado de PET? ")
+leia(temFumanteOuPet)
+
+escolha area 
+caso (temFumanteOuPet == verdadeiro)
+escreva("Área externa")
+caso (numClientes >=5 )
+escreva("1ro Andar")
+outrocaso 
+escreva("Térreo")
+fimescolha
+
+
+FimdoPrograma 
+
+
+//Num torneio de e-sports é necessário que todos os integrantes da mesma equipe tenham etiquetas que os identifiquem. Por exemplo, se o nome da equipe é “Os Lutadores”, o primeiro membro deve ter uma etiqueta “Os Lutadores – 1", o segundo membro “Os Lutadores – 2", e assim pela frente.Elabore um algoritmo que permita ao usuário inserir o nome da equipe, e imprime etiquetas para os 5 membros da equipe seguindo o exemplo mostrado acima.
+
+Nome da equipe;
+Nome da equipe + número do jogador;
+5 membros
+
+
+
+
+
+
