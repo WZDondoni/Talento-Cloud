@@ -498,3 +498,52 @@ Formas para SINCRONIZAR:
 2. casos em que ainda não temos um repositório local
 3. caso já tivermos um repositório local e quisermos sincronizá-lo via linha de comando (terminal)
 4. subir os arquivos do nosso repositório local de forma manual (vale apontar que esta opção não sincroniza ambos repositórios de forma automática, e serve mais como um backup).
+
+#### GitHub  - Comandos
+
+A tríade dos comandos do Git mais usados no dia a dia de um desenvolvedor:
+
+**git add -A**, coloca os arquivos no staging(cena da foto)
+
+**git commit -m "MENSAGEM"**, "tira a foto", ou "embala numa caixa os add e rotula".
+
+**git push** ENVIA(empurra as informações) commits do nosso repositório LOCAL ao repositório REMOTO.
+
+#### Adicionar colaboradores
+
+o dono do repositório precisa ir na Navegação do repositório remoto e clicar na opção Settings (caso a resolução da sua tela for menor, é necessário clicar nos três pontos para aparecer a opção)
+
+![a](https://i.imgur.com/IKFlxfW.jpg)
+
+![a](https://i.imgur.com/8Pv8mUt.jpg)
+
+Procuraremos pelos nossos colaboradores via nome de usuário, nome completo, ou email.
+Após achar, clique em **Add... to this repository**
+
+eles poderão acessar o repositório desde a barra lateral nas suas respectivas telas iniciais
+
+#### Clonar um repositório remoto
+
+Vamos criar um repositório local a partir de um repositório remoto. Isso é útil tanto para os colaboradores que acabamos de adicionar no nosso repositório remoto, quanto para nós mesmos se quisermos continuar trabalhando no nosso projeto desde qualquer outro computador que não seja aquele que tem o repositório local original.
+
+**git clone** LINK-DO-REPOSITÓRIO
+
+O comando acima CRIA um repositório LOCAL a partir de um repositório REMOTO
+
+![A](https://i.imgur.com/n3E2M3t.jpg)
+
+Acima estamos pegando o link para fazer o clone do servidor remoto para o computador local.
+
+![a](https://i.imgur.com/Z7qiDlW.jpg)
+
+#### Atualizar nosso repositório local
+
+**git remote show origin**, faz uma comparação entre o repositório local e o remoto e retorna se houve ou não alguma alteração.
+
+**git pull**, ATUALIZAR repositorio LOCAL(puxa as informações) com informações do repositório REMOTO.
+
+>ATENÇÃO
+
+Embora o comando git remote show origin nos mostra informaões úteis que podemos usar em várias outras circunstâncias, para casos nos quais estamos trabalhando com uma equipe de desenvolvedores e sabemos que sempre existe a possibilidade de um colaborador ter commitado mudanças no repositório remoto, é uma boa prática usar o comando git pull antes de começar trabalhar no nosso repositório local.
+
+
