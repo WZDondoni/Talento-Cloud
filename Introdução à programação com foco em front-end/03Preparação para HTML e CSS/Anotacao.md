@@ -546,4 +546,120 @@ Acima estamos pegando o link para fazer o clone do servidor remoto para o comput
 
 Embora o comando git remote show origin nos mostra informaões úteis que podemos usar em várias outras circunstâncias, para casos nos quais estamos trabalhando com uma equipe de desenvolvedores e sabemos que sempre existe a possibilidade de um colaborador ter commitado mudanças no repositório remoto, é uma boa prática usar o comando git pull antes de começar trabalhar no nosso repositório local.
 
+## MODULO 04
+
+### REVISÃO - ARRAYS, GIT E GITHUB
+
+#### Arrays
+
+Também chamados de vetores  ou matrizes;
+São estruturas que usamos para **guardar e organizar** dados em uma **única variável**;
+**Aceitam todos os tipos de dados** estudados como elementos.
+
+##### Declaração dos arrays
+
+* Nome da variável
+* Operador de atribuição '='
+* Par de colchetes '[]'
+* Itens separados por vírgulas 
+  * Ex. nomes = ["Luciano","Juliana","Caroline"]
+
+##### índices
+
+* Usados par acessar um elemento do array por vez;
+* O primeiro elemento de um array terá **sempre o índice 0**;
+* Para usá-los escrevemos o nome da variável que guarda o array, seguindo do índice entre colchetes;
+* Ex. nomes[0] nos dará acesso ao primeiro item do array 'nomes'
+
+##### Função len()
+
+* Recebe como argumento a variável que guarda um array;
+* Retorna a quantidade de itens no array;
+* Ex. len(nomes) imprimirá '4', pois o array 'nomes' tem quatro elementos.
+
+##### Percorrer arrays
+
+* O *ato de acessar todos os elementos de um array para manipulá-los* de alguma forma;
+* Uma das formas mais comuns para percorrer arrays é usando a variável contadora de um laço **for** como “índice dinâmico”;
+* É comum usar o laço **for** em conjunto com as funções **range()** e **len()** para definir a quantidade de elementos do array como condição de parada;
+* **for i in range(len(nomes)):print(num[i])**
+
+![a](https://i.imgur.com/wWKiBNg.jpg)
+
+##### Alterar elementos usando índices
+
+* Podemos acessar um elemento de um array e definir um novo valor a ele usando o operador de atribuição:
+
+![a](https://i.imgur.com/DJZNtQm.jpg)
+
+* Podemos acessar mais de um elemento e atribuir mais de um valor com um operador de atribuição só, separando os elementos e novos valores por vírgulas:
+
+![a](https://i.imgur.com/gRQI2mR.jpg)
+
+##### Adicionar e remover elementos
+
+* Função **append()** para adicionar elementos *no final de um array*;
+* Escrevemos o nome do array, seguido de um ponto, e a função com o novo elemento passado como argumento:
+
+![a](https://i.imgur.com/vZL2qFF.jpg)
+
+* Função **pop()** para *remover o último elemento de um array*;
+* Escrevemos o nome do array, seguido de um ponto, e a função:
+
+![a](https://i.imgur.com/gYXnX4h.jpg)
+
+#### Sistemas de controle de versão (VCS)
+
+* Servem para **gerar um fluxo de trabalho organizado**, salvando um histórico de versões do nosso projeto e criando “linhas de trabalho” paralelas.
+
+##### Repositórios
+
+* Lugar onde guardamos os arquivos e pastas dos nossos projetos;
+* Podem ser locais (ex. no nosso computador) ou remotos (ex. No GitHub)
+
+##### Commits
+
+* Uma **“fotografia”** das mudanças feitas no nosso projeto em um determinado estágio do seu desenvolvimento;
+
+* Uma boa prática é realizar commits *após a conclusão de tarefas específics*.
+
+##### Branch's
+
+* Ramificações **no** fluxo principal de trabalho;
+* Ajudam com o trabalho colaborativo e com a **manutenção da linha de trabalho principal**.
+
+##### Git'
+
+*VCS muito popular atualmente, especialmente no mundo de desenvolvimento web
+
+##### Estrutura dos comandos'
+
+* Palavra reservada - é sempre **git**; 
+* Nome do comando – pode ser um ou mais de um; 
+* Opção/Opções - são escritas com um hífen e uma letra, ou dois hífens e uma palavra (ex. -A ou --all); 
+* Argumento – Input do desenvolvedor para nomear commits, branches, etc.
+
+![a](https://i.imgur.com/FqmMr68.jpg)
+
+![a](https://i.imgur.com/xVjH30k.jpg)
+
+##### GitHub'
+
+* GitHub é um site que **hospeda nossos projetos em nuvem, e todo o histórico de versões desses projetos** gerado pelo Git;
+* Ele funciona como uma rede social, podemos seguir e acompanhar os projetos públicos de outros desenvolvedores, e trabalhar de forma colaborativa;
+* Após criar uma conta, conseguimos criar repositórios **remotos** e sincronizá-los com nossos repositórios **locais**;
+
+###### Comandos para efetuar as interações entre repositório remoto e local
+
+[Link da Tabela](https://view.genial.ly/635afe270b89220011d48d29/interactive-content-github)
+
+![a](https://i.imgur.com/htpCCZJ.jpg)
+
+[Form para questionário de revisão](https://docs.google.com/forms/d/e/1FAIpQLScX4K2usEMohYbnYLwJeW2lmYHGieTo0TUQbbOmnfAsKKmzXQ/viewscore?pli=1&pli=1&viewscore=AE0zAgAZlt2q1gE7sxAjslxadJrhl6Of0IKUtDCVqfuPwHwho1ByMmjboaaCILX7anHifro)
+
+![a](https://i.imgur.com/bxTCqoR.jpg)
+
+
+
+
 
