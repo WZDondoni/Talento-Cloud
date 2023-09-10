@@ -1,0 +1,284 @@
+# HTML/CSS //ASSUNTO DO MÓDULO
+
+## MÓDULO 04 // NÚMERO DO MÓDULO
+
+### COMPREENDER A HISTÓRIA E DEFINIÇÃO DO HTML. //NOME ACIMA DOS ICONES DA AULA ABAIXO DO NÚMERO
+
+#### O que é Html (hitória e definição) //NOME DAS CAPAS DO HYPERTEXTO
+
+##### O que é HTML//NOME DOS TÍTULOS DOS HYPERTEXTOS
+
+Hypertext Markup Language (HTML), em português, Linguagem de Marcação de Hipertexto, é um conjunto de sinais e códigos aplicados a um texto, ou dados, que **contribui para definir exibições na tela** e de estruturas de dados em um sistema. Ele que dá corpo a página, e organiza as inforamções. Sem ele o navegador não saberia onde iria cada elemento, não exibiria textos ou elementos, ou carregar imagens.
+
+>NÃO É LINGUAGEM DE PROGRAMAÇÃO, POIS NÃO POSSUI PROPRIEDADES COMO OPERADORES LÓGICOS, FUNÇÕES, VARIÁVEIS, ETC.
+
+##### História
+
+Veio da necessidade de se criar/editar e compartilhar Hipertextos pela internet. Tim Berners Lee que realizou a estrutra da linguágem que possibilitou a comunicação entre Cliente HTTP x Servidor.
+
+##### Versões
+
+Versão 2, 1995, formalizar suas caracteristicas.
+Versão 3.2, 1997, correções a add tabelas, applets e texto flutuante ao redor da imagem.
+Versão 4.01, 1999, compatibilidade entre outras versões, suporte a mídias, folha de stilos.
+Versão 5, 2015, suporte a áudio e vídeo de alt nível, deixou de utilizar dados só de cache e passou a utilizar banco de dados. Controle de formulários entre outras coisas.
+
+##### Conclusão
+
+Para o **desenvolvimento web**, **é bastante importante** que você tenha conhecimento básico em HTML. Apesar de já existirem ferramentas que criam o código em HTML, às vezes é preciso fazer adaptações no código. Para isso, você precisa conhecer os comandos HTML.​
+
+### CONHECER AS PRINCIPAIS TAGS DO HTML
+
+#### Introdução
+
+Para se contruir um site é necessário uma estrutura mínima base de HTML. TAGS compõe essa estrutura para FORMAÇÃO DE ELEMENTOs que fazem parte do DOM;
+
+Um elemento é parte de uma página web. Em XML e HTML, um elemento pode conter um item de dados, um bloco de texto, uma imagem ou talvez nada. Um elemento típico inclui uma tag de abertura com alguns atributos, o conteúdo de texto incluído e uma tag de fechamento.
+
+![a](https://i.imgur.com/ciTovt0.jpg)
+
+O Modelo de Objeto de Documentos (do inglês Document Object Model, DOM) é uma API definida pelo W3C para representar e interagir com qualquer documento HTML ou XML.
+
+O DOM é um modelo de documento carregado pelo navegador. Este documento é representado através de uma árvore de nós, onde cada um destes nós representa uma parte do documento (por ex. um elemento, texto ou comentário).
+
+#### Introdução as TAGS
+
+As tags são estruturas de linguagem de marcação. Elas contêm instruções que servem para informar a estrutura do site ao navegador e construir elementos da HTML. Quando são utilizadas corretamente, elas contribuem bastante para o SEO de um site.
+
+seo: SEO (Search Engine Optimization) é o conjunto de estratégias de otimização para mecanismos de busca. O objetivo é alcançar bom posicionamento orgânico de páginas da web no Google e em outros buscadores,
+
+Cada tag é formada pelo sinal menor que <, nome do elemento e sinal maior que >, nessa ordem. Dessa forma:
+
+````html
+ <html>
+
+ existem tags que precisam ser fechadas e outras não. Na maioria dos casos, o fechamento é necessário para definir o início e o fim do documento. Para fechá-la, colocamos a barra / antes do nome do elemento.
+
+ </html>
+
+ Para as tags que não possuem fechamento, é preciso colocar a barra antes do sinal de maior que:
+
+<input/>
+
+ ````
+
+#### Atributos
+
+Apesar das tags terem seus próprios atributos, alguns podem ser utilizados em várias tags.
+
+* **class**: atribui uma classe CSS para uma tag. Isso faz com que a CSS e a linguagem Javascript selecionem e acessem elementos específicos do código HTML;
+
+* **id**: atribui um id CSS para uma tag. Seu objetivo é identificar o elemento quando utilizar scripts ou estilizar com CSS;
+
+* **href**: referenciar um URL externo, seja um link ou um arquivo
+
+* **src**: atribui um URL para um conteúdo. Por exemplo, uma imagem ou um arquivo;
+* **type**: atribui o tipo do elemento;
+
+* **value**: atribui o valor padrão de um elemento.
+
+#### Principais tipos de TAGS
+
+É possível categorizar as tags em dois tipos: o **block-level** (nível de bloco) e o **inline** (em linha). O primeiro ocupa todo o espaço do seu elemento pai e o segundo ocupa apenas o espaço do seu conteúdo, como no exemplo ilustrado.
+
+![A](https://i.imgur.com/KF1VGeY.jpg)
+
+![A](https://i.imgur.com/doSaEQV.jpg)
+
+![A](https://i.imgur.com/jE21ZVX.jpg)
+
+![A](https://i.imgur.com/tkL1vgx.jpg)
+
+![a](https://i.imgur.com/wOVvfXZ.jpg)
+
+#### TAGS de separação de conteúdo
+
+É a tag responsável na organização logica dos conteúdo das página.
+
+![a](https://i.imgur.com/s5a6kzW.jpg)
+
+#### TAGS de texto
+
+São responáveis pela impressão do texto para o usuário;
+
+![a](https://i.imgur.com/YI7D8oK.jpg)
+
+#### Semântica textual inline
+
+![a](https://i.imgur.com/EPIMppS.jpg)
+
+#### TAGS de multimídia
+
+![a](https://i.imgur.com/6ZPFMnB.jpg)
+
+#### TAGS de tabelas
+
+Eram utilizados nos primeiros sites para estruturação. Atual é usado para criação de estrutura de email.
+
+![a](https://i.imgur.com/Eb6mlIl.jpg)
+
+#### TAGS de formulário
+
+Responsáveis em compor um formulários.
+
+![a](https://i.imgur.com/S8LFJ4H.jpg)
+
+#### TAGS de scripts
+
+![A](https://i.imgur.com/HJ8BMF5.jpg)
+
+### ALINHAMENTO DOS GRUPOS DECIDIREM SOBRE O LAYOUT
+
+#### AWS - material extra
+
+[SITE1](https://metamidia.com.br/blog/layout-de-site-dicas-para-tornar-atrativo.html)
+
+[SITE2](https://blog.lojaintegrada.com.br/dicas-para-escolher-layout/)
+
+[SITE3](https://www.printi.com.br/blog/8-dicas-para-criar-um-layout-perfeito)
+
+[SITE4](https://hubify.com.br/desenvolvimento/escolher-o-layout-do-site/)
+
+[SITE5 - Usando FIGMA para estruturar layout](https://www.youtube.com/watch?v=Y1uJT3zk7Rk)
+
+[SITE6 - Usando FIGMA para estruturar layout 2](https://www.youtube.com/watch?v=Mm7e7kXMMHo)
+
+### COMPREENDER A ESTRUTURA BASE QUE COMPÕE O HTML
+
+#### Criando a estrutura base da HTML
+
+A estrutura HTML é obrigatória e impressendível para todas as páginas.
+
+![a](https://i.imgur.com/MRYTsee.jpg)
+
+#### Tags necessárias
+
+Para a criação dessa estrutura, são necessárias as tags:
+
+````html
+
+ <!DOCTYPE html>, <html>, <head>, <meta>, <title> e <body>.
+
+````
+
+As tags possuem hierarquias para que possam ser exibidas e interpretadas pelo navegado.
+
+1ª linha, tag **DOCTYPE**, o qual informa a versão do HTML que será executada;
+2ª linha, tag **html**;
+3ª dentro da tag **html**, estão as tags **head**(com ou sem script) e a **body**;
+
+![a](https://i.imgur.com/EbgWeeH.jpg)
+
+##### *Tag* body
+
+Recebe toda a informação que será apresentada no site, e para o usuário. **Tudo o que for diferente de metadados** ficará dentro dela.
+
+[Leitura Complementar](https://www.w3schools.com/tags/default.asp)
+
+#### Outras estruturas
+
+Existem outras estruturas para criação de elementos, mas geralmente elas não possuem a formatação apresentada, POR JÁ ESTAREM IMPLICITAS no framework;
+
+### ENTENDER COMO CRIAR O CORPO DE UMA PÁGINA
+
+#### Introdução sobre como criar o corpo de uma página
+
+Além da estrutura da HTML, existem templates, que são modelos. Esses modelos tem conteúdos apresentados de diferentes formas.
+
+![a](https://i.imgur.com/UcCz1uV.jpg)
+
+#### Criação do título
+
+```` HTML
+
+<header>
+    <h1>Meu Blog</h1>
+</header>on>
+
+
+````
+
+#### Criação dos textos
+
+Podemos usar diversas formas, SE FOREM SÓ TEXTOS podemos usar **div**, ou a **section**, que representará um bloco de texto.
+
+````HTML
+<section>
+    <img src="./paisagem.jpg" />
+    <h3> Sejam bem-vindo(as)</h3>
+    <p> Esse é o meu primeiro blog, portanto gostaria de cocumetar meus pensamentos e alguns poemas com vocês, epsero9 que gostem.</p>
+</section>
+
+````
+
+#### Criação de formulários
+
+![a](https://i.imgur.com/hdEp4mA.jpg)
+
+#### Criação da sidebar
+
+Deve ser feita em paralelo com o conteúdo principal.Assim como no texto, podemos usar a **div**, ou outra tag, nesse caso, usaremos a **aside**.
+
+````HTML
+
+<aside>
+    <ul>
+        <li>Poemas</li>
+        <li>Um pouco sobre mim</li>
+        <li>Minhas aventuras</li>
+    </ul>
+<aside>
+
+````
+
+![a](https://i.imgur.com/huwAYoy.jpg)
+
+#### Criação de Tabelas
+
+No início tudo era feito na tabela, pois o CSS ainda estava no ínício e não suportava;
+As tabelas são hoje utilizadas na confecção de estrutura de email, o qual contém HTML e TABELAS
+
+#### slot
+
+Utilizado quando se quer dar dinamicidade a algum elemento/espaço.
+
+#### Criação do rodapé
+
+Além desses elementos, podemos incluir um rodapé no blog. Esse é usado para incluir informações sobre contato, links externo e para voltar ao topo da página
+tag **footer**
+
+````HTML
+
+<footer>
+    <span>Contato</span>
+    <ul>
+        <li><a href=”facebook.com/meublog”>Facebook</a></li>
+        <li><a href=”instagram.com/meublog”>Instagram</a></li>
+        <li><a href=”twitter.com/meublog”>Twitter></a></li>
+ </ul>
+</footer>
+````
+
+#### Conclusão sobre criar o corpo da página
+
+Essas são algumas tags que podemos utilizar para o desenvolvimento do nosso documento. Lembre-se de iniciar indicando qual é o tipo de linguagem que será utilizada, que no nosso caso foi a HTML. Para isso, utilizamos a tag
+<!DOCTYPE html> e todo o conteúdo dentro da tag body
+
+![a](https://i.imgur.com/BU65kyy.jpg)
+
+Com a evolução da liguagem de marcação, algumas tags ficaram **obsoletas** por exemplo:
+
+````HTML
+* <CONTENT>
+* <IMAGE>
+* <CENTER>
+* <SPACE>
+* <DIR>
+* <FRAME>
+* <APPLET>
+* <BLINK>
+````
+
+[Leitura complementar](https://www.w3schools.com/tags/default.asp)
+
+### Material complementar AWS
