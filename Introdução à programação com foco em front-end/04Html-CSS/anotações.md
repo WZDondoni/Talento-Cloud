@@ -281,4 +281,38 @@ Com a evolução da liguagem de marcação, algumas tags ficaram **obsoletas** p
 
 [Leitura complementar](https://www.w3schools.com/tags/default.asp)
 
-### Material complementar AWS
+### Material complementar AWS - Criando página html
+
+ao criar o arquivo index.html no VSCode nos oferece um atalho para criar a estrutura base de qualquer arquivo HTML. Basta digitarmos um símbolo de exclamação ‘!’ na primeira linha do arquivo, e o programa automaticamente mostrará um pequeno pop-up com duas alternativas: um símbolo de exclamação (!) ou três símbolos de exclamação (!!!). Assim que aparecer o popup, basta apertar a tecla Enter, a tecla Tab, ou clicar diretamente na opção com um símbolo de exclamação (!) do popup. Ao fazer isso, o VSCode criará automaticamente a estrutura base com as tags  !DOCTYPE, html, head e body.
+
+![a](https://i.imgur.com/DrMzjKL.jpg)
+
+estamos focando por enquanto nas **três partes principais de um site**, o **header** (parte cinza no topo), o **main** (título, subtítulo e texto no meio da página), e o **footer** (parte cinza no rodapé da página.
+
+>lembrar que que todo o conteúdo que será de fato exibido ao usuário no site deve estar “dentro da tag body”
+
+![a](https://i.imgur.com/P3lw59H.jpg)
+
+Embora sabemos que é possível usar a tag div para todas as seções, é uma boa prática usar as tags respectivas para cada seção:
+
+````HTML
+
+Header - Usaremos a tag <header>
+
+Logo - Geralmente o logo é uma imagem, porém, nesse exemplo usaremos a tag <span>
+
+Barra de navegação - Usaremos a tag <nav>
+
+Links de navegação - Neste caso, como temos uma lista de elementos sem ordem específica a serem exibidos, usaremos a tag <ul> para criar uma “lista não ordenada”, e uma tag <li> para cada item da lista (neste caso, três itens: Passagens, Hospedagem e Pontos turísticos)
+
+
+Como a tag header terá outros elementos dentro dele (logotipo, navegação, etc.), dizemos que o header é o elemento pai, e todas as tags dentro dele são os elementos filho. Uma boa prática quando começamos aninhar elementos filhos, é deixá-los em linhas diferentes das tags de abertura e fechamento de elemento pai. Usemos a tecla Enter para inserir uma nova linha de código entre as tags <header> e </header>, e dentro delas digitemos a tag span com a palavra “EuroTour” que servirá como logotipo do nosso site:
+
+
+
+````
+
+![a](https://i.imgur.com/iGelZac.jpg)
+
+
+
