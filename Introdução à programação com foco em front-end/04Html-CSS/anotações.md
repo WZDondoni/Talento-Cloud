@@ -297,7 +297,7 @@ Embora sabemos que é possível usar a tag div para todas as seções, é uma bo
 
 ````HTML
 
-Header - Usaremos a tag <header>
+Header - Usaremos a tag <header>, esse header não é mostrado ao usuário.
 
 Logo - Geralmente o logo é uma imagem, porém, nesse exemplo usaremos a tag <span>
 
@@ -314,5 +314,8 @@ Como a tag header terá outros elementos dentro dele (logotipo, navegação, etc
 
 ![a](https://i.imgur.com/iGelZac.jpg)
 
+![a](https://i.imgur.com/IkJw5rd.jpg)
 
+No exemplo apresentado, separamos o conteúdo da página em três partes principais: cabeçalho, conteúdo principal e rodapé. Para isso, dentro da tag body incluímos as tags header, main e footer respectivamente. No header usamos uma tag img para incluir o logotipo da nossa empresa fictícia, e a tag nag para a barra de navegação do site. Na barra de navegação contamos com uma lista não ordenada de elementos que virão ser os links para as outras páginas do nosso site.
 
+O conteúdo principal (tag main) conta com um título (tag h1) e uma seção logo embaixo (tag section). A seção, por sua vez, conta com um subtítulo (tag h2) e um parágrafo (tag p). Finalmente, no rodapé (tag footer) usamos novamente a tag img para inserir a imagem do logotipo do site, e as tags ul e li para definir os links das redes sociais da nossa empresa fictícia
