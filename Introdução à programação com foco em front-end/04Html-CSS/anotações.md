@@ -191,8 +191,6 @@ Utilizar a semântica ajuda ao SEO, google ranqueia melhor a página. Ajuda os l
 * **aside**, é tipo uma caixa de conteúdo. independente, pode ou ter ter relação.
 * **article**, representa um conteúdo independente dentro do documento. Ex: um artigo de uma páginaa, ou uma pergunta no stackoverflow, por exemplo
 * **section**, A tag section é utilizada para marcar as seções de conteúdo de uma página. Com Esse elemento agrupamos de forma lógica nosso conteúdo, separando a informação em áreas diferentes.
-* 
-
 
 ### ENTENDER COMO CRIAR O CORPO DE UMA PÁGINA
 
