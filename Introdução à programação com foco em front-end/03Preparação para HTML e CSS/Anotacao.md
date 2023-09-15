@@ -561,7 +561,7 @@ São estruturas que usamos para **guardar e organizar** dados em uma **única va
 * Nome da variável
 * Operador de atribuição '='
 * Par de colchetes '[]'
-* Itens separados por vírgulas 
+* Itens separados por vírgulas
   * Ex. nomes = ["Luciano","Juliana","Caroline"]
 
 ##### índices
@@ -634,9 +634,9 @@ São estruturas que usamos para **guardar e organizar** dados em uma **única va
 
 ##### Estrutura dos comandos'
 
-* Palavra reservada - é sempre **git**; 
-* Nome do comando – pode ser um ou mais de um; 
-* Opção/Opções - são escritas com um hífen e uma letra, ou dois hífens e uma palavra (ex. -A ou --all); 
+* Palavra reservada - é sempre **git**;
+* Nome do comando – pode ser um ou mais de um;
+* Opção/Opções - são escritas com um hífen e uma letra, ou dois hífens e uma palavra (ex. -A ou --all);
 * Argumento – Input do desenvolvedor para nomear commits, branches, etc.
 
 ![a](https://i.imgur.com/FqmMr68.jpg)
@@ -658,8 +658,3 @@ São estruturas que usamos para **guardar e organizar** dados em uma **única va
 [Form para questionário de revisão](https://docs.google.com/forms/d/e/1FAIpQLScX4K2usEMohYbnYLwJeW2lmYHGieTo0TUQbbOmnfAsKKmzXQ/viewscore?pli=1&pli=1&viewscore=AE0zAgAZlt2q1gE7sxAjslxadJrhl6Of0IKUtDCVqfuPwHwho1ByMmjboaaCILX7anHifro)
 
 ![a](https://i.imgur.com/bxTCqoR.jpg)
-
-
-
-
-
