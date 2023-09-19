@@ -1,0 +1,91 @@
+* {
+    font-family: 'Mina', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+
+}
+body {
+    display: flex;
+    color: white ;
+    background-image: url("./img/bkg-worker.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    
+}
+
+
+nav a:hover {
+    color: #FF5000;
+
+
+}
+
+nav {
+    background-color: #3C3C3C;
+
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+    align-items: center;
+    padding: 16px;
+
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+main {
+    display: flex;
+}
+
+
+footer a img {
+    width: 50px;
+    height: auto;
+    border-radius: 50%;
+   
+
+
+}
+
+footer {   
+    
+    color: white;
+    background-color: #3c3c3c;
+    display: flex;
+    
+    
+}
+footer span {
+    padding: 0px;
+    background-color: aqua;
+   
+
+}
+
+footer ul {
+    display: flex;
+    list-style-type: none;
+    justify-content: right;
+    align-items: center;
+    color: #FF5000;
+    
+   
+
+}
+
+
+
+
+
+
+
+

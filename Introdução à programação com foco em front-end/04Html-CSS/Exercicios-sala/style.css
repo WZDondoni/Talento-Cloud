@@ -1,0 +1,24 @@
+h1 {
+  color: red;
+  background-color: aqua;
+}
+
+div {
+  background-color: blue;
+  padding: 65px;
+  margin: 35px;
+  border: 8px solid black;
+
+}
+
+p {
+  color: rgb(255, 255, 255);
+  background-color: forestgreen;
+}
+
+.caixa-meio {
+    padding: 20px 40px 60px 80px;
+    margin: 80px 60px 40px 20px;
+
+}
+

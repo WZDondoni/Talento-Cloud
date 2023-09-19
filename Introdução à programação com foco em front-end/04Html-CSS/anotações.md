@@ -332,3 +332,284 @@ Como a tag header terá outros elementos dentro dele (logotipo, navegação, etc
 No exemplo apresentado, separamos o conteúdo da página em três partes principais: cabeçalho, conteúdo principal e rodapé. Para isso, dentro da tag body incluímos as tags header, main e footer respectivamente. No header usamos uma tag img para incluir o logotipo da nossa empresa fictícia, e a tag nag para a barra de navegação do site. Na barra de navegação contamos com uma lista não ordenada de elementos que virão ser os links para as outras páginas do nosso site.
 
 O conteúdo principal (tag main) conta com um título (tag h1) e uma seção logo embaixo (tag section). A seção, por sua vez, conta com um subtítulo (tag h2) e um parágrafo (tag p). Finalmente, no rodapé (tag footer) usamos novamente a tag img para inserir a imagem do logotipo do site, e as tags ul e li para definir os links das redes sociais da nossa empresa fictícia
+
+### 3.1.0 - APRENDER O QUE É CSS E SUA HISTÓRIA
+
+#### 3.1.1 - O  que é CSS e sua história
+
+A Cascading Style Sheets (**CSS**), no português **Folhas de Estilo em Cascata** é uma **linguagem de estilização** utilizada em conjunto com a HTML para aplicações web.
+
+Com a evolução do HTML cada navegador fazia da sua forma e acabava por deixar a linguagem mais complexa e dificil de manter. Cada navegador carregava de uma forma, dando instabilidade ao site.
+
+Em 1994, o companheiro de Tim Bernes, Hakon Wium, decidiu criar uma forma mais simples de stilização.
+A World Wide Web Consortium (W3C) aprovou logo no outro ano e criou um grupo de estudo.
+1996 a primeira versão, 1999 a segunda e 2000 a terceira. Que é a mais atual. Vem recebendo atualizações de novas funções.
+
+#### 3.1.2 - Como usar a CSS
+
+A CSS **permite aplicar estilos seletivos**. Portanto, vamos aprender como aplicá-los nos elementos da HTML.
+Após a criação de toda a estrutura em HTML da página, vamos **criar um arquivo chamado styles.css**. Nele, colocaremos todas as configurações de estilo. Na tag head da nossa página, vamos fazer a importação do arquivo de estilos
+
+![a](https://i.imgur.com/xShxI9v.jpg)
+
+Dentro do arquivo .css incluir quais elementos receberão a stilização
+
+````css
+
+p {
+    font-family: sans-serif;
+    color: red;
+    font-size: 50px;
+}
+
+````
+
+![a](https://i.imgur.com/PL3sWcg.jpg)
+
+>ATENÇÃO!
+Vale ressaltar que, em alguns momentos, **será possível a aplicação de estilos através de uma hierarquia**.
+Por exemplo, em uma section, há uma div na qual há um elemento p para estilizar. Para isso, usamos a linha de código section div p {} e colocamos os estilos desejados dentro das chaves.
+
+````HTML
+<body>
+    <section>
+        <div><p> Teste do CSS </p></div>
+       </section>
+</body>
+
+````
+
+````CSS
+section div p {
+    font-family: sans-serif;
+    color: blue;
+    font-size: 50px;
+}
+
+
+````
+
+Por exemplo, em uma **section**, há uma **div** na qual há um elemento **p** para estilizar. Para isso, usamos a linha de código **section div p {}** e colocamos os estilos desejados dentro das chaves.
+
+>ATENÇÃO!
+
+Para aplicar um mesmo estilo para mais de um elemento ou classe, devemos separá-los por vírgulas, ou seja: p, span, a {}. Veja o exemplo
+
+````CSS
+
+p, span, a {
+    font-family: sans-serif;
+    color: blue;
+    font-size: 50px;
+}
+
+````
+
+>ANOTAÇÃO: Não há necessidade de uso de vírgulas. Conforme exercício.
+
+### 3.2 - CONHECER CLASSE E ID E QUANDO UTILIZAR
+
+#### 3.2.1 - Definições e utilidades
+
+Para fazer a estilização na CSS, **precisamos utilizar seletores**. Apesar das atualizações e das especificações da CSS, as formas de seleção para a aplicação de estilos continuam as mesmas. Elas são:
+
+* através de uma **class**;
+* através de uma **id**;
+* através das **tags**;
+* através do **atributo** de um elemento.
+
+**Class**, Utilizar class é **muito mais complicado**, pois **uma class é utilizada quando é necessário aplicar um estilo para mais de um  elemento**. Ela também serve para a aplicação de estilos mais genéricos, como uma cor ou tamanho de fonte. A class é muito presente nos frameworks para componentes.
+
+ 
+
+>Lembrando que um elemento pode ter mais de uma class.
+
+Para aplicar uma class, no arquivo .css , **é necessário colocar um `ponto` na frente do nome da class que será carregado no html** Esse nome será um apelido, um alias, que será dado para ela. Veja o exemplo:
+
+``` HTML
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"/>
+<link rel="stylesheet" type="text/css" href="styles.css" media="screen" />
+<title>Exemplo do uso do seletor: class</title>
+</head>
+<body>
+    <p class="azul">Este parágrafo está em azul.</p>
+<p class="azul verde-bg">Este parágrafo está em azul e fundo verde.</p>
+<p class="azul elegante">Este parágrafo em azul e com o estilo "elegante".</p>
+<p>Este é um parágrafo sem estilização.</p>
+</body>
+</html>
+
+```
+
+``` CSS
+
+.azul {
+  color: rgb(55, 0, 252);
+}
+
+.verde-bg {
+  background: rgb(43, 235, 4);
+}
+
+.elegante {
+  font-weight: bold;
+  text-shadow: 4px 4px 3px #77f;
+}
+
+
+```
+
+![A](https://i.imgur.com/a4t5lpI.jpg)
+
+**id**, também é muito presente nessa aplicação. A diferença é que ela só será utilizada quando apenas um estilo for necessário.
+> porque um elemento não pode ter mais de uma id.
+
+Então, **quando não houver repetições, deve-se utilizar a id**.
+
+Para aplicar uma id, é necessário colocar uma hashtag na frente do nome que será dado para ela. Veja o exemplo:
+
+```html
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" href="styles.css" media="screen" />
+    <title>Exemplo do uso do seletor: ID</title>
+</head>
+<body>
+    <br>
+    <span id="exemploId">Aqui um exemplo com ID.</span>
+    </br>
+    <span>Aqui outro exemplo de ID.</span>
+</body>
+</html>
+
+
+```
+
+```css
+
+span#exemploId {
+  background-color: red;
+}
+
+
+```
+
+![a](https://i.imgur.com/SUz46bU.jpg)
+
+**Seleção de atributo** quando percebe-se que não há a necessidade de usar uma id ou class e se o elemento tiver um atributo, a seleção pode ser feita através desse. Assim, se combina elementos baseados no valor de um atributo dado.
+
+Para aplicar a seleção através de um atributo, chamamos o elemento e entre [] colocamos o atributo que queremos alterar.
+
+```css
+
+a[title] {
+
+  color: red;
+
+}
+
+```
+
+No exemplo a seguir, é possível adicionar uma cor ao título de um link através de um atributo.
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" href="styles.css" media="screen" />
+    <title>Exemplo do uso do seletor: atributo</title>
+</head>
+<body>
+    <ul>
+        <li><a href="#internal">Internal link</a></li>
+        <li><a href="http://example.com">Example link</a></li>
+        <li><a href="#InSensitive">Insensitive internal link</a></li>
+        <li><a href="http://example.org">Example org link</a></li>
+      </ul>
+</body>
+</html>
+
+
+
+```
+
+```css
+a {
+  color: blue;
+}
+/* Links internos, começando com "#" */
+a[href^="#"] {
+  background-color: gold;
+}
+/* Links com "example" em qualquer lugar da URL */
+a[href*="example"] {
+  background-color: silver;
+}
+/* Links com "insensitive" em qualquer lugar da URL,
+   independentemente da capitalização */
+a[href*="insensitive" i] {
+  color: cyan;
+}
+/* Links com final ".org" */
+a[href$=".org"] {
+  color: red;
+}
+
+```
+
+![a](https://i.imgur.com/T8Mjqaq.jpg)
+
+**Tags**, Este seletor, utilizamos as tags que declaramos no corpo do html, como no exemplo a seguir.
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" href="styles.css" media="screen" />
+    <title>Exemplo do uso do seletor: atributo</title>
+</head>
+<body>
+    <span>Aqui vai um texto.</span>
+    <p>Aqui vai um texto.</p>
+    <span>Aqui vai um texto.</span>
+</body>
+</html>
+
+```
+
+```css
+span {
+  background-color: pink;
+}
+
+
+
+```
+
+![a](https://i.imgur.com/fYXr2Tx.jpg)
+
+>DIFERENÇA ENTRE CLASS E ID
+
+![A](https://i.imgur.com/6BgOdTn.jpg)
+
+Para esses elementos que se repetem durante o código.
+Diversas chamadas de um mesmo componente com as mesmas caracteristicas de estilo. Podemos armazenar esses elementos dentro de uma classe e assoliala ao componente.
+
+Muitas fezes é usando pela falta de tipos de tags para separação de conteúdo é utilizada as tagas Class e ID para realizar essa separação.
+
+> ATENÇÃO!
+> Na criação de nomes de Class e ID, devemos seguir a convenção de escrever tudo minúscula. Fazendo uso do **kebab case**. Todas as letras são minusculas e separação é feita por traço/hífem
+>
+>
+
+Onde haver ID poderá haver Class, um ELEMENTO PODE TER MAIS DE UMA CLASS, e o ID é único.
+
+Através do JavaScript poderemos acessar o elemento pelo ID, por uma função. Class também poderá ser acessada.
