@@ -1,0 +1,31 @@
+
+* {
+    text-decoration: none;
+    
+}
+
+p {
+    font-family: sans-serif;
+    color:rgb(0, 2, 2);
+    font-size: 20px;
+    width: 600px;
+}
+
+a {
+    
+    font-size: 20px;
+    color:aqua;
+
+}
+body {
+    background-color: cadetblue;
+}
+
+nav {
+    background-color: rgb(104, 97, 172);
+    padding: 10px 0px 10px 10px;
+    
+}
+img {
+    border: 5px solid aqua;
+}
