@@ -409,6 +409,7 @@ p, span, a {
 
 ### 3.2 - CONHECER CLASSE E ID E QUANDO UTILIZAR
 
+
 #### 3.2.1 - Definições e utilidades
 
 Para fazer a estilização na CSS, **precisamos utilizar seletores**. Apesar das atualizações e das especificações da CSS, as formas de seleção para a aplicação de estilos continuam as mesmas. Elas são:
@@ -613,3 +614,75 @@ Muitas fezes é usando pela falta de tipos de tags para separação de conteúdo
 Onde haver ID poderá haver Class, um ELEMENTO PODE TER MAIS DE UMA CLASS, e o ID é único.
 
 Através do JavaScript poderemos acessar o elemento pelo ID, por uma função. Class também poderá ser acessada.
+
+
+### 3.3 - ENTENDER AS PROPRIEDADES BÁSICAS DO CSS
+
+#### 3.3.1 - Propriedades básicas da CSS
+
+#### 3.3.1.1 - Espaçamento
+
+**margin:** 10px 10px 10px 10px;  para **espaçamento externo** ao elemento top, right, bottom, left
+
+**padding:** 10px 10px 10px 10px;  para **espaçamento interno** ao elemento top, right, bottom, left
+
+#### 3.3.1.2 - Texto 
+
+**font-size:** atribui o tamanho da fonte
+**font-family:** atribui qual fonte será utilizada.
+**color:** atribui cor ao texto
+**text-align:** podendo ficar center, rigth, etc.
+
+#### 3.3.1.3 - Abrituir fundo
+
+**background:** url que buscaraá a imagem ou uma cor será definida.
+
+#### 3.3.1.4 - Hiperlink
+
+Ao inserir fica sublinhado, para tirar o sublinhado deve-se utilizar 
+**text-decoration: none**
+
+#### 3.3.1.5 - Display
+
+Definirá o tipo de renderização que será utilizada no elemento, como esse elemento ficará na tela.
+**display:block;**
+Existem várias propriedades:  absolute, relative, block, flex, none;
+**block é default**
+
+>Atenção 
+> Desativando, todos os elementos descendentes irão sumir.
+
+#### 3.3.1.6 - FlexBox 
+
+Muito utilizada em organizar elementos em forma RESPONSIVA. Muito utilizada principalemente por frameworks.
+
+utiliza-lá dando **display:flex**
+
+Propriedades utilizadas junto do display:flex são :
+
+* **justify-content**; alinha horizontalmente.
+* **align-items**; alinha verticalmente.
+* **flex-direction**; que direção devem seguir.
+* **flex-wrap**; se os elementos devem ou não quebrar e para onde devem ir se o fizerem.
+
+#### 3.3.2 - AWS - Propriedades Básicas
+
+[Como iniciar CSS  - Flex Box]<https://youtu.be/gOMK_xruAqc>
+
+[Aprenda FlexBox com FlexFrog]<https://youtu.be/7uGDoJN0tAA>
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
