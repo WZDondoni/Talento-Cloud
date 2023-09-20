@@ -667,7 +667,7 @@ Propriedades utilizadas junto do display:flex são :
 
 #### 3.3.2 - AWS - Propriedades Básicas
 
-[Como iniciar CSS  - Flex Box]<https://youtu.be/gOMK_xruAqc>
+[Como iniciar CSS  - Flex Box]<https://youtu.be/gOMK_xruAqc> Muito bom
 
 [Aprenda FlexBox com FlexFrog]<https://youtu.be/7uGDoJN0tAA>
 
