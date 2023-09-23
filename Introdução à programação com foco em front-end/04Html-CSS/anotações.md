@@ -628,10 +628,38 @@ Através do JavaScript poderemos acessar o elemento pelo ID, por uma função. C
 
 #### 3.3.1.2 - Texto 
 
-**font-size:** atribui o tamanho da fonte
 **font-family:** atribui qual fonte será utilizada.
-**color:** atribui cor ao texto
+
+**font-size:** atribui o tamanho da fonte, 
+
+* **pixels**, Medida de valor absoluta, semelhante a centímetros ou polegadas, mas usando como referência os pixels do nosso dispositivo. Basta escrever o número seguido das letras ‘px’
+    Exemplo: font-size: 16px;
+* **EM**, Unidade de medida relativa ao “elemento pai” Se temos um elemento pai com, por exemplo, um font-size de 48px, e atribuímos ao elemento filho dele um valor de 1em, esse 1em será equivalente a 48px. Se o valor do font-size do elemento pai mudar para 32px, o 1em passará a ter um valor de 32px.
+* **REM**, Unidade de medida relativa ao “elemento root”, ou o elemento html. Ambos tem como padrão o valor 16px, ou seja, **1rem equivale a 16px**, 0.5rem equivale a 8px, 2rem equivale a 32px, e assim por diante 16px é considerado o valor padrão por ser grande o suficiente para leitura na maioria de ispositivos (smartphones, tablets, notebooks e desktops), porém, é possível alterá-lo nas configurações dos dispositivos ou atribuindo um novo valor com CSS ao font-size do elemento html.
+
+>Isto é útil, por exemplo, para questões de acessibilidade. Se pessoas com baixa visão, que deixam o tamanho padrão da letra maior nos seus dispositivos, acessarem nosso site, o tamanho da fonte nele se ajustaria automaticamente ao padrão dos seus dispositivos ou navegadores (diferente de medidas absolutas como pixels)
+
+**font-style:** atribui itálico por exemplo. **Por padrão, os elementos HTML “herdam” seus estilos dos elementos pai.** Para remover é só incluir no filho o **font-style: normal;**
+
+
+
+**color:** atribui cor ao texto;
+aceita:
+
+* nome da cor: escrevendo o nome dela "red" "blue";
+* RGB (0,0,0); O sistema atribui um valor de 0 a 255 para cada uma dessas “tonalidades base”, onde 0 é a ausência total da cor, e 255 a intensidade máxima dela. RGBA, pode-se incluir transparência no último campo (0,0,0,**0**) zero totamente transparente e 1 totalmente opaco.
+* Hexadecimal ( As cores são representadas por um sistema de numeração em base 16, ou seja, com 16 símbolos do 0 ao F - Dessa forma, conseguimos representar os valores do 0 ao 255 do sistema RGB apenas com dois dígitos (ex. O número 255, em base 10, é representado como FF em base 16))
+
 **text-align:** podendo ficar center, rigth, etc.
+
+**font-weight** Podemos aumentar ou diminuir o “peso” ou “intensidade” de qualquer texto usando a propriedade CSS font-weight. A propriedade font-weight aceita valores predefinidos (ex. normal, bold, lighter) ou valores numéricos entre 100 e 1000, com acréscimos de 100 (ex. 100, 200, 300…).
+
+> É importante lembrar também que, se estivermos importando fontes do Google Fonts, podemos escolher também quais pesos e estilos queremos importar.
+>
+
+Os filhos herdam o valor dado. Para resetar utiliza a configuração "normal"
+
+![a](https://i.imgur.com/Mt4sCEt.jpg)
 
 #### 3.3.1.3 - Abrituir fundo
 
@@ -665,23 +693,73 @@ Propriedades utilizadas junto do display:flex são :
 * **flex-direction**; que direção devem seguir.
 * **flex-wrap**; se os elementos devem ou não quebrar e para onde devem ir se o fizerem.
 
-#### 3.3.2 - AWS - Propriedades Básicas
+#### 3.3.2 - AWS - CSS Propriedades Básicas
 
 [Como iniciar CSS  - Flex Box]<https://youtu.be/gOMK_xruAqc> Muito bom
 
 [Aprenda FlexBox com FlexFrog]<https://youtu.be/7uGDoJN0tAA>
 
+>link para id:
+>Nomeia a div com id e faz um '<a href=#"colocando aqui o nome do id>One</a>'
+> ao clicar faz o pulo pra div.
+> uso no css o "scroll-behavior:smooth" para fazer uma transição suave
+
+#### 3.3.3 - Unidades de medida
+
+determinam o tamanho de qualquer elemento;
+
+**absolute** = será usado só **pixel**, não se baseia em nada. imutável por nada até intervenção.
+
+**relativas**
+
+* **em**,  o elemento se comporta conforme o elemento Pai. Se o pai tiver font-size:50px e o **p** do filho tiver font-size: 1em. o parágrafo do filho terá o tamanho igual ao pai. Se o filho tiver 0.25em o filho terá 25% do tamanho do pai. 2em seria o dobro do pai, no caso 100px
+* **rem**, deixa de se basear no elemento mais próximo e passa a ser baseado no root do documento. Bom uso para experiencia do usuário.
+* **vw**, (**v**iew**w**idth) 1vw é 1% da largura do view port.  
+* **vh**, (**v**iew**h**eight), mesmo padrão. do vw
+
+* **%**, baseada no elemento pai, pai com 200px, e o filho com 50%. filho terá 
+* **vmin**, é relativo ao menor parte do viewport 2vmin, 2% da menor parte 
+* **vmax**, maio parte.
+
+>navegador por padrão deixa 16px de tamanho de fonte. 100% seria 16px
 
 
 
+### 3.4 -IMPORTAÇÃO E MANIPULAÇÃO DE FONTES
+
+#### 3.4.1 - CSS e fontes tipográficas
+
+ usaremos o Google Fonts para importar fontes nos nossos projetos. Google Fonts é um serviço gratuito com quase 1000 tipos de fontes diferentes. Ele não requer nenhum tipo de cadastro, login, ou instalação, e é amplamente usado pela comunidade de desenvolvimento web.
+
+### 3.5  - CSS
+
+#### 3.5.1 - HandsOn Luis
+
+Projeto zipado  - NÃO ACHEI.
+
+Espaçamento padrão, entré título e subtitulo.
+Há um espaçamento do proprio navegador, tipo uma margem do body padrão. 
+
+São estilos padrões e que podem ser removidas.
+Utilizar para toda a página usando dentro do seletor *{}
+afeta **todos** os elementos. Alguns elementos vem com padding padrão.
+
+```css
+
+margim:0;
+padding:0;
 
 
+```
 
-  
+> ATENÇÃO!! O DISPLAY: FLEX VAI NO ELEMENTO PAI!!! PARA AFETAR OS FILHOS. Por exemplo se quer colocar os li um ao lado do outro, deve-se atribuir diplay:flex ao pai.
+>
+> Para o header e os menu fiquem um ao lado do outro deve aplicar o display:flex no pai de ambros, que seria o header no exemplo;
+>
 
+ul quando pede para centralizar o li não ocupa todo o espaço do Nav, deve-se dizer na propriedade que o ul vai ocupar toda a altura do pai Nav. Aplicar no ul o **height:100%** da altura disponível do pai dele.
 
-
-
+### 3.6  - REPPONSIVIDADE
 
 
 
