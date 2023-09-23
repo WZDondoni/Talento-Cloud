@@ -1,0 +1,14 @@
+git config user.name "nome"
+git config user.email "email"
+git init
+git add . 
+git commit -m "mensagem"
+git status
+coisas da branch master
+coisas da branch master
+coisas da branch master
+coisas da branch master
+
+aprendendo branch's 
+comandos:
+coisas da branch layoutcoisas da branch layoutcoisas da branch layoutcoisas da branch layoutcoisas da branch layoutcoisas da branch layoutcoisas da branch layoutcoisas da branch layoutcoisas da branch layoutcoisas da branch layoutcoisas da branch layout
