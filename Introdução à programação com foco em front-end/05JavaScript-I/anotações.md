@@ -319,3 +319,344 @@ Bem, caso você não tenha visto as diferenças, aqui estão:
 - variáveis de `var` podem ser atualizadas e declaradas novamente dentro de seu escopo. As variáveis de `let` podem ser atualizadas, mas não podem ser declaradas novamente. As variáveis de `const` não podem ser atualizadas nem declaradas novamente.
 - Todas elas passam por hoisting para o topo de seu escopo. Porém, enquanto variáveis com `var` são inicializadas com undefined, as variáveis com `let` e `const` não são inicializadas.
 - Enquanto `var` e `let` podem ser declaradas sem ser inicializadas, `const` precisa da inicialização durante a declaração.
+
+## 5.2 - OPERADORES EM JS
+
+### 5.2.1 - Operadores em JS
+
+Os **operadores aritméticos**(soma, subtração, multiplicação, divisão e módulo) e **relacionais** (maior, menor, maior ou igual, menor ou igual) **são exatamente iguais em JS e Python**.
+
+#### 5.2.1.1 - Operadores aritméticos
+
+Operação | Operador
+---------|:---------:
+Soma | +
+Subtração | -
+Multiplicação | *
+Divisão | /
+Módulo | %
+Maior que | >
+Menor que  | <
+Maior ou igual que | >=
+Menor ou igual que |<=
+
+#### 5.2.1.1 - Operadores lógicos
+
+Operação | Operador (Python) | Operador (JS)
+---------|:---------:|-------
+Conjunção | and | &&
+Disjunção | or | &#124;&#124;
+Negação | not ou ! | !
+
+```js
+
+(10 > 5) && (2 >= 7)
+
+// O resultado é 'false'
+
+ 
+
+(10 > 5) || (2 >= 7)
+
+// O resultado é 'true'
+
+ 
+
+!(10 > 5)
+
+// O resultado é 'false'
+
+```
+
+[REIS, Ricardo. Operadores Lógicos (Logial Operators) JavaScripts]<https://ricardo-reis.medium.com/operadores-l%C3%B3gicos-logical-operators-b0687819d1a5>
+
+[Dev Aprender. Javascript Tutorial 14 - Operadores Lógicos (Operadores)]<https://www.youtube.com/watch?v=Vhw8AaiSUjU>
+
+### 5.2.2 - ESTRUTURAS CONDICIONAIS EM JS
+
+#### 5.2.2.1 - Estruturas Condicionais em JS
+
+Para escrever estruturas condicionais em JS precisamos de:
+
+- Pelo menos uma palavra reservada (**if**, **else**)
+- Uma condição a ser testada entre parênteses (ex. (3 > 1);)
+- Um bloco de código a ser exectuado entre chaves ‘{ }’
+
+```JS
+
+let nota = 9;
+
+ 
+
+if(nota >= 8){
+
+    console.log("Ótimo trabalho!");
+
+}
+
+
+```
+
+>Observação.
+>Já que as chaves determinam o começo e fim do bloco de código a ser exectutado, a indentação do bloco não é obrigatória mas ainda é uma boa prática, que visa facilitar a leitura do código.
+
+Para definirmos blocos de código a serem executados caso a condição não for verdadeira, usamos a palavra reservada **else** e as chaves, porém, não é mais necessário o uso de parênteses:
+
+```JS
+
+let nota = 7;
+
+ 
+
+if(nota >= 8){
+
+    console.log("Ótimo trabalho!");
+
+} else {
+
+    console.log("Precisa melhorar");
+
+}
+
+```
+
+definir **duas ou mais condições** a serem avaliadas, usamos a junção de ambas as palavras definidas (else if), um par de parênteses com a nova condição, e o bloco de código a ser exectuado entre chaves. Vale lembrar que **nosso código será lido de cima para baixo,** portanto, *a ordem em que as condições são escritas faz diferença*, e o bloco de código **else precisa sempre ser o último**:
+
+``` JS
+
+let nota = 6;
+
+ 
+
+if(nota >= 8){
+
+    console.log("Ótimo trabalho!");
+
+} else if(nota >= 6){
+
+    console.log("Bom trabalho");
+
+} else {
+
+    console.log("Precisa melhorar");
+
+}
+
+```
+
+#### 5.2.2.2 - Condicionais e booleanos em JS
+
+As condições das nossas estruturas condicionais podem incluir números (como nos exemplos anteriores), incluir strings:
+
+```JS
+
+let meuInstrumento = "violão";
+
+ 
+
+if (meuInstrumento == "piano"){
+
+    console.log("Você é um pianista!");
+
+} else {
+
+    console.log("Você não é um pianista");
+
+}
+
+ 
+
+// Imprimirá 'false' pois meuInstrumento não é 'piano'
+
+
+let finDeSemana = false;
+
+ 
+
+if(finDeSemana == true){
+
+    console.log("Vai descansar!");
+
+} else {
+
+    console.log("Temos que trabalhar");
+
+}
+
+ 
+
+// Imprimirá 'Temos que trabalhar'
+
+
+
+
+```
+
+javaScript nos permite escrever a condição entre parênteses (finDeSemana == true) de uma **forma mais simples:** apenas colocando o nome da variável.
+
+```JS
+
+let finDeSemana = false;
+
+ 
+
+if(finDeSemana){
+
+    console.log("Vai descansar!");
+
+} else {
+
+    console.log("Temos que trabalhar");
+
+}
+
+ 
+
+// Imprimirá 'Temos que trabalhar'
+
+```
+
+Sempre que trabalhamos com variáveis que guardam valores booleanos em JS podemos verificar sua “veracidade” apenas chamando o nome da variável. Já se quisermos verificar se o valor do booleano é falso, podemos usar o operador de negação (!) antes do nome da variável:
+
+```JS
+
+let finDeSemana = false;
+
+ 
+
+if(!finDeSemana){
+
+    console.log("Temos que trabalhar.");
+
+} else {
+
+    console.log("Vai descansar!");
+
+}
+
+ 
+
+// Imprimirá 'Temos que trabalhar'
+
+```
+
+Perceba que como agora o primeiro bloco condicional está verificando se a variável finDeSemana é falsa, a mensagem impressa é o que fazer num dia de semana. Já como o segundo bloco de código (no else) que é executado caso finDeSemana for verdadeiro, imprime agora a mensagem relativa ao final de semana. Para efeitos práticos, este código funciona exatamente igual aos dois códigos anteriores. Este é um exemplo de como podemos chegar no mesmo resultado escrevendo algoritmos e códigos distintos
+
+[MDN Web Docs. Tomando decisões no seu código ]<https://developer.mozilla.org/pt-BR/docs/Learn/JavaScript/Building_blocks/conditionals>
+
+[DevMedia. JavaScript if/else: criando scripts com estruturas condicionais]<https://www.youtube.com/watch?v=8UXQ6S0KURk>
+
+## 5.3 - LOOPS EM JS
+
+### 5.3.1 - Loops
+
+Há várias, porém o **for** será estudado. Ele precisa de três parâmetros. Permite usar variável dinâmica dentro do bloco.
+
+A estrutura inicial para escrever um for loop em JS consiste da palavra reservada **for**, os parâmetros do loop entre parênteses, e o código a ser executado entre chaves.
+
+```js
+
+for(/*Parâmetros do loop*/ ){
+
+    // Código a ser executado "em loop"
+
+}
+
+```
+
+### 5.3.1.1 - Sintaxe do "for loop"
+
+Dentro dos parênteses escreveremos os três parâmetros necessários, separados por ponto e vírgula.
+
+- **Variável contadora**
+
+   Declaramos uma variável e um valor inicial para ela
+
+   É comum definir o nome da variável como ‘i’ de ‘índice’
+
+   Exemplo: let i = 0;
+
+- **Condição de parada**
+
+  Expressão avaliada antes do inicio de cada repetição
+
+  Quando a expressão for avaliada como falsa a estrutura de repetição chega ao fim
+
+  Exemplo: i < 10;
+
+- **Incremento ou decremento**
+
+  Determina o aumento ou decremento a ser aplicado à variável contadora no fim de cada repetição
+
+  JavaScript nos fornece a seguiet sintaxe simplificada para adicionar 1 à variável: i++
+
+  Esta sintaxe simplificada é equivalente a: (i = i + 1). Isto é, atribuir à variável ‘i’ o “valor atual dela mais um”
+
+Aplicando os três parâmetros à nossa estrutura inicial, chegamos no seguinte código:
+
+```JS
+
+for(let i = 0; i < 10; i++){
+
+    console.log(i);
+
+}
+```
+
+No exemplo anterior, nosso código imprimirá os números do 0 ao 9, pois a condição de parada é a variável contadora ser menor que o número 10.
+
+### 5.3.1.2 - Percorrer um array
+
+Podemos usar os for loop para percorrer arrays da mesma forma que o fazemos em Python. A principal diferença é o uso da propriedade length do array. Length (do inglês “cumprimento”) é uma propriedade que nos retorna a quantidade de elementos num array. Para usar ele **basta chamar a variável que guarda o array**, seguida de um ponto ‘.’, e a palavra reservada **length**.
+
+```JS
+let letras = ['a', 'b', 'c'];
+
+ 
+
+console.log(letras.length);
+
+// Imprimirá '3' pois o array 'letras' tem três elementos
+```
+
+Podemos usar a propriedade length **para percorrer arrays** em JS sem nos preocupar pela quantidade de elementos. Para fazer isso, devemos inclui-lo como condição de parada do nosso for loop da seguinte forma:
+
+```JS
+
+let letras = ['a', 'b', 'c'];
+
+ 
+
+for(let i = 0; i < letras.length; i++){
+
+    console.log(letras[i]);
+
+}
+
+ 
+
+// Imprimirá 'a', 'b', e 'c'
+
+
+```
+
+estamos usando a variável dinâmica ‘i’ para acessar cada elemento do array, chamando o array (neste caso, letras) seguido da variável contadora entre colchetes. Isto é equivalente a imprimir “letras[0]” na primeira volta, “letras[1]” na segunda volta, e “letras[2]” na terceira e última volta.
+
+[Estrutura de repetição - Percorrer um Array]<https://youtu.be/wiUUASSieOE>
+
+Percorrendo um Array usando como parâmetro o tamanho do array.
+![a](https://i.imgur.com/CiEr6Ma.jpg)
+
+[MDN Web Docs]<https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Statements/for>
+
+[Curso JavaScript #21 - for (estrutura de repetição - loop)]<https://www.youtube.com/watch?v=wiUUASSieOE>
+
+[Exercício-CodePark03]<https://onecompiler.com/javascript/3znt73w2g>
+
+>Comentários ao exercício  
+
+Em primeiro lugar, definimos a estrutura do 'for loop' para acessar cada um dos elementos do array, usando o cumprimento de numerosDaSorte como condição de parada. Assim, dentro do bloco de código que será executado entre as chaves podemos acessar de forma dinâmica cada um dos elementos do array usando a variável contadora como índice (ex. numerosDaSorte[i]).  
+
+Em segundo lugar, usamos uma estrutura condicional com as palavras reservadas 'if', 'else if', e 'else'. Cada uma com seu respectivo bloco de código a ser executado, imprimido uma das três possíveis frases para cada número. Na condição do 'if' verificamos se o número é par, usando o operador módulo (ex. num % 2 == 0), e usamos o operador de conjunção '&&' para verificar se o número é também menor do que 50. Já no bloco 'else if' verificamos apenas se o número é menor do que 50.
+
+Finalmente, como sabemos que todos os números que não passarem nos dois testes lógicos são necessariamente menores do que 50 e, como neste caso não precisamos fazer nenhuma outra avaliação para os números menores do que 50, usamos o bloco 'else' para imprimir a última frase.

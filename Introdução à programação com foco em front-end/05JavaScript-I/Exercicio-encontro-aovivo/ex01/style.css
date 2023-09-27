@@ -1,0 +1,83 @@
+* {
+  font-family: "Maven Pro", sans-serif;
+  margin: 0;
+  padding: 0;
+  
+}
+
+
+a {
+  text-decoration: none;
+}
+
+
+
+
+header {
+  background-color: lightgray;
+  display: flex;
+  justify-content: space-between;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+
+
+ul {
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+
+nav ul li {
+  padding-left: 16px;
+  list-style-type: none;
+}
+
+main {
+  width: 900px;
+  margin: 0 auto;
+  color: white;
+}
+main section h1 {
+  
+  /*margin-left: 99px;*/
+  font-size:60px;
+  
+  width: 100vh;
+  padding-left: 99px;
+
+
+}
+main section h2 {
+  /*margin-left: 99px;*/
+  
+  
+  width: 100vh;
+  padding-left: 99px;
+
+}
+
+body {
+  
+  background-color: #593493;
+  
+}
+
+section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  
+  
+}
+
+section div {
+  background-image: url("./img/bg_laranja.jpg");
+  width: 300px;
+  height: 200px;
+  margin: 10px;
+  padding: 20px 20px;
+  border-radius: 10px;
+  
+}
