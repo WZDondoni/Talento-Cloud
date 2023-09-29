@@ -660,3 +660,234 @@ Em primeiro lugar, definimos a estrutura do 'for loop' para acessar cada um dos 
 Em segundo lugar, usamos uma estrutura condicional com as palavras reservadas 'if', 'else if', e 'else'. Cada uma com seu respectivo bloco de código a ser executado, imprimido uma das três possíveis frases para cada número. Na condição do 'if' verificamos se o número é par, usando o operador módulo (ex. num % 2 == 0), e usamos o operador de conjunção '&&' para verificar se o número é também menor do que 50. Já no bloco 'else if' verificamos apenas se o número é menor do que 50.
 
 Finalmente, como sabemos que todos os números que não passarem nos dois testes lógicos são necessariamente menores do que 50 e, como neste caso não precisamos fazer nenhuma outra avaliação para os números menores do que 50, usamos o bloco 'else' para imprimir a última frase.
+
+## 5.3 - FUNÇÕESS EM JS
+
+### 5.3.1 - Funções em Java Script
+
+podem ou não receber argumentos
+elas podem ter um return
+podem incluir todos os conceitos estudados previamente dentro de seus blocos de código (arrays, declaração de variáveis, estruturas condicionais, estruturas de repetição, e até outras funções!).
+
+### 5.3.1.1 - Funções regulares
+
+Declaração:
+
+- A palavra reservada ‘function’
+- O nome da função
+- Parênteses para receber parâmetros (mesmo se não for receber, é necessário escrevê-los)
+- Chaves com o bloco de código a ser executado quando a função for chamada
+  
+```JS
+
+
+function cumprimentar(){
+
+    console.log("Boas-vindas!")
+
+}
+
+ 
+
+cumprimentar();
+
+// Imprimirá "Boas-vindas!"
+
+function multiplicar(num1, num2){
+
+    return (num1 * num2);
+
+}
+
+ 
+
+multiplicar(3, 7);
+
+// Imprimirá 21, que é o resultado de (3 * 7)
+
+```
+
+>lembre-se
+Lembra que **para executar o bloco de código de qualquer função é necessário declarar ela**, e depois chamá-la, escrevendo apenas o nome da função seguida de parênteses (com argumentos, caso precisar deles).
+
+[Funções JavaScript]<https://youtu.be/mc3TKp2XzhI>
+
+>Comentários ao vídeo
+
+![a](https://i.imgur.com/C3U3V6r.png)
+
+Funções são ações executadas assim que são chamadas, ou em decorrência de algum evento;
+Funções podem receber parâmetros e retornar resultado;
+
+![a](https://i.imgur.com/SBeWChv.png)
+
+Pode haver mais de uma declaração de return dentro de uma `funcition` porém só pode retorna apenas uma.
+
+Deve-se incluir a função dentro de uma varíavel para ser "chamada" e executada.
+
+![a](https://i.imgur.com/FPANo3V.png)
+
+![a](https://i.imgur.com/JzBG1kp.png)
+
+![a](https://i.imgur.com/2r9xxl5.png)
+
+>Atenção!
+Ficar esperto quando se informa que haverá por exemplo dois parâmetros e só é informado 1.
+O output será NaN (Not a Nunber)
+Pra resolver isso, colocasse =0 ao lado do parâmetro dizendo que se ele não for informado terá valor zero.
+
+![a](https://i.imgur.com/V9lREdF.png)
+
+Pode-se incluir uma Função dentro de uma varíavel(FUNÇÕES ANONIMAS)
+
+![a](https://i.imgur.com/jNZjfE4.png)
+
+Calculando um fatorial
+
+![a](https://i.imgur.com/i1skZ0d.png)
+
+Pode-se fazer a mesma coisa usando RECURSÃO (Quando uma função chama outra função)
+
+![a](https://i.imgur.com/U51PDl0.png)
+
+o fatorial de 5 é 5x4x3x2x1, assim como pode ser 5xfatorial de 4
+
+a função criada está chamando ela mesma dentro dela.
+
+### 5.3.1.2 - Funções anônimas
+
+Estas funções **não possuem um nome quando declaradas**, e são geralmente atribuídas a uma variável que guarda a função como seu valor.
+
+```JS
+// Função regular
+ //preicsa da palavra reservada `function`. Parâmetros entre parênteses e separados por virgula. E precisa de `return`
+function somar(a, b){
+
+    return (a + b);
+
+}
+
+ 
+
+// Função anônima - Essas funções NÃO TEM um nome definido entre a palavra reservada "function" e o par de parênteses. Mas podem ser atribuidas a uma variável.
+
+const adicionar = function(a, b){
+
+    return (a + b);
+
+}
+
+const somar = function(a, b){
+
+    return (a + b);
+
+}
+
+
+somar(5, 9);
+
+// Imprimirá 14, que é o resultado de (5 + 9)
+//Para chamar uma função anônima, basta chamar o nome da variável que a guarda, seguida de um par de parênteses (com argumentos, caso precisar deles)
+```
+
+### 5.3.1.3 - Arrow functions (opcional)
+
+JavaScript nos fornece mais um  tipo, mais moderna das funções anônimas. Pensadas em simplificar. Escritas numa única linha de código.
+
+```JS
+
+// Função anônima declarada de forma tradicional
+
+const seguinteNum = function(n){
+
+    return (n + 1);
+
+}
+
+ 
+
+// Arrow function
+
+const proximoNum = (n) => {
+
+    return (n + 1)
+
+}
+//A **primeira** diferença que percebemos é que **não precisamos da palavra reservada **function****. A **segunda** diferença, é que  *escrevemos* “uma seta gorda” com os símbolos ‘=’ e ‘>’ **entre os parâmetros e o bloco de código**
+
+
+// Arrow function (MAIS SIMPLIFICADA)
+
+const proximoNum = n => return (n + 1)
+//percebeMOS mais duas mudanças. Em primeiro lugar, quando temos um único parâmetro, não precisamos dos parênteses na hora de declarar a arrow function. Em segundo lugar, quando escrevemos o bloco de código na mesma linha em que temos a seta da arrow function, não precisamos das chaves para encapsular o bloco de código a ser executado
+
+
+// Arrow function (SIMPLIFICADO DO SIMPLIFICADO)
+
+const proximoNum = n => (n + 1)
+
+//Da mesma forma que com as chaves, quando temos o bloco de código na mesma linha de código que a seta não precisamos do return
+
+const vezesCinco = num => num*5
+//não precisamos da palavra reservada "function", por ser uma arrow. Por ter apenas um parâmetro não precisamos de parênteses. E podemos dispensar as chaves e o return por estar tudo escrito numa única linha.
+
+
+
+```
+
+>RESUMO
+
+CONDIÇÃO (para uso) | SIMPLIFICAÇÃO
+:----|:----
+nehuma | Não usar a palavra reservada **function**
+nenhuma | Incluir uma **seta gorda** `=>` entre os parâmetros entre parênteses
+Um único parâmetro | Não precisamos encapsular o parâmetro entre **parênteses**
+Bloco de código na mesma linha que os parâmetros e a "seta" | Não precisamos das **chaves**, nem da palavra reservada **return**
+
+>VALE LEMBRAR  
+> O uso de arrow functions é completamente opcional. É perfeitamente possível escrever as mesmas funções de forma anônima, ou de forma regular. Contudo, o uso das arrow function tem ficado muito popular entre a comunidade de desenvolvedores de JS, e por isso é importante sabermos pelo menos reconhece-las e interpretá-las.
+
+![Arrow Function x Function](https://i.imgur.com/zrYspqI.png)<https://youtu.be/S5Mn0qQzJ-0>
+
+>Comentários ao vídeo
+>Af, aparitr do ES6, são SEMPRE funções ANÔNIMAS. Trata o `this` de uma forma totalmente diferente.
+
+tudo após a fatArrow é assumido como `return`;
+quando tem mais de uma função tem que colocar as chaves;
+
+ArrowFunctions redefinen o `this`, this no normal é definido onde é chamado.
+nos Arrows, é definido no local que é criado. //é isso que entendi.
+
+>Material Complementar
+
+[Funções no JavaScript]<https://encontreseucodigo.com.br/aprenda-javascript/aprenda-funcoes-no-javascript/>
+
+[Curso em Vídeo. Funções - Curso JavaScript #16]<https://www.youtube.com/watch?v=mc3TKp2XzhI>
+
+[Arrow Functions vs. Functions em JavaScript]<https://www.youtube.com/watch?v=S5Mn0qQzJ-0>
+
+### 5.3.2 - Conexão com HTML
+
+Existem duas formas de inserir código JavaScript nas nossas páginas web:
+
+1. usando uma **tag específica** para JS no arquivo HTML.
+   1. `<script></script>`, tudo inscrito entre essas tags devem seguir as regras de sintaxe.
+2. criando um **arquivo separado** com todos nossos códigos JS, e depois “conectar” esse arquivo com nosso arquivo HTML.
+   1. Usamos o mesmo método do CSS(criar um arquivo separado e conectalo ao html via link).
+      1. Primeiro, temos as tags de abertura e fechamento `<script> </script>` sem conteúdo algum entre delas, pois não estaremos usando elas para escrever código JS, e sim para conectar nosso arquivo HTML com um arquivo de extensão .js
+      2. Depois, incluímos o atributo `src=””` que vem de “source” (“origem” em inglês), que recebe uma string com a rota para nosso arquivo JS. Neste caso, a string começa com um ponto e barra ‘./’ indicando que procuraremos pelo arquivo na mesma pasta onde está o arquivo HTML, e depois da barra incluímos o nome do arquivo, resultando em: `src=”./script.js”`
+      3. Finalmente, incluímos o atributo `defer`, que faz com que o navegador *execute o arquivo JS apenas depois que o arquivo HTML tenha sido baixado e analisado.*
+
+A ordem em que os arquivos são executados **pode não parecer importante** neste momento, porém, nas próximas aulas entenderemos melhor a importância do atributo “defer” e de carregar nosso código JavaScript depois do conteúdo HTML.
+
+[TableLess. Inserindo JS]<https://tableless.github.io/iniciantes/manual/js/inserindo-js.html>
+
+[W3Schools. HTML `<script>` defer Attribute]<https://www.w3schools.com/tags/att_script_defer.asp.>
+
+## 5.4 - SELETORES DOM EM JS
+
+## 5.5 - INNERTEXT E INNERHTML
+
+## 5.6 - REVISÃO DE JAVASCRIPT I
+
+##
