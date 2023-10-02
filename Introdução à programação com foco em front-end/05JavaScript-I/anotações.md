@@ -328,25 +328,25 @@ Os **operadores aritméticos**(soma, subtração, multiplicação, divisão e m�
 
 #### 5.2.1.1 - Operadores aritméticos
 
-Operação | Operador
----------|:---------:
-Soma | +
-Subtração | -
-Multiplicação | *
-Divisão | /
-Módulo | %
-Maior que | >
-Menor que  | <
-Maior ou igual que | >=
-Menor ou igual que |<=
+| Operação           | Operador |
+| ------------------ | :------: |
+| Soma               |    +     |
+| Subtração          |    -     |
+| Multiplicação      |    *     |
+| Divisão            |    /     |
+| Módulo             |    %     |
+| Maior que          |    >     |
+| Menor que          |    <     |
+| Maior ou igual que |    >=    |
+| Menor ou igual que |    <=    |
 
 #### 5.2.1.1 - Operadores lógicos
 
-Operação | Operador (Python) | Operador (JS)
----------|:---------:|-------
-Conjunção | and | &&
-Disjunção | or | &#124;&#124;
-Negação | not ou ! | !
+| Operação  | Operador (Python) | Operador (JS) |
+| --------- | :---------------: | ------------- |
+| Conjunção |        and        | &&            |
+| Disjunção |        or         | &#124;&#124;  |
+| Negação   |     not ou !      | !             |
 
 ```js
 
@@ -372,7 +372,7 @@ Negação | not ou ! | !
 
 [Dev Aprender. Javascript Tutorial 14 - Operadores Lógicos (Operadores)]<https://www.youtube.com/watch?v=Vhw8AaiSUjU>
 
-### 5.2.2 - ESTRUTURAS CONDICIONAIS EM JS
+### 5.2.2 - Estruturas Condicionais em JS
 
 #### 5.2.2.1 - Estruturas Condicionais em JS
 
@@ -546,9 +546,7 @@ Perceba que como agora o primeiro bloco condicional está verificando se a vari�
 
 [DevMedia. JavaScript if/else: criando scripts com estruturas condicionais]<https://www.youtube.com/watch?v=8UXQ6S0KURk>
 
-## 5.3 - LOOPS EM JS
-
-### 5.3.1 - Loops
+### 5.2.3 - Loops em JS
 
 Há várias, porém o **for** será estudado. Ele precisa de três parâmetros. Permite usar variável dinâmica dentro do bloco.
 
@@ -837,12 +835,12 @@ const vezesCinco = num => num*5
 
 >RESUMO
 
-CONDIÇÃO (para uso) | SIMPLIFICAÇÃO
-:----|:----
-nehuma | Não usar a palavra reservada **function**
-nenhuma | Incluir uma **seta gorda** `=>` entre os parâmetros entre parênteses
-Um único parâmetro | Não precisamos encapsular o parâmetro entre **parênteses**
-Bloco de código na mesma linha que os parâmetros e a "seta" | Não precisamos das **chaves**, nem da palavra reservada **return**
+| CONDIÇÃO (para uso)                                         | SIMPLIFICAÇÃO                                                        |
+| :---------------------------------------------------------- | :------------------------------------------------------------------- |
+| nehuma                                                      | Não usar a palavra reservada **function**                            |
+| nenhuma                                                     | Incluir uma **seta gorda** `=>` entre os parâmetros entre parênteses |
+| Um único parâmetro                                          | Não precisamos encapsular o parâmetro entre **parênteses**           |
+| Bloco de código na mesma linha que os parâmetros e a "seta" | Não precisamos das **chaves**, nem da palavra reservada **return**   |
 
 >VALE LEMBRAR  
 > O uso de arrow functions é completamente opcional. É perfeitamente possível escrever as mesmas funções de forma anônima, ou de forma regular. Contudo, o uso das arrow function tem ficado muito popular entre a comunidade de desenvolvedores de JS, e por isso é importante sabermos pelo menos reconhece-las e interpretá-las.
@@ -886,8 +884,186 @@ A ordem em que os arquivos são executados **pode não parecer importante** nest
 
 ## 5.4 - SELETORES DOM EM JS
 
+### 5.4.1 - O que é DOM?
+
+O DOM, das siglas em inglês “Document Object Model” (ou “Modelo de Objeto do Documento” em português), é um modelo que representa os elementos exibidos numa página web. **A ligação do DOM com nossos arquivos HTML é de dupla mão**: quando um elemento HTML é criado, uma representação dele no DOM é criado, e se alteramos alguma representação no DOM seu respectivo elemento HTML sofrerá as mesmas alterações no navegador. E quem nos ajudará a manipular o DOM? Você provavelmente já sabe a resposta: JavaScript!
+
+![a](https://i.imgur.com/0pLewbe.jpg)
+
+### 5.4.2 - Acessando a DOM por ID e Classe
+
+Para acessar os elementos do nosso arquivo HTML usaremos o objeto ``document`` criado pelo DOM. Este objeto **tem uma série de propriedades** que nos retornam informações sobre nossa página, como por exemplo a URL, ou os cookies.
+
+#### 5.4.2.1  Setup de arquivos
+
+Para entender melhor como podemos acessar o DOM, comecemos criando uma nova pasta chamada **seletores-dom**, criemos o arquivo **index.html** com a estrutura base HTML, e adicionemos nele os seguintes elementos dentro da tag ``body``:
+
+```HTML
+<body>
+  <h2 id="titulo">Este é o primeiro h2</h2>
+  <div class="texto-simples">Esta é uma div</div>
+  <div>
+    <h2>Este é o segundo h2</h2>
+    <p class="texto-simples">Este é um parágrafo dentro da segunda div</p>
+  </div>
+</body>
+
+```
+
+Como você pode ver temos **5 elementos HTML**. No “primeiro nível” temos um elemento h2, e duas divs. No “segundo nível” temos os “filhos” da segunda div: um segundo elemento h2 e um elemento de parágrafo. Observe que há um id com o valor “titulo” ao primeiro elemento h2, e a class “texto-simples” à primeira div e ao elemento de parágrafo.
+
+Como não aplicamos nenhuma estilização à nossa página, se abrirmos nosso projeto no navegador com a ferramenta GoLive da extensão Live Server, ela deveria ter o seguinte aspecto:
+
+![a](https://i.imgur.com/VmnyKGX.jpg)
+
+Criemos agora o arquivo script.js e conectemos ambos arquivos adicionando a seguinte tag script dentro da tag head do nosso arquivo index.html com o atributo defer:
+
+```HTML
+
+<head>
+  ...
+  <script src="script.js" defer></script>
+  <title>Seletores DOM</title>
+</head>
+
+<!-- Obs. Os três pontos representam as tags meta
+ -->
+
+```
+
+Para testar que a conexão foi feita corretamente, voltemos no arquivo script.js e imprimamos a frase “Olá mundo!” com a seguinte linha de código:
+
+```JS
+
+console.log("Olá mundo!");
+```
+
+![A](https://i.imgur.com/pFMkoSo.jpg)
+
+>Caso não consiga ver a mensagem no terminal, verifique que o nome do arquivo (“script.js”) e o atributo src da tag script no arquivo index.html estão escritos da mesma forma. Outro possível motivo para não exibir a mensagem e não ter salvo as alterações em ambos arquivos
+
+### 5.4.3 - Métodos de acesso  dos elementos da DOM
+
+Usaremos **quatro métodos** (funções guardadas em um objeto) para acessar os elementos da DOM. Os dois primeiros são:
+
+| Propriedade/Método      | Descrição                                                                           |
+| :---------------------- | :---------------------------------------------------------------------------------- |
+| getElementById()        | Retorna o elemento que tem o `ID` com o valor específico                            |
+| getElementsByClassName() | Retorna um HTMLCollection com todos os elementos que contem a `class` especificada. |
+
+No arquivo .js incluir o código `const titulo = document`. Delcaremos a variável que guardará o retorno do primeiro método, e atribuímos a ele o objeto document
+
+Vale lembrar que dois elementos não devem ter o mesmo valor de ID numa mesma página, portanto, o método .getElementById() procura apenas um elemento.
+Para acessar vários elementos de uma só vez? Nossa primeira opção é usar o método `.getElementsByClassName()`, passar como argumento a string “texto-simples”, e guardar o retorno numa variável. Usemos o `console.log()` para imprimir essa variável:
+
+```JS
+
+const textos = document.getElementsByClassName("texto-simples");
+
+console.log(textos);
+
+```
+
+Dessa vez, se conferirmos o terminal, teremos um resultado um pouco diferente: um HTMLCollection. As **HTMLCollection são semelhantes (porém, não iguais) a arrays.** Ao lado do termo HTMLCollection podemos ver um número 2 entre parênteses, indicando que é uma lista com dois elementos. Podemos ver também ambos os elementos entre chaves e separados por uma vírgula (seguindo a sintaxe de um array): uma div e um parágrafo com a classe “texto-simples”.
+
+Podemos acessar um por um os elementos da HTMLCollection da mesa forma como acessaríamos elementos de um array: **escrevendo o nome da variável que guarda a lista, e passando o índice de cada elemento entre chaves**. Se quisermos acessar, por exemplo, o primeiro elemento da lista, usaríamos a seguinte linha de código:
+
+```JS
+
+console.log(textos[0]);
+
+```
+
+Se imprimirmos a variável ``titulo`` neste ponto, **poderemos ver todas as informações que guarda o objeto** ``document``.
+
+![A](https://i.imgur.com/lLTp6ei.jpg)
+
+#### 5.4.3.1 - Acessando um elemento da DOM
+
+Contudo, a gente não quer salvar todas essas informações na nossa **variável** ``titulo``, senão **apenas o elemento h2 com id “titulo”**. Para isso, usaremos o método ``.getElementById()`` do objeto ``document`` e passaremos como argumento a string ``“titulo”``.
+
+```JS
+
+const titulo = document.getElementById("titulo");
+console.log(titulo);
+
+```
+
+![A](https://i.imgur.com/ZSjrulp.jpg)
+
+>LEMBRE-SE  
+>Vale lembrar que dois elementos não devem ter o mesmo valor de ID numa mesma página, portanto, o método .getElementById() procura apenas um elemento.
+
+#### 5.4.3.2 - Acessando MAIS DE UM elemento da DOM
+
+E se quisermos avessar **vários elementos de uma só vez?** Nossa primeira opção é usar o método ``.getElementsByClassName()``, passar como argumento a string ``“texto-simples”``, e **guardar o retorno numa variável**. Usemos o ``console.log()`` para **imprimir essa variável**: ![a](https://i.imgur.com/oQADpoH.jpg)
+
+Ao conferirmos o terminal, teremos um resultado um pouco diferente: um ``HTMLCollection``. As ``HTMLCollection`` são semelhantes (porém, não iguais) a arrays. Ao lado do termo ``HTMLCollection`` podemos ver um número 2 entre parênteses, indicando que é uma lista com dois elementos. Podemos ver também ambos os elementos **entre chaves** e separados por uma vírgula (seguindo a sintaxe de um array): uma div e um parágrafo com a classe “texto-simples”.
+
+Podemos **acessar** **um por um os elementos** da HTMLCollection da mesa forma como acessaríamos elementos de um array: escrevendo o nome da variável que guarda a lista, e passando o índice de cada elemento entre chaves. Se quisermos acessar, por exemplo, o primeiro elemento da lista, usaríamos a seguinte linha de código:
+
+```js
+
+console.log(textos[0]);
+```
+
+![a](https://i.imgur.com/tOzOeUU.jpg)
+
+
+### 5.4.3 - Acessando a DOM com seletores CSS
+
+**Os métodos anteriores são úteis se quisermos acessar elementos com id, ou com a mesma classe,** porém, às vezes precisamos fazer seleções mais específicas. Uma solução é atribuir IDs e classes a todos os elementos que quisermos acessar, mas muitos desenvolvedores preferem usar os próprios seletores CSS para não poluir o arquivo HTML com um monte de atributos desnecessários ou redundantes.
+
+| Propriedade/Método | Descrição                                                                                                    |
+| :----------------- | :----------------------------------------------------------------------------------------------------------- |
+| querySelector()    | Retorna o primeiro elemento no documento. Pode-se utilizar seletores CSS, `"."` para Classe e `"#"` para ID. |
+| querySelectorAll() | Retorna uma NodeList com todos os elementos no documento que seguem a especificação de um seletor CSS
+
+Dessa vez, queremos acessar o segundo elemento h2 da nossa página. Se você conferir o arquivo index.html perceberá que ele não tem nenhuma classe nem id como atributos. Para acessar ele, já que é o elemento filho de uma div, usaremos o aninhamento de dois seletores CSS: “div h2”. O único que precisamos fazer é usar o método .querySelector(), passar essa mesma string como argumento, e salvar o retorno numa variável
+
+```JS
+const segundoTitulo = document.querySelector("div h2");
+console.log(segundoTitulo);
+```
+![a](https://i.imgur.com/6xAiaeC.jpg)
+
+Finalmente, vamos acessar os mesmos elementos que acessamos no segundo exemplo da seção anterior (a div e o parágrafo com a classe “texto-simples”) **para demonstrar duas diferenças chave** entre ambas abordagens. Usaremos o método ``.querySelectorAll()`` e passaremos como argumento a string ``“.texto-simples”``.Perceba que neste caso, como estamos usando um seletor CSS, **devemos preceder o nome da classe com um ponto**. Da mesma forma, se quisermos acessar um elemento via ID, o valor do id seria precedido por um símbolo de sustenido ‘#’ (ex. “#titulo”).
+
+```JS
+const textosPorClasse = document.querySelectorAll(".texto-simples");
+console.log(textosPorClasse);
+```
+
+```js
+
+const textosPorClasse = document.querySelectorAll(".texto-simples");
+
+console.log(textosPorClasse);
+
+```
+
+
+`getElementByClassName` e `querySelectorAll()` retornam uma lista de elementos.
+`getElementById()` e `querySelector()` retornam apenas um único elemento.
+
+Capturado elementos `li` numa varíavel `produtosSelecionados`, acessaremos o segundo elemento utilizando `produtosSelecionados[1]`
+
+Muito bem! Quando capturamos elementos com os métodos `.getElementsByClassName( )` e `.querySelectorAll( )` acessamos eles da mesma forma que acessamos os elementos de um array. Sendo assim, o índice do primeiro elemento é 0, e o do segundo elemento é 1.
+
+Usa-se o querySelector() e os seletores css para acessar os elemtos. usando-se `.` ou `#`
+
+ao caturar uma lista pela `calss="usuário"` retorna `null` ao tentar imprimir a variável `usuarios`
+
+```js
+
+document.getElementByClassName('.usuario')
+
+```
+
+A string passada como argumento do `getElementByClassName` deveria ser `usuario`. Correto! Quando usamos os métodos `.getElementsByClassName( )` e ``.getElementById( )`` passamos apenas o nome da ``classe`` e do ``id`` respectivamente. Já quando usamos os métodos ``.querySelector( )`` e ``.querySelectorAll( )`` precisamos colocar um ponto ``'.'`` antes das ``classes``, e um ``'#'`` antes dos ``IDs``.
+
+
+
 ## 5.5 - INNERTEXT E INNERHTML
 
 ## 5.6 - REVISÃO DE JAVASCRIPT I
-
-##
