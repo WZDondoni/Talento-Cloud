@@ -685,7 +685,6 @@ function cumprimentar(){
 
 }
 
- 
 
 cumprimentar();
 
@@ -946,9 +945,9 @@ console.log("Olá mundo!");
 
 Usaremos **quatro métodos** (funções guardadas em um objeto) para acessar os elementos da DOM. Os dois primeiros são:
 
-| Propriedade/Método      | Descrição                                                                           |
-| :---------------------- | :---------------------------------------------------------------------------------- |
-| getElementById()        | Retorna o elemento que tem o `ID` com o valor específico                            |
+| Propriedade/Método       | Descrição                                                                           |
+| :----------------------- | :---------------------------------------------------------------------------------- |
+| getElementById()         | Retorna o elemento que tem o `ID` com o valor específico                            |
 | getElementsByClassName() | Retorna um HTMLCollection com todos os elementos que contem a `class` especificada. |
 
 No arquivo .js incluir o código `const titulo = document`. Delcaremos a variável que guardará o retorno do primeiro método, e atribuímos a ele o objeto document
@@ -1009,7 +1008,6 @@ console.log(textos[0]);
 
 ![a](https://i.imgur.com/tOzOeUU.jpg)
 
-
 ### 5.4.3 - Acessando a DOM com seletores CSS
 
 **Os métodos anteriores são úteis se quisermos acessar elementos com id, ou com a mesma classe,** porém, às vezes precisamos fazer seleções mais específicas. Uma solução é atribuir IDs e classes a todos os elementos que quisermos acessar, mas muitos desenvolvedores preferem usar os próprios seletores CSS para não poluir o arquivo HTML com um monte de atributos desnecessários ou redundantes.
@@ -1017,14 +1015,16 @@ console.log(textos[0]);
 | Propriedade/Método | Descrição                                                                                                    |
 | :----------------- | :----------------------------------------------------------------------------------------------------------- |
 | querySelector()    | Retorna o primeiro elemento no documento. Pode-se utilizar seletores CSS, `"."` para Classe e `"#"` para ID. |
-| querySelectorAll() | Retorna uma NodeList com todos os elementos no documento que seguem a especificação de um seletor CSS
+| querySelectorAll() | Retorna uma NodeList com todos os elementos no documento que seguem a especificação de um seletor CSS        |
 
 Dessa vez, queremos acessar o segundo elemento h2 da nossa página. Se você conferir o arquivo index.html perceberá que ele não tem nenhuma classe nem id como atributos. Para acessar ele, já que é o elemento filho de uma div, usaremos o aninhamento de dois seletores CSS: “div h2”. O único que precisamos fazer é usar o método .querySelector(), passar essa mesma string como argumento, e salvar o retorno numa variável
 
 ```JS
 const segundoTitulo = document.querySelector("div h2");
 console.log(segundoTitulo);
+
 ```
+
 ![a](https://i.imgur.com/6xAiaeC.jpg)
 
 Finalmente, vamos acessar os mesmos elementos que acessamos no segundo exemplo da seção anterior (a div e o parágrafo com a classe “texto-simples”) **para demonstrar duas diferenças chave** entre ambas abordagens. Usaremos o método ``.querySelectorAll()`` e passaremos como argumento a string ``“.texto-simples”``.Perceba que neste caso, como estamos usando um seletor CSS, **devemos preceder o nome da classe com um ponto**. Da mesma forma, se quisermos acessar um elemento via ID, o valor do id seria precedido por um símbolo de sustenido ‘#’ (ex. “#titulo”).
@@ -1041,7 +1041,6 @@ const textosPorClasse = document.querySelectorAll(".texto-simples");
 console.log(textosPorClasse);
 
 ```
-
 
 `getElementByClassName` e `querySelectorAll()` retornam uma lista de elementos.
 `getElementById()` e `querySelector()` retornam apenas um único elemento.
@@ -1062,8 +1061,837 @@ document.getElementByClassName('.usuario')
 
 A string passada como argumento do `getElementByClassName` deveria ser `usuario`. Correto! Quando usamos os métodos `.getElementsByClassName( )` e ``.getElementById( )`` passamos apenas o nome da ``classe`` e do ``id`` respectivamente. Já quando usamos os métodos ``.querySelector( )`` e ``.querySelectorAll( )`` precisamos colocar um ponto ``'.'`` antes das ``classes``, e um ``'#'`` antes dos ``IDs``.
 
-
-
 ## 5.5 - INNERTEXT E INNERHTML
 
-## 5.6 - REVISÃO DE JAVASCRIPT I
+### 5.5.1 - Innertext e Inner
+
+innerText - Retorna o texto sem formatação e sem elementos HTML.
+
+innerHTML - Retorna o texto com formatação e com elementos HTML.
+
+#### 5.5.1.1 - setup de arquivos
+
+usaremos um projeto simples com dois arquivos: um ``index.html`` e outro `script.js.`
+
+O arquivo index segue o padrão da estrutura base HTML, com os elementos dentro da tag: `<body></body>`
+
+```HTML
+
+    <body>
+        
+        <h1>Título da página</h1>
+        <main>
+        <h2>Subtítulo do conteúdo principal</h2>
+        <section>
+            <p class="paragrafo">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugiat amet
+            similique doloribus pariatur vel. Ullam, amet vero excepturi iusto,
+            autem, dolore nihil perspiciatis ut aliquam sit laudantium voluptate
+            perferendis possimus!
+            </p>
+
+            <p class="paragrafo">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dicta, qui
+            hic consequuntur pariatur dolor alias, ut sed corporis laudantium
+            quibusdam aliquid iusto tenetur officiis perspiciatis quasi,
+            voluptates ipsum impedit recusandae. Lorem ipsum dolor sit amet
+            consectetur adipisicing elit. Sequi minima, aliquam aut dolore
+            consectetur voluptatum explicabo. Doloremque corporis veritatis nihil
+            exercitationem velit distinctio deleniti voluptate, quis facilis ea
+            consectetur fuga!
+            </p>
+        </section>
+        </main>
+    </body>
+```
+
+Além disso, dentro da tag ``<head></head>``, para conectá-la com o arquivo ``script.js`` que está na mesma pasta que o arquivo ``index.html``, incluímos a tag:
+
+```html
+<script src="script.js" defer ></script>
+```
+
+Por enquanto, o arquivo script.js está vazio e será nele que aprenderemos a usar as propriedades innerText e innerHTML.
+
+### 5.5.2 - Acessando as propriedades INNERTEXT
+
+Primeiro, abrimos nosso arquivo script.js e guardamos o elemento ``<h1>`` na variável chamada elementoH1, usando qualquer um dos quatro métodos aprendidos para acessar elementos do DOM.
+
+```js
+
+let elementoH1 = document.querySelector("h1");
+console.log(elementoH1);
+
+```
+
+Observe que depois, imprimimos o ``elementoH1`` no terminal do navegador usando o método ``console.log()``.
+Neste caso, usaremos o método ``querySelector()``, passando a string h1 como argumento.
+
+![a](https://i.imgur.com/wmAqDMS.jpg)
+Resultado no console do navegador.
+
+De volta ao arquivo ``script.js``, usamos a função ``dot notation`` para acessar as propriedades, adicionando um ponto ao elemento capturado do DOM seguido do nome da propriedade (innerText ou innerHTML, respeitando as letras maiúsculas e minúsculas).
+
+Depois, executamos mais um ``console.log()`` logo embaixo do primeiro, mas acessando a propriedade ``.innerText:``
+
+```js
+let elementoH1 = document.querySelector("h1");
+console.log(elementoH1);
+console.log(elementoH1.innerText);
+
+```
+
+Após salvar as mudanças e verificar o terminal no navegador, devemos ver o seguinte resultado:
+
+![a](https://i.imgur.com/9omJKwy.jpg)
+
+Na segunda linha, a propriedade ``innerText`` **retorna apenas o texto contido entre as tags** de abertura e de fechamento do elemento capturado do DOM.
+
+### 5.5.3 - Acessando as propriedades InnerHTML
+
+ guardaremos o elemento ``<main>`` na variável elementoMain. Para isso, usamos o método ``.querySelector`` e o imprimimos no terminal com mais um ``console.log()``
+
+```js
+let elementoMain = document.querySelector("main");
+console.log(elementoMain);
+
+```
+
+![a](https://i.imgur.com/AKsMqp0.jpg)
+Resultado.
+
+Clicando nas setas presentes ao lado esquerdo de cada tag de abertura, podemos expandir ou recolher seu conteúdo, sendo possível exibir os elementos filhos de cada elemento pai.
+
+No arquivo ``script.js``, vamos usar o ``console.log()`` mais duas vezes para imprimir nosso ``elementoMain``, acessando as propriedades .``innerText`` e ``.innerHTML``:
+
+```js
+let elementoMain = document.querySelector("main");
+console.log(elementoMain);
+console.log(elementoMain.innerText);
+console.log(elementoMain.innerHTML);
+
+```
+
+![a](https://i.imgur.com/IPH7IMq.jpg)
+resultado
+
+Podemos ver que, mais uma vez, a propriedade ``innerText`` retornou apenas o texto contido entre as tags de abertura e de fechamento ``<main> </main>``. Assim, mostra os textos dos elementos filhos, separando-os dos outros com uma quebra de linha.
+
+Já a propriedade ``innerHTML`` retornou uma representação textual de todo o conteúdo HTML entre as tags de abertura e de fechamento do elemento ``main``, mostrando os nomes de classe dos elementos ``<p>``.
+
+### 5.5.4 - Manipulando o DOM com innerText
+
+Aparência da página:
+![a](https://i.imgur.com/pgCJHv0.jpg)
+
+Podemos alterar, por exemplo, o texto do nosso elemento ``h1`` acessando a propriedade ``innerText`` do ``elementoH1`` e atribuindo a ele um novo valor com o operador de atribuição ``=``, seguido do texto como uma string (escrito entre aspas simples ou duplas).
+
+```js
+let elementoH1 = document.querySelector("h1");
+
+elementoH1.innerText = "Novo título com JS"
+
+```
+
+Resultado:
+![a](https://i.imgur.com/CUIWlCm.jpg)
+
+### 5.5.5 - Manipulando o DOM com innerHTML
+
+Da mesma forma, podemos manipular o conteúdo HTML do nosso site usando a propriedade innerHTML. Nesse caso, substituiremos o conteúdo do ``elementoMain`` para conter um elemento ``h2`` com um texto diferente e uma lista não ordenada logo embaixo.
+
+Para fazer isso, devemos acessar a propriedade ``innerHTML`` do ``elementoMain`` e atribuir uma string a ele contendo todo o conteúdo HTML desejado, de forma semelhante ao que escreveríamos no arquivo ``index.html``.
+
+```js
+let elementoMain = document.querySelector("main");
+
+elementoMain.innerHTML = `
+<h2>Novo subtítulo</h2>
+<ul>
+    <li>Elemento de lista JS 01</li>
+    <li>Elemento de lista JS 02</li>
+    <li>Elemento de lista JS 03</li>
+</ul>
+`
+
+```
+
+Resultado
+![A](https://i.imgur.com/8LecUvI.jpg)
+
+### 5.5.6 - Conclusão
+
+As propriedades ``innerText`` e ``innerHTML`` são simples e nos permitem manipular os elementos do DOM de forma muito ampla. Como orientação geral, **é recomendado usar a propriedade** ``innerText`` **quando queremos mudar apenas o texto de um elemento HTML que não possui elementos filhos**, pois, caso existam, eles serão substituídos pelo novo texto.
+
+Já a propriedade ``innerHTML`` é **melhor ser usada quando queremos alterar o conteúdo HTML de qualquer elemento do DOM**, podendo incluir os elementos filhos, nomes de classe e qualquer outro atributo que os elementos HTML possam receber.
+
+>LEMBRE:sE
+tag ``<script>`` que conecta o arquivo script.js com o arquivo index.html
+O atributo defer. Caso não colocarmos ele, o navegador provavelmente terá um erro de execução, e não mostrará nada na tela;
+Podemos usar qualquer um dos quatro métodos para capturar elementos do DOM sempre e quando chegarmos no resultado desejado;
+.innerText e .innerHTML **são propriedade** e não métodos;
+Com a propriedade ``.innerHTML`` é que, se usarmos aspas simples ou duplas, é muito difícil formatar o texto de uma forma que fique legível e intuitivo. Por esse motivo, **propomos usar dois acentos graves** como alternativa, pois dessa forma conseguimos quebrar linhas na nossa string e deixar ela mais parecida com a formatação usada quando escrevemos HTML. Esta abordagem é chamada de ``template string`` e é o próximo conteúdo que estudaremos!
+
+### 5.5.7 - Exercício
+
+1- Quando queremos manipular apenas um elemento simples sem elementos filhos e atributos, o que devemos usar?
+    Isso mesmo! A propriedade .innerText é usada quando queremos mudar apenas o texto de um elemento HTML que não possui elementos filhos.
+
+2 - Sérgio é programador e precisa atribuir um valor a um elemento do DOM, usando a propriedade .innerHTML. Qual símbolo ele deve usar para isso?
+    Isso mesmo! Ao colocarmos o texto entre acentos graves, conhecidos pela utilização em crases, conseguimos quebrar a linha para organizar melhor o código.
+
+3 - Como acessamos a propriedade .innerText de uma variável nomeUsuario, que guarda um elemento HTML do DOM?
+    Isso mesmo! Para acessar a propriedade .innerText, basta chamar o nome da variável, seguida de um ponto e o nome da propriedade.
+
+### 5.5.8 - TEMPLATE STRING
+
+#### 5.5.8.1 - Template String
+
+Quando trabalhamos com strings na linguagem JavaScript, é muito comum precisarmos concatenar strings, ou seja, juntar duas ou mais strings para gerar uma terceira.
+Contudo, com o aumento na complexidade das strings, surgiu a necessidade de um **recurso que permitisse trabalhar com elas de forma mais dinâmica**. Consequentemente, foram criados os ``templates strings``.
+
+```js
+
+let nome = "Rafael";
+let sobrenome = "Pereira";
+
+let nomeCompleto = "Meu nome é:" + nome + " " + sobrenome;
+console.log(nomeCompleto);
+
+
+
+```
+
+Atribuimos duas variáveis com nome e sobrenome. Uma terceira variável foi declarada e recebendo a junção via ``"+"`` (concatenar).
+
+#### 5.5.8.2 - Interpolação na linguagem JavaScript
+
+Concatenar strings usando o **método do exemplo anterior** *é uma solução simples* e rápida quando temos poucas variáveis e não precisamos personalizar a **string resultante**.
+o processo fica mais complexo e trabalhoso à medida em que as strings forem ficando maiores e precisamos incluir mais valores salvos em variáveis.
+
+**templates strings**:  Com eles, podemos ter **só uma string** e inserir os valores das novas variáveis nela. Esse processo é conhecido como **interpolação**.
+Para fazer isso, usamos dois acentos graves ` `` `, usados para indicar crase, ao invés das aspas simples ou duplas.
+
+Para inserir os valores das nossas variáveis, precisamos usar o símbolo cifrão ``$``, também conhecido como o símbolo do dólar, seguido de duas chaves ``{}`` com o nome da variável dentro delas.
+
+```JS
+${nome-da-variavel}
+```
+
+Vamos incluir os valores nome e sobrenome no nosso template string, usando essa estrutura e imprimindo a variável templateString com o método ``console.log()``.
+
+```js
+
+let nome = "Rafael";
+let sobrenome = "Pereira";
+let templateString = `Meu nome é: ${nome} ${sobrenome}`
+console.log(templateString);
+
+```
+
+>VANTAGENS DA INTERPOLAÇÃO  
+
+1. escrever uma só string e inserir os valores desejados dentro dela;
+2. As *strings escritas com aspas* **não permitem quebra de linha**, mas, com os *templates strings*, **podemos escrevê-las com quebras de linha sem causar erro** e elas serão interpretadas da mesma forma que escrevemos
+   1.  
+
+   ```JS
+    let templateString = `Meu nome é ${nome},
+
+    meu sobrenome é ${sobrenome}`
+
+    console.log(templateString)
+
+    ```
+
+    ![A](https://i.imgur.com/oUugmla.png)  
+
+3. tudo que escrevemos dentro da estrutura ``${ }`` **é interpretado pelo computador como JavaScript**. Significa que podemos, por exemplo, **somar valores numéricos salvos em duas variáveis** e o ``template string`` exibirá o resultado da soma.
+
+    ```JS
+    let numA = 5;
+
+    let numB = 9;
+
+    let soma = `A soma de ${numA} e ${numB} é ${numA + numB}`
+
+    console.log(soma);
+
+    //Esse exemplo imprimirá a frase A soma de 5 e 9 é 14.
+
+    ```
+
+#### 5.5.8.3 - Exercício
+
+1. Para iserir uma variavel idade numa string usamos qual estrutura?
+   1. Isso mesmo! Para inserir valores de variáveis nos templates strings, devemos colocar um cifrão seguido do nome da variável entre chaves ``${idade}``.
+2. Luciana é estudante do curso de Desenvolvimento de Sistemas. Para tirar boas notas em suas provas, ela deseja praticar a concatenação de strings na linguagem JavaScript. Para isso, qual é o site que ela deve usar?
+   1. OneCompiler
+3. Joana estuda programação, mas está achando complicado o conceito de templates strings. Para ajudá-la, você decidiu mostrar um dos benefícios de usar os templates strings. O que você diz a ela?
+   1. Muito bem! Os templates strings nos permitem inserir qualquer tipo de expressão JavaScript dentro da estrutura ${ }. Inclusive, com eles, podemos adicionar a soma de valores diretamente ou salvá-los em variáveis.
+
+### 5.5.9 - CRIANDO ELEMENTOS NO DOM
+
+#### 5.5.9.1 - Criar elementos no DOM
+
+Na aula anterior aprendemos a alterar/incluir conteúdo, porém muitas vezes não será esse nosso objetivo. Às vezes, apenas precisamos adicionar um conteúdo novo, sem apagar ou manipular o conteúdo original do elemento.
+
+Há vairas formas, mas focaremos em duas ``createElement`` e ``appendChild``.
+
+##### 5.5.9.1.1  - setup de arquivos
+
+index.html
+java.js
+
+conteúdo abaixo dentro da tag ``body``
+
+```HTML
+  <body>
+    <ul class="lista-linguagens">
+      <li class="ling-html">HTML</li>
+      <li class="ling-css">CSS</li>
+    </ul>
+
+    <section class="postagens">
+        <div #="post-html">
+            <h2 class="post-titulo">HTML</h2>
+            <p class="post-texto">
+                HTML é uma linguagem de marcação
+            </p>            
+        </div>
+        <!-- fim #post-html -->
+        <div id="post-css">
+            <h2 class="post-titulo">CSS</h2>
+            <p class="post-text">
+                CSS é uma linguagem de estilização
+            </p>
+        </div>
+        <!-- fim #post-css -->
+    </section>
+    <!-- fim section .postagens -->
+
+  </body>
+
+
+
+```
+
+#### 5.5.9.2 - Criar elementos SIMPLES no DOM
+
+Para adicionar um elemento à lista não ordenada, seguiremos três etapas:
+
+- criar um elemento HTML;
+- popular e manipular esse elemento HTML;
+- adicionar o elemento HTML no DOM.
+
+>PRIMEIRA ETAPA - CRIAR ELEMENTO
+
+Vamos criar um ``<li>`` e salvá-lo em uma variável para facilitar sua manipulação na próxima etapa.
+Iniciaremos chamando o objeto ``“Document”`` e usando o método dele ``.createElement()``. Esse método recebe como argumento uma string com o **nome do elemento que queremos criar**.
+O nome do elemento será o mesmo que usaremos para abrir e fechar as tags dos elementos HTML. Assim, passamos como argumento o valor ``“li”``:
+
+```JS
+let elementoJavaScript = document.createElement("li");
+
+console.log(elementoJavaScript);
+//mostra no console as "li" criadas
+```
+
+Iniciaremos usando a propriedade ``innerText`` para adicionar o texto “JavaScript” no elemento criado ``li`` ele.
+
+```JS
+let elementoJavaScript = document.createElement("li");
+elementoJavaScript.innerText = "JavaScript"
+
+console.log(elementoJavaScript);
+```
+
+![a](https://i.imgur.com/KXwmYUs.jpg)
+
+>SEGUNDA ETAPA - POPULAR/MANIPULAR ELEMENTO
+
+Além do ``innerText``, podemos usar outras propriedades para manipular os elementos HTML que criamos.
+Nesse caso, sabemos que os elementos da **nossa lista tem um id** que os diferencia.
+Dessa forma, *podemos adicionar um id ao nosso elemento*, usando a propriedade ``.id`` do ``elementoJavaScript``, e atribuir a ele um valor. Observe a imagem.
+
+>TERCEIRA ETAPA - ADICIONAR NO DOM
+
+Com o elemento **criado, populado[^1] e manipulado**, podemos adicioná-lo ao nosso site.  
+
+[^1]: No contexto de informática, "popular" é um verbo que significa "preencher com conteúdo", "povoar". É uma tradução bruta do inglês "populate", que acabou por se implantar no dialeto da informática
+
+Para fazer isso, **precisamos capturar o seu elemento pai** via DOM e salvá-lo em uma variável.
+
+Nesse caso, o elemento pai é a lista não ordenada com a classe ``Lista-linguagens``. Sabendo disso, usaremos o método ``.querySelector`` para capturá-lo e guardá-lo dentro de uma variável.
+
+```JS
+
+let elementoJavaScript = document.createElement("li");
+elementoJavaScript.innerText = "JavaScript"
+elementoJavaScript.id = "ling-js"
+
+let listaLinguagens = document.querySelector(".lista-linguagens");
+
+
+```
+
+Com o elemento da lista não ordenada salvo na variável ``listaLinguagens``, podemos chamar essa variável e usar o método ``appendChild()`` para adicionar elementos nele.
+
+Para fazer isso, *basta passar o que deseja como argumento dentro dos parênteses*.
+
+No nosso exemplo, vamos adicionar o ``elementoJavaScript`` que criamos e manipulamos nas etapas anteriores. Observe a imagem.
+
+```JS
+
+let elementoJavaScript = document.createElement("li");
+    elementoJavaScript.innerText = "JavaScript"
+    elementoJavaScript.id = "ling-js"
+
+let listaLinguagens = document.querySelector(".lista-linguagens");
+    listaLinguagens.appendChild(elementoJavaScript);
+
+```
+
+![A](https://i.imgur.com/ZWQ1nQh.jpg)
+
+>OBSERVAÇÃO IMPORTANTE:
+> é que a inserção dinâmica de conteúdos no nosso site, usando JavaScript, **não altera o código fonte** dos nossos arquivos HTML. Se você verificar o arquivo index.html, verá que ele não foi alterado.
+>
+
+#### 5.5.9.3 - Criar elementos COMPLEXOS no DOM
+
+O exemplo anterior é **especialmente útil** quando queremos criar e adicionar **elementos simples**, ou seja, *que não possuem elementos filhos e que têm poucos ou nenhum atributo*
+
+adicionaremos uma nova postagem ao elemento ``<section>``.
+
+Se você conferir o arquivo ``index.html``, verá que cada postagem é um elemento ``<div>``, com um ``id`` e dois elementos filhos. Além disso, cada elemento filho tem seu respectivo texto e classe.
+
+Para não precisar criar três elementos diferentes (``div``, ``h2`` e ``p``) e manipular cada um deles adicionando textos e classes, criaremos apenas um elemento e usaremos a propriedade innerHTML, seguindo as mesmas três etapas do exemplo anterior.
+
+>PRIMEIRA ETAPA
+
+Criamos o elemento ``<div>`` para a postagem e guardamos ele na variável postagemJavaScript:
+
+```JS
+const postagemJavaScript = document.createElement("div");
+```
+
+>SEGUNDA ETAPA
+
+Usamos a propriedade innerHTML para inserir todo o conteúdo HTML das postagens em um template string:
+
+```JS
+const postagemJavaScript = document.createElement("div");
+
+postagemJavaScript.innerHTML =
+
+`<h2 class="post-titulo">JavaScript</h2>
+
+<p class="post-texto">
+
+  JavaScript é uma linguagem de programação
+
+</p>`
+```
+
+Lembrando que usar o template string nessa etapa nos permite adicionar qualquer outro conteúdo salvo em uma variável. Para isso, o recurso ``${ }`` é usado.
+
+Nessa etapa, capturamos o elemento pai da nossa postagem e salvamos ele em uma variável:
+
+```JS
+const postagens = document.querySelector(".postagens");
+
+```
+
+Nele, adicionamos o elemento postagemJavaScript através do método ``appendChild().``
+
+```js
+const postagens = document.querySelector(".postagens");
+    postagens.appendChild(postagemJavaScript);
+
+```
+
+Resultado:
+
+![a](https://i.imgur.com/xCf7WBf.jpg)
+
+Conclusão:
+
+Os métodos ``createElement()`` e ``appendChild()`` nos permitem criar elementos HTML no DOM e inseri-los no nosso site de forma dinâmica.
+
+Usando eles em conjunto com os conceitos aprendidos nas aulas anteriores (innerText, innerHTML e template strings), **conseguimos manipular os elementos preexistentes no site e populá-lo com novas informações usando a linguagem JavaScript**.
+
+>Util em duas situações:
+>
+>1. quando queremos popular nosso site com dados vindo de sistemas externos;
+>2. quando queremos que a interação de nossos usuários altere o conteúdo do site;
+
+Referências bibliográficas
+
+[DEVFURIA. JavaScript - Create Element](http://devfuria.com.br/javascript/dom-create-element)
+
+[SOFTAUTHOR. append() vs appendChild JavaScript](https://softauthor.com/append-vs-appendchild-javascript/)
+
+[MATHEUS BATTISTI - HORA DE CODAR. Curso JavaScript #38 - Criando elementos com DOM (createElement).](https://www.youtube.com/watch?v=eC-z9oHLzBc)
+
+Exercício
+
+1. Qual é o método usado para adicionar o elemento produto ao elemento carrinho?
+   1. carinho.appendChild(produto). Permite anexar um elemento a seu respectivo elemento pai.
+2. Qual a forma correta de criar um elemento section no DOM?
+   1. document.createElement("section");
+3. Você e Pedro são colegas no curso de programação e, ao estudar, ele afirma que a ordem das etapas para adicionar um elemento no DOM é: (1) criar o elemento HTML, (2) popular ou manipular o elemento criado e (3) adicionar o elemento em um arquivo .html. Pedro está correto?
+   1. Não, pois a terceira etapa é adicionar o elemento no DOM.Isso mesmo! Os elementos que criamos não são adicionados em um arquivo .html original, eles são adicionados ao DOM e interpretados pelo navegador.
+
+[Link material CodePark07 exercício](https://drive.google.com/file/d/1y4G6pN7IWHpHYH3mdBYVBpug9LaLvoCA/view?usp=drive_link)
+
+>Comentários ao CodePark07
+Vale destacar que, *embora não seja mencionado um layout específico nas orientações*, **a ordem na qual adicionamos nossos elementos no DOM pode ser relevante em casos como o apresentado**. Já que ambos os elementos criados (``'titulo'`` e ``'produto'``) estão sendo adicionados no mesmo "elemento pai" (neste caso, o elemento ``'body'``), se usarmos o método ``.appendChild( )`` primeiro passando a variável ``'produto'`` como argumento, e depois com a variável ``'titulo'``, teremos na nossa página primeiro o produto e depois o título do site.
+Novamente, isto **é só um detalhe que precisamos levar em consideração** quando adicionamos **mais de um "elemento filho" no mesmo "elemento pai"**, já que o navegador lerá nosso arquivo JavaScript de cima para baixo e executará cada método na ordem que for lendo eles.
+
+## 5.6 REVISÃO JAVASCRIPT I
+
+### 5.6.1 - Variáveis
+
+Para declarar variáveis, usamos quatro elementos:
+
+- a palavra reservada para o tipo da variável;
+- o nome da variável;
+- o operador de atribuição “=”;
+- o valor a ser atribuído à variável.
+Exemplo: ``var letra = “a”``
+
+Temos 3 tipos de variáveis:
+``var`` : caiu em desuso;
+``let``: variáveis que podem ter novos valores atribuidos
+``const``: variáveis que não podem ter seu valor reatribuido.
+
+### 5.6.2 - Operadores
+
+Aritméticos e relacionais são similares com Python;
+
+Lógicos são diferentes, sendo:
+
+| OPERAÇÃO  | OPERADOR     |
+| :-------- | :----------: |
+| Conjunção | &&           |
+| Disjunção | &#124;&#124; |
+| Negação   | !            |
+
+### 5.6.3 - Estruturas Condicionais
+
+3 elementos são necessários:
+
+1. ao menos uma palavra reservada, como ``if`` e ``else``
+2. uma condição entre parênteses que retorna um valor booleano;
+3. um bloco de código entre chaves ``{}``;
+
+```JS
+if(num >5){
+    console.log("é maior que 5")
+} else {
+    console.log("É menor que 5")
+}
+```
+
+É utilizada ``else`` após o ``if`` para ser executada um bloco caso a condição do ``if`` seja falsa.
+
+Podemos encadear mais de uma verificação utilizando entre o ``if`` inicial e o ``else`` final os ``else if``.
+
+```JS
+if(num >5){
+    console.log("é maior que 5")
+} else if (num <5) {
+    console.log("É menor que 5")
+} else {
+    console.log("O número é 5")
+}
+```
+
+Aprendemos também que a linguagem JavaScript **nos permite verificar a veracidade de um valor booleano**.  
+Para isso, basta escrever o nome da variável que guarda o valor.
+
+```JS
+if(aprovado == true)...
+//é o mesmo que
+if(aprovado)...
+```
+
+Podemos verificar se o valor é falso utilizando o operador de negação a frente do nome da variável.
+
+```JS
+if(aprovado == false)...
+//é o mesmo que
+if(!aprovado)...
+```
+
+### 5.6.4 - Loops
+
+A estrutura base de um ``for loop`` consiste em :
+
+- uma palavra reservada `for`;
+- parâmetros `loop` entre parênteses `()`;
+- um código, que será executado, entre chaves ``{}``;
+  
+Dentro dos parênteses, escrevemos, separados por ponto e vírgula, os três parâmetros do ``loop``:
+
+1. variável contadora;
+2. condição de parada;
+3. incremento (ou decremento);
+
+Exemplo:
+
+```JS
+for(let i = 0; i < 5; i++){
+    console.log(i);
+}
+
+```
+
+- temos um ``for loop`` que começa com uma variável contadora ``i`` de valor inicial **0**;
+- incremento de **1** a cada repetição;
+- a condição de parada é o contador continuar a ser **menor que 5**. Ser igual ou maior cancelará o loop.
+
+### 5.6.5 - Arrays
+
+Podemos percorrer arrays usando o ``for loop`` e a propriedade .``length()``, que retorna o tamanho de um array para compor a condição de parada. Observe o exemplo:
+
+```JS
+
+let queijos = ['mussarela', 'prato', 'brie'];
+
+for(let i = 0; i < queijos.lenght; i++) {
+    console.log(letras[i]);
+}
+```
+
+### 5.6.5 - Funções
+
+Na linguagem JavaScript, temos **três formas** de declarar variáveis:
+
+1. declaração regular;
+   1. Para declarar funções na forma regular, precisamos de quatro elementos: a palavra reservada function, o nome da função, os parâmetros que a função pode receber entre parênteses e o bloco de código a ser executado entre chaves.
+
+      ```js
+      function subtrair(a,b){
+        return a - b
+      }
+      ```
+
+2. declaração anônima;
+      1. Já as funções anônimas **são declaradas sem um nome**, apenas com a palavra reservada function, os parâmetros entre parênteses e o bloco de código entre chaves. Vale lembrar que, **este código geralmente é atribuído a uma variável** que guarda a função como o seu valor.
+
+      ```JS
+        const subtrair = function(a,b) {
+            return a-b
+        }
+
+      ```
+
+3. arrow functions;
+   1. A sintaxe das *arrow functions* nos permite **simplificar a escrita das funções anônimas**. Ela é extremamente **útil** para as **funções pequenas**, com um ou nenhum parâmetro, e os blocos de códigos pequenos. Observe o exemplo:
+
+       ```JS
+        const numAnterior = num => num-1
+       ```
+
+### 5.6.6 - JavaScript e HTML
+
+Aprendemos duas formas de inserir um código JavaScript nos nossos arquivos HTML: por meio de ``tags`` ou de ``arquivos.js``.
+
+A tag ``<script></script>`` nos permite escrever o código JavaScript diretamente nos nossos arquivos HTML.
+
+Caso usemos a função ``console.log()`` para imprimir algo, isto será exibido no terminal do navegador. Para conferir o terminal do navegador, abrimos as **Dev Tools** do navegador e selecionamos a aba ``Console``.
+
+Além disso, entre as tags de abertura e de fechamento do script, podemos escrever qualquer tipo de código JavaScript.
+
+### 5.6.7 - Arquivo .js
+
+Aprendemos que uma boa prática é escrever nossos códigos JavaScript em um arquivo separado com a extensão.js e conectá-lo com seu arquivo HTML.
+
+Para conectar ``arquivos.js``, também podemos usar a tag ``<script>`` no arquivo HTML.
+
+Nesse caso, **não escrevemos no espaço entre as tags de abertura e de fechamento**. No entanto, adicionamos dois atributos à tag de abertura: ``src`` para definir a rota até o arquivo.js e ``defer`` para indicar ao navegador que deve executar nosso código JavaScript apenas depois que todos os elementos HTML
+
+```JS
+<script src="./script.js" defer></script>
+
+```
+
+### 5.6.7 - DOM
+
+Aprendemos o que é o Document Object Model (DOM) e como podemos acessar nossos elementos HTML usando-o em conjunto com a linguagem JavaScript.
+
+Vamos relembrar que o DOM é um modelo que representa todos os elementos exibidos em uma página web.
+
+### 5.6.7 - Acessando DOM por #id e .classe
+
+O DOM nos fornece o objeto ``“Document”`` para acessar os elementos HTML do nosso site, usando diferentes métodos, que são as funções salvas como valores de um objeto e acessadas via **dot notation**.
+
+O método ``.getElementById()`` recebe uma string como parâmetro, que **deve ser igual** ao valor do ``id`` do elemento que queremos acessar. O retorno dessa ação é, geralmente, guardado em uma variável. Veja o exemplo:
+
+```JS
+let titulo = document.getElementById("titulo");
+
+```
+
+O método ``.getElementsByClassName()`` recebe, como parâmetro, uma string que deve ser igual ao nome da ``classe`` dos elementos que queremos acessar.
+
+```JS
+let postagens = document.getElemenByClassName("Postagens");
+
+```
+
+### 5.6.7 - Acessando DOM com seletores CSS
+
+Podemos acessar elementos HTML usando os mesmos seletores que usamos quando trabalhamos com CSS.
+
+Para acessar **um único elemento**, o método recomendado é o ``.querySelector()`` Ele recebe uma string como parâmetro com *o seletor*, ou com uma *mistura de seletores*. O código deve ser escrito da mesma forma que faríamos em um arquivo CSS, ou seja, com os seletores de classe começando com ponto ``“.”``, os seletores de id começando com símbolo de cerquilha ``“#”``, que é como “jogo da velha”, etc. Veja o exemplo:
+
+```JS
+let tituloPostagens = document.querySelector(".lista-postagens h2");
+
+```
+
+Para acessar vários elementos de uma só vez com seletores CSS, o método recomendado é o ``.querySelectorAll()``. Ele recebe uma string como parâmetro com o seletor, ou uma mistura de seletores, e é escrito da mesma forma que o escreveríamos em um arquivo CSS. Veja o exemplo:
+
+```JS
+let tituloPostagens = document.querySelectorAll("#postagens > . div");
+
+```
+
+### 5.6.8 - innerText e innerHTML - Acessando informação
+
+Usamos as propriedades ``.innerText`` e ``.innerHTML`` para acessar os conteúdos de texto e em HTML dos nossos elementos **capturados** via DOM.
+
+A propriedade ``.innerText`` **retorna** *todo o texto contido entre as tags de abertura e de fechamento do elemento capturado* via DOM. Assim:
+
+```JS
+let titulo = document.getElementById("titulo");
+console.log(titulo.innerText)
+
+```
+
+Caso o elemento acessado possua elementos filhos, a propriedade retornará o texto de ambos, que estarão separados por uma quebra de linha.
+
+Já a propriedade ``.innerHTML`` **retorna** *todo o conteúdo HTML contido entre as tags de abertura e de fechamento do elemento capturado via DOM*, incluindo os elementos filhos, seus textos e seus atributos, mas sem a quebra de linha. Veja o exemplo:
+
+```JS
+let linksDeNavegacao = document.querySelectorAll("nav ul");
+console.log("linksDeNavegacao.innerHTML")
+
+```
+
+### 5.6.9 - innerText e innerHTML - Manipulando informação
+
+Além de acessar os conteúdos textuais e os de HTML usando as propriedades ``.innerText`` e ``.innerHTML``, **podemos atribuir novos valores** a eles. Para isso, **usamos o operador de atribuição** ``“=”`` e uma **string** com o novo valor. Veja o exemplo:
+
+```JS
+titulo.innerText = "Titulo inserido com JavaScript"
+
+```
+Para organizar a escrita das strings atribuídas como valores à propriedade ``.innerHTML``, recomendamos usar os *templates strings*. Assim:
+
+```JS
+linksDeNavegacao.innerHTML = `
+
+<li> Elemento inserido com JavaScrip </li>
+
+`
+```
+
+### 5.6.10 - Templates String
+
+Os templates strings possuem vantagens em relação à concatenação de strings.
+
+Na linguagem JavaScript, podemos concatenar, ou juntar, duas ou mais strings se usarmos o operador de concatenação ``“+”``.
+
+As strings agrupadas podem ser escritas normalmente ou usando apenas o nome da variável que guarda a string. Veja o exemplo:
+
+```JS
+let nome = "Fulano";
+let sobrenome = "Perez";
+
+let boasVindas = "Olá" + nome + " " +sobrenome
+
+```
+
+Porém, uma **alternativa mais prática** para as strings concatenadas, ou as mais complexas, é o ``template string``. Nele, escrevemos uma única string entre dois acentos graves ``(` `)``, usados na crase, e **inserimos qualquer código JavaScript usando a estrutura** ``${ }``. Observe o exemplo:
+
+```JS
+let nome = "Fulano";
+let sobrenome = "Perez";
+
+let boasVindas = 'Olá  ${nome} ${sobrenome}'
+
+```
+
+Além disso, os templates strings nos permitem escrever uma string com quebras de linha. Observe o exemplo:
+
+```JS
+let variasLinhas = `Primeira linha.
+Segunda Linha.
+E todo isto é ainda uma string só`
+
+```
+
+### 5.6.10 - Elementos HTML com código JavaScript
+
+Por fim, aprendemos a criar elementos HTML com código JavaScript e a adicioná-los de forma dinâmica ao nosso site usando o DOM.
+
+Para realizar essas ações, precisamos seguir três etapas:
+
+- criar o elemento HTML;
+- popular ou manipulá-lo;
+- adicioná-lo a um elemento pai;
+
+Para criar um elemento, chamamos o objeto ``“Document”`` e usamos o método ``createElement()``. Depois, passamos como argumento uma string com o nome do elemento HTML desejado.
+
+Geralmente, o retorno desse método é guardado em uma variável. Veja o exemplo:
+
+```JS
+let novoSubtitulo = document.createElement("h3");
+
+```
+Para **popular** *o elemento criado*, podemos usar as propriedades ``.innerText`` ou ``.innerHTML``, dependendo da complexidade do conteúdo. Observe:
+
+```JS
+novoSubtitulo.innerText = "Comentários dos clientes"
+
+```
+
+Além disso, podemos adicionar **atributos** ao elemento seguindo o mesmo processo. Dessa forma:
+
+```JS
+novoSubtitulo.id = "comentarios"
+
+```
+
+Para **adicionar o elemento criado à nossa página,** devemos:
+
+- capturar o elemento pai, que ô contém via o DOM;
+- guardar o elemento criado em uma variável;
+- chamar o método ``appendChild()`` no elemento pai, passando como argumento a variável que guarda o elemento criado. Veja o exemplo:
+
+```JS
+let secoes = querySelector(".secoes");
+secoes.appendChild(novoSubtitulo)
+
+```
+
+Vale lembrar que a inserção de conteúdos textuais ou HTML que usam a linguagem JavaScript **não altera nossos arquivos HTML**.
+
+As mudanças implantadas são a**penas refletidas no navegador que interpreta o código do nosso site.**
+
+>Referências Bibliográficas:  
+
+[DEV APRENDER. Curso Javascript Completo 2020 [Iniciantes] + 14 Mini-Projetos. 14 mar. 2020. Disponível em:](https://www.youtube.com/watch?v=i6Oi-YtXnAU&ab_channel=DevAprender)  
+
+[FLÁVIO COUTINHO. [JS4 - tópico 2] Criando elementos HTML dinamicamente com JavaScript. 24 ago. 2019](https://www.youtube.com/watch?v=yWq3V4sRuVU&)
+
+
+
+
+
+
+
