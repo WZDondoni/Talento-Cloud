@@ -290,11 +290,382 @@ Além disso,**a primeira execução** do método ``toggle()`` verifica se o elem
 
 ### 6.2.1 - Função .addEventListener()
 
-#### 6.2.1.1 - Anotações Exercícios
+sabemos que, para fazer um site dinâmico com interação do usuário, devemos programar diversos eventos para serem acionados pelo próprio usuário, como clicar em um botão, apertar uma tecla, preencher um formulário etc. Para isso, usamos o método ``addEventListener()``.
+
+#### 6.2.1.1 - Setup de arquivos
+
+Para demonstrar a função ou método addEventListener, usaremos como exemplo um projeto simples com dois arquivos: index.html e script.js. O arquivo index.html segue o padrão de estrutura de base HTML, ou seja, possui dois elementos dentro da tag ``<body></body>``.
+
+```html
+<h1>0</h1>
+
+<button>+1</button>
+
+```
+
+incluir na ``head`` o ``script.js``
+
+#### 6.2.1.2 - Conceito de Eventos
+
+Sempre que desejarmos implementar a **interatividade** nas nossas páginas, devemos nos fazer três perguntas: **“Quem?”**, “**O quê?**” e “**Quando?**”.
+
+Ex:
+Sylvia é programadora de uma empresa de vendas e sua gestora solicitou a construção de um site para recolher informações dos clientes.
+
+- **QUEM?**
+  - Se **refere aos ``elementos HTML`` que participam da interatividade**. Geralmente, precisamos de, no mínimo,**dois** elementos:
+    - o que ativará a mudança
+    - o que sofrerá as alterações.
+  - Por exemplo, no caso de Sylvia, ela precisará **criar botões de Enviar** e campos no site para os usuários **inserirem as informações**.
+
+- **O QUE?**
+  - Se **refere ``ao comportamento`` da interatividade em si**. Nessa etapa, ``usaremos a lógica de programação`` para descrever aquilo que deve acontecer com os elementos definidos na primeira etapa.
+    - No caso de Sylvia, ela precisará construir **códigos que verifiquem se algum dos campos disponibilizados, onde os usuários inserem seus dados, está vazio**. Caso sim, os botões de Enviar devem ser bloqueados. Mas, se estiverem preenchidos, os botões de Enviar devem ser liberados.
+
+- **QUANDO?**
+  - Se r**efere ao ``evento`` que acionará o comportamento** definido na etapa anterior.
+    - Sylvia deverá **garantir que o envio do formulário**, ou o bloqueio dele, aconteça **assim que o usuário inserir seus dados corretamente**.
+  
+![A](https://i.imgur.com/7U1JIkJ.jpg)
+
+#### 6.2.1.3 - Elementos
+
+Faremos um site simples, com um número e um botão que incrementa esse valor em um cada vez que clicarmos no botão. Em outras palavras, o site começa exibindo o número zero, mas, ao clicar no botão, o valor do número será 1 e, ao clicar novamente, o valor será 2, pois sempre estará adicionando um.
+
+![a](https://i.imgur.com/mm0QDba.jpg)
+
+Começaremos respondendo à pergunta “Quem?”. Para isso, iremos capturar os elementos do DOM que usaremos no nosso projeto.
+
+Nesse caso, queremos capturar o elemento h1, que exibirá o número, e o elemento button, que ativará o comportamento.
+
+```JS
+let numero = document.querySelector("h1");
+
+let botao = document.querySelector("button");
+
+```
+
+Além desses dois elementos, declaramos uma **variável** contagem para salvar o valor que será incrementado. Isso é necessário **pois o número 0** exibido no nosso arquivo HTML **é uma string** com o caractere “0”, não um valor do tipo number ou float.
+
+Existem outras formas de chegar no resultado desejado, mas, nesse exemplo, seguiremos a abordagem:
+
+```js
+let numero = document.querySelector("h1");
+
+let botao = document.querySelector("button");
+
+let contagem = 0;
+
+
+```
+
+#### 6.2.1.4 - O Comportamento
+
+Para definir o comportamento desejado, **encapsulamos nosso código em uma função** chamada ``adicionarUm``. Começamos declarando ela com a estrutura padrão de uma função na linguagem JavaScript, ou seja, a função estará localizada embaixo das três variáveis criadas na etapa anterior.
+
+```js
+let numero = document.querySelector("h1");
+
+let botao = document.querySelector("button");
+
+let contagem = 0;
+
+function adicionarUm(){
+
+
+}
+
+```
+
+Entre as **chaves**, descreveremos o **comportamento que queremos que o nosso site realize**. Nesse caso, a lógica será dividida em dois passos:
+
+1. aumentar o valor da variável ``contagem`` em 1;
+2. exibir o seu novo valor como o texto do elemento ``numero``, usando a propriedade ``innerText``.
+
+```js
+let numero = document.querySelector("h1");
+
+let botao = document.querySelector("button");
+
+let contagem = 0;
+
+function adicionarUm(){
+
+   contagem = contagem + 1;
+
+   numero.innerText = contagem;
+
+}
+
+adicionarUm(); // chamando a função e alterando a página 
+```
+
+Agora, depois de salvar as mudanças e voltar ao navegador, devemos ver o número 1 no lugar do inicial 0, pois nossa função foi executada uma vez.
+
+Após o teste, podemos apagar a execução manual da nossa função.
+
+#### 6.2.1.5 - O Evento
+
+Para que um usuário execute, precisamos usar o método, ``addEventListener()``.
+
+No nosso exemplo, o elemento responsável por disparar o evento é o botão +1, então, começaremos adicionando o método nele, logo embaixo da declaração da função **adicionarUm**.
+
+Para fazer isso, basta escrever o nome do elemento, seguido de um ponto, o nome do método e um par de parênteses. Dessa forma:
+
+``botao.addEventListener();``
+
+O método **addEventListener()** é uma função que precisa de, **no mínimo, dois argumentos** para funcionar.
+
+1. O primeiro é uma string, que define o tipo de evento que acionará a função.
+   1. Usaremos o ``string click``
+2. O segundo, é uma função com o comportamento que queremos executar.
+
+No nosso exemplo, já declaramos nossa função na etapa anterior, portanto, basta escrever o seu nome sem os parênteses. Assim:
+
+``botao.addEventListener("click", adicionarUm);``
+
+Após salvar as mudanças e voltar no navegador, nosso contador deve estar funcionando da forma esperada. Ele precisa exibir um número inicial e aumentá-lo em 1 cada vez que clicamos no botão **+1**.
+
+>leitura Complementar
+
+[MDN WEB DOCS. Introdução a eventos.](https://developer.mozilla.org/pt-BR/docs/Learn/JavaScript/Building_blocks/Events)
+
+>Referência Bibliográfica
+
+[LIANG, Joe. O método addEventListener() - exemplo de código com listener de eventos em JavaScript. Free Code Camp, 19 out. 2022.](https://www.freecodecamp.org/portuguese/news/o-metodo-addeventlistener-exemplo-de-codigo-com-listener-de-eventos-em-javascript/)
+
+[CFBCURSOS. Adicionando eventos com addEventListener em Javascript #P1 - Curso de Javascript Moderno - Aula 34](https://www.youtube.com/watch?v=4vCBmu3z5FY)
+
+#### 6.2.1.6 - Anotações Exercícios
+
+1. Qual é a forma correta de aplicar o método addEventListener() no elemento btnSubmit?
+   1. btnSubmit.addEventListener("click", funcaoSubmeter).
+      1. Isso mesmo! A função addEventListener precisa receber, no mínimo, dois argumentos: uma string, que representa o tipo do evento, e uma função que define o comportamento a ser executado.
+2. Para trabalhar com eventos, precisamos capturar, no mínimo, quantos elementos do DOM?
+   1. Dois elementos: o que ativa a mudança e o que sofre as alterações.
+      1. Isso mesmo! Podemos ter mais de um elemento que sofre alterações, mas precisamos tanto do elemento ativador quanto do que será alterado.
+3. Qual a forma mais comum de organizar nosso código quando usamos addEventListener?
+   1. Declarando a função dentro dos parênteses do addEventListener como segundo parâmetro.
+      1. Muito bem! Isso é uma prática muito comum, especialmente usando arrow functions.
 
 ### 6.2.2 - Eventos do mouse
 
-#### 6.2.2.1 - Anotações Exercícios
+Já vimos como permitir que o usuário clique em um botão para modificar um elemento capturado do DOM. Relembrando que, para isso, usamos um dos eventos mais comuns no dia a dia do desenvolvedor: o ``click``.
+
+Contudo, existem outros **eventos do mouse** que podemos usar para adicionar interatividade aos nossos sites. Veremos alguns deles!
+
+#### 6.2.2.1 - Setup de arquivos
+
+Para demonstrar os diferentes tipos de eventos do mouse que podemos usar com a linguagem JavaScript, usaremos como exemplo um projeto simples com três arquivos: ``index.html``, ``style.css`` e ``script.js``.
+
+O arquivo ``index.html`` segue o padrão de estrutura base da HTML, com os seguintes elementos dentro da tag ``<body></body>``:
+
+```HTML
+
+<button>Eventos de mouse</button>
+
+<span>Passou o mouse por cima</span>
+
+<section>
+
+  Texto dinâmico
+
+</section>
+```
+
+Além disso, dentro da tag ``<head></head>``, incluímos outras tags para conectar o arquivo HTML com os arquivos ``style.css`` e ``script.js``, que estão na mesma pasta que o arquivo index.html.
+
+```HTML
+
+<link rel="stylesheet" href="style.css">
+
+<script src="script.js" defer></script>
+```
+
+O arquivo style.css tem os seguintes blocos de declaração:
+
+```CSS
+span {
+
+  opacity: 0;
+
+  transition: all 0.3s;
+
+}
+
+ 
+
+section {
+
+  margin-top: 1rem;
+
+}
+
+```
+
+Para o elemento ``span``, usamos a propriedade [``opacity``](https://www.devmedia.com.br/css-opacity/38106) *para definir a opacidade ou a transparência do elemento*, passando valores entre 0 (completamente transparente) até 100 (completamente opaco).
+
+Também usamos a propriedade [``transition``](https://www.freecodecamp.org/portuguese/news/exemplos-de-transicao-em-css-como-usar-a-animacao-ao-passar-o-mouse-alterar-a-opacidade-e-mais/) para definir que todas as propriedades alteradas no elemento de valor all deverão ter uma transição de 0.3 segundos, com valor 0.3s.
+
+![A](https://i.imgur.com/a5g10g1.jpg)
+
+Finalmente, no arquivo script.js, usamos o método querySelector() para capturar três elementos do DOM e salvá-los em variáveis com os nomes das suas respectivas tags HTML. Para isso, as linhas de código devem ser:
+
+```JS
+
+let button = document.querySelector("button");
+
+let span = document.querySelector("span");
+
+let section = document.querySelector("section");
+
+```
+
+#### 6.2.2.2 - Evento ``mouseover``
+
+Nesse exemplo, mostraremos o uso dos quatro principais eventos do mouse, usando o *botão como elemento ativador* e os elementos *span ou section como elementos afetados*.  
+Primeiro, vamos trabalhar com o evento:
+
+``mouseover``, que é **disparado sempre que o cursor do mouse passa por cima de um elemento**.
+
+Agora, vamos criar a função ``mostrarSpan``, que altera a propriedade ``opacity`` da propriedade ``style`` do elemento ``span``.
+
+```js
+function mostrarSpan(){
+
+  span.style.opacity = "100"
+
+}
+```
+
+Depois disso, logo embaixo da função criada, chamamos o elemento ``button`` e aplicamos o método ``addEventListener()`` nele, que **deve receber dois argumentos**. O primeiro será a *string* ``mouseover`` e o segundo, o nome da função ``mostrarSpan``, sem os parênteses, pois estamos apenas passando-a como argumento. Dessa forma:
+
+```JS
+function mostrarSpan(){
+
+  span.style.opacity= "100"
+
+}
+
+
+button.addEventListener("mouseover", mostrarSpan);
+```
+
+Após salvar as mudanças e abrir o arquivo index.html no navegador, devemos ver apenas o botão e Texto dinâmico embaixo dele. Ao passar o mouse por cima do botão, o texto Passou o mouse por cima deve aparecer ao lado do botão.
+
+Agora, o texto do nosso ``span`` aparece de forma dinâmica por cima do botão. Contudo, esse texto permanece visível mesmo se o cursor do mouse não estiver mais em cima do elemento.
+
+Para corrigir isso, primeiro, devemos definir uma função para alterar a opacidade do ``span`` de volta para zero:
+
+```JS
+function ocultarSpan(){
+
+  span.style.opacity = "0"
+
+}
+
+```
+
+Logo embaixo da função, aplicamos o método addEventListener ao elemento button, passando a string mouseout como primeiro argumento e a função ocultarSpan como segundo argumento.
+
+```JS
+function ocultarSpan(){
+
+  span.style.opacity = "0"
+
+}
+
+
+button.addEventListener("mouseout", ocultarSpan);
+
+```
+
+Após salvar as mudanças e voltar ao navegador, devemos ver o texto Passou o mouse por cima aparecendo quando o cursor do mouse passa por cima do botão e sumindo quando o cursor sai de cima dele.
+
+![A](https://i.imgur.com/ubRht5e.jpg)
+
+#### 6.2.2.3 - Evento ``click``
+
+O evento ``click``**é a junção de dois eventos do mouse**:
+
+1. ``mousedown``, que é disparado quando clicamos o botão esquerdo do mouse;
+2. ``mouseup``, que é disparado quando soltamos esse mesmo botão.
+
+Assim, ``click`` *é o ato de apertar e soltar o botão esquerdo do mouse sobre algum elemento*. Para exemplificar, vamos começar criando uma função para alterar o conteúdo textual do nosso ``section``.
+
+```JS
+function fazerUmClick(){
+
+  section.innerText = "Fez um click simples!"
+
+}
+
+```
+
+Agora, basta usar o método ``addEventListener`` no elemento ``button``, passando a string click como primeiro argumento e a função ``fazerUmClick`` como segundo argumento. Assim:
+
+```JS
+function fazerUmClick(){
+
+  section.innerText = "Fez um click simples!"
+
+}
+
+
+button.addEventListener("click", fazerUmClick);
+
+```
+
+#### 6.2.2.4 - Evento ``dbclick``
+
+O **duplo click**, ou ``dblclick``, é o último evento que veremos. Ele não é muito comum, mas pode ser útil em determinadas situações. Seguindo o padrão dos outros três eventos, começamos declarando uma função para alterar o conteúdo textual do ``section``.
+
+```JS
+function fazerDoisClicks(){
+
+  section.innerText = "Fez um duplo click!"
+
+}
+```
+
+Depois, aplicamos o método ``addEventListener`` ao elemento ``button``, passando a string ``dblclick`` como *primeiro argumento* e a função ``fazerDoisClicks`` como *segundo argumento*.
+
+```JS
+
+function fazerDoisClicks(){
+
+  section.innerText = "Fez um duplo click!"
+
+}
+
+button.addEventListener("dblclick", fazerDoisClicks);
+
+
+```
+
+Existem outros eventos de click que podemos usar nos nossos sites. Podemos citar o  ``mouseout`` e ``mouseleave``.
+
+>Leitura Complementar
+
+[ZEMEL, Tárcio. Eventos JavaScript. DPW, 3 fev. 2014](https://desenvolvimentoparaweb.com/javascript/eventos-javascript/)
+
+>Bibliografia
+
+[CFB CURSOS. JavaScript- 32- Eventos. [S.d.]](https://cfbcursos.com.br/javascript-32-eventos/)
+
+[LUCAS NOVAES- PROGRAMAÇÃO. JAVASCRIPT DOS DESESPERADOS - Eventos de Mouse (click, mouseout e mouseover](https://www.youtube.com/watch?v=EMyuLJf17oY&ab_channel=LucasNovaes-Programa%C3%A7%C3%A3o)
+
+#### 6.2.2.15 - Anotações Exerccios
+
+1. quando o usuário passa o cursor do mouse por cima de um produto, surge uma ciaxa com o valor dele. Porém, após tirar o cursos, essas informações continuam visíveis. Qual evento precisa ser usado para corrigir isso?
+   1. ``mouseout``.
+      1. Isso mesmo. Usamos o evento mouseout para definir comportamentos quando o cursor do mouse não está mais em cima de algum elemento.
+2. Declarada a função ``adicionarAoCarrinho()`` em seu código e a adicionou como segundo argumento de uma ``addEventListener``. O código ficou da seguinte forma: button.addEventListener("click", adicionarAoCarrinho()); Porém, o código deu erro após a execução.
+   1. R: Ao Passar a função adicionarAoCarrinho como argumento, não devemos incluir os parênteses após o nome dela.
+      1. Correto!. *Se passarmos a função com os parênteses*, **o navegador executará a função automaticamente ao invés de esperar ela ser chamada** com o evento.
+3. Gabriela é programadora de uma empresa e deseja criar um site que, *quando o usuário passe o mouse por cima do botão Categorias, mostre, embaixo dele, quatro botões com links para as categorias disponíveis*. Para essa situação, qual é o evento do mouse mais apropriado?
+   1. R: ``mouseover``.
+      1. Isso mesmo! O evento mouseover seria acionado quando o cursor do mouse passasse por cima de algum elemento.
 
 ## 6.3 - MÓDULO 03
 
@@ -327,3 +698,13 @@ Além disso,**a primeira execução** do método ``toggle()`` verifica se o elem
 #### 6.6.2.1 - Anotações Exercícios
 
 #### 6.6.2.2 - Anotações Exercícios
+
+## 6.7 - MÓDULO 07
+
+### 6.7.1 - Revisão Manipular estilos e classes com JS
+
+
+
+## 6.8 - MÓDULO 08
+
+### 6.7.1 - Revisão Eventos I
