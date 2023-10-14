@@ -901,15 +901,177 @@ três arquivos:
   </body>
   
   ```
-  
+
 - style.css;
-- script.js.
+
+  ```CSS
+  #quadrado {
+    width: 24px;
+    height: 24px;
+    background-color: blue;
+    position: relative;
+  }
+
+  ```
+
+  No ``id quadrado``, determinamos a altura, a largura e a cor de fundo do elemento para facilitar a visualização no navegador. Além disso, usamos a propriedade ``position`` com valor ``relative`` **para mover o elemento.**
+
+- script.js
+  
+  ```JS
+
+  let keyText = document.querySelector("#key-text");
+  let codeText = document.querySelector("#code-text");
+  let quadrado = document.querySelector("#quadrado");
+  let distanciaDaEsquerda = 0
+
+  ```
+
+  No arquivo ``script.js``, **iremos capturar todos os elementos do DOM** que usaremos com o método ``querySelector()``, que serve para retornar um valor. Além disso, vamos **definir** a variável ``distanciaDaEsquerda``, a qual representará a **disstância entre** *o elemento quadrado* **e a borda** esquerda do **elemento pai**.
+
+Observe que temos três elementos principais: dois ``h2`` e uma ``div``. Ambos elementos ``h2`` tem um próprio elemento ``span`` como filho.
+
+As ``spans`` *serão usadas para inserir texto* com a linguagem JavaScript. Já a ``div``, com ``id="quadrado"``, será um *elemento que moveremos usando as setas do teclado*.
+
+Esses ``ids`` e ``classes`` atribuídos servirão para referenciar os elementos nos arquivos style.css e script.js.
+
+![a](https://i.imgur.com/195L53z.jpg)
+
+Conectar os arquivos
+
+```html
+<link rel="stylesheet" href="style.css">
+
+<script src="script.js" defer></script>
+
+```
+
+### 6.4.3 - Tipos de eventos de teclado
+
+Quando trabalhamos com eventos de teclado, temos três tipos de evento que podemos usar como ativadores:
+
+- **keypress**;
+  - Tipo de evento que só reconhece teclas de letras, números ou pontuação, ou seja, **desconsidera** teclas como ``Shift``, ``Alt``, ``setas`` etc.
+- **keydown**;
+  - Tipo de evento disparado ao **apertar uma tecla**. Ele é *executado de forma repetida se a tecla permanece apertada*.
+- **keyup**;
+  - Tipo de evento disparado ao **soltar uma tecla**. Importante destacar que, *antes, ela precisa ser pressionada*.
+
+Esses eventos são usados em diferentes situações. Eles nos **permitem** *ter mais controle sobre o tipo de interação* que queremos para o usuário.
+
+Os eventos podem ser atribuidos a elementos do tipo ``input``, se quisermos, por exemplo, ativá-los apenas quando o usuário inserir alguma informação em um local específico e travando se ele escrever em outro;
+Ou **diretamente na DOM**, se quisermos que o evento seja disparado em *qualquer parte da nossa página*.
+
+No nosso caso, ``o evento de teclado`` será aplicado diretamente no objeto ``Document`` para dispará-lo sem precisar selecionar nenhum elemento específico. Assim, o site reconhecerá o comando logo quando clicarmos em alguma tecla.
+
+### 6.4.4 - Propriedades ``key`` e ``code``
+
+Primeiro, definimos um evento do tipo ``keyup`` e declaramos uma ``arrow function`` no ``eventListener``, que recebe o parâmetro ``e`` (evento). Dessa forma:
+
+```JS
+document.addEventListener("keyup", (e)=> {
+
+ 
+
+ }
+
+```
+
+resultado no console:
+
+![a](https://i.imgur.com/95SCzK0.jpg)
+
+>O nome ``KeyboardEvent`` indica que o evento disparado é um evento de teclado.
+
+Se clicarmos no triângulo à esquerda do ``KeyboardEvent``, podemos ver todas as propriedades que os eventos de teclado possuem. As duas propriedades que mais nos interessam nesse momento são ``code`` e ``key``.
+
+![a](https://i.imgur.com/YdnJGSl.jpg)
+
+Conforme o exemplo anterior, ao apertar a tecla **"A"** do teclado, serão retornadas duas linhas no terminal: a letra ``"A"`` minúscula e o código ``KeyA``.
+
+![a](https://i.imgur.com/65XoSKJ.jpg)
+
+A **primeira linha** representa o *valor que essa tecla guarda*, neste caso, é ``a``, e a **segunda linha** representa o ``único código`` que esse botão do teclado guarda.
+
+>ATENÇÃO:
+>Podemos comparar ``key`` e ``code`` como variáveis, pois duas variáveis diferentes podem salvar o mesmo valor, mas **não podem ter o mesmo nome**.
+
+Outra observação.
+
+>Propriedades key e code
+>Para **teclas com valores únicos**, como as letras, **podemos usar qualquer uma das propriedades sem problemas**. Contudo, para **teclas que compartilham valores com outras**, é mais recomendável usar a propriedade ``code``.
+
+### 6.4.5 - Exibindo os valores das Propriedades
+
+Por exemplo, se quisermos exibir os valores das propriedades ``key`` e ``code`` na nossa página, podemos chamar os elementos ``keyText`` e ``codeText``, declarados no arquivo ``script.js``, e atribuir a propriedade ``innerText`` deles aos valores das propriedades ``key`` e ``code`` respectivamente. Observe:
+
+```JS
+document.addEventListener("keyup", 
+(e)=> {
+  keyText.innerText = e.key;
+  codeText.innerText = e.code;
+})
+
+```
+
+![a](https://i.imgur.com/5NIf57G.jpg)
+
+![a](https://i.imgur.com/0O78yAi.jpg)
+
+### 6.4.6 - Deslocar um elemento
+
+Para mover o elemento ``div`` com a classe ``quadrado`` no navegador, começamos adicionando outro ``eventListener`` ao objeto ``Document``, dessa vez usando o tipo de evento ``keydown``
+
+```JS
+  document.addEventListener("keydown", (e) => {
+
+ 
+
+})
 
 
 
+```
 
+Usaremos o evento ``keydown`` para poder *continuar deslocando o elemento ao manter apertada uma tecla*.
 
-#### 6.4.1.1 - Anotações Exercícios
+Queremos que nosso quadrado se desloque para a direita ao apertar a **tecla da seta à direita**, ou ``arrow right``. Sabendo que o código desta tecla é ``ArrowRight``, *podemos usar uma estrutura condicional* na nossa ``arrow function`` para verificar o valor do ``code`` do ``evento``. Se o valor for o mesmo que ``ArrowRight``, podemos imprimir uma mensagem com ``console.log()``.
+
+![a](https://i.imgur.com/eOYh1ho.jpg)
+
+Nesse momento, o elemento quadrado está a **zero pixels** de distância *da borda esquerda do seu elemento pai* dele, o ``body``. Para deslocá-lo dez pixels à direita, no bloco de código da nossa estrutura condicional, **adicionamos** ``dez`` ao valor atual da variável ``distanciaDaEsquerda`` e imprimimos o seu o valor no terminal.
+
+![a](https://i.imgur.com/q3eDTsA.jpg)
+
+Agora, usaremos esse valor para deslocar o elemento ``quadrado``. Para isso, precisamos acessar a propriedade ``style`` da variável ``quadrado`` e a propriedade ``left`` para definir a distância entre o elemento e a borda esquerda do seu elemento pai.
+
+![a](https://i.imgur.com/GNSyLxR.jpg)
+
+![a](https://i.imgur.com/cuZHDpv.jpg)
+
+Embora pouco usados no desenvolvimento web, os **eventos de teclado podem destacar os nossos sites**, oferecendo a possibilidade do usuário **interagir com a página** usando o teclado.
+
+**Fechar um pop-up com a tecla Escape** ou **mostrar subseções da barra de navegação** apertando teclas numéricas são exemplos de interações práticas e simples de implementar nos sites.
+
+>LEITURA COMPLEMENTAR
+[LUIS TAVARES. JavaScript - Aula 16 - Eventos do teclado. 2 set. 2020.](https://www.youtube.com/watch?v=BjpW7-7Q38g&ab_channel=LuisTavares)
+---
+>REFERÊNCIA BIBLIOGRÁFICA
+[KARIUKI, Benso. Introduction to Keyboard Events in JavaScript. Section,19 mar. 2021](https://www.section.io/engineering-education/keyboard-events-in-javascript/)
+
+[DEVMEDIA. Como usar a propriedade Position - CSS. [S.d.].](https://www.devmedia.com.br/como-usar-a-propriedade-position-css/24451)
+
+#### 6.4.7 - Anotações Exercícios
+
+1. Maria está desenvolvendo um jogo on-line e gostaria que o elemento carro se deslocasse pela tela quando o usuário pressionar as teclas de setas do teclado. Qual é o tipo de evento de teclado que Maria deve usar?
+   1. keydown
+      1. correta!.Isso mesmo! O evento do tipo ``keydown`` é *executado de forma contínua se o usuário manter apertada a tecla do evento.*
+2. Podemos usar os eventos de teclado em conjunto com outros conceitos de programação?
+   1. Sim! Podemos usar os eventos de teclado com estruturas condicionais, loops, operadores lógicos etc.
+      1. correta!Muito bem! *Podemos usar os eventos de teclado em conjunto com qualquer outro conceito de programação*.
+3. Imagine que seu site tem uma seção com uma calculadora on-line, mas você gostaria que os usuários pudessem usá-la através das teclas numéricas do teclado NumPad. Qual propriedade é a mais indicada para isso?
+   1. event.code
+      1. correta!Isso mesmo! Ao usar a propriedade code, conseguimos diferenciar teclas que guardam valores iguais.
 
 ## 6.5 - MÓDULO 05
 
