@@ -1,0 +1,12 @@
+span {
+  opacity: 0; 
+  /*  para definir a opacidade ou a transparência do elemento 0~100 */
+
+  transition: all 0.5s;
+  /*  definir que todas as propriedades alteradas no elemento de valor all deverão ter uma transição de 0.3 segundos */
+}
+
+section {
+  margin-top: 1rem;
+}
+
