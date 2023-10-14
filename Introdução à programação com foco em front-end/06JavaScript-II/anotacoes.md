@@ -671,11 +671,243 @@ Existem outros eventos de click que podemos usar nos nossos sites. Podemos citar
 
 ### 6.3.1 - Capturar informações do evento
 
-#### 6.3.1.1 - Anotações Exercícios
+Usamos eventos apenas para acionar alguns comportamentos. Contudo, cada evento possui uma série de informações que podem ser necessárias para definir alguns comportamentos, como o tipo de evento (por exemplo, o click), a posição do mouse na tela quando o evento é realizado, sobre qual elemento foi feita a ação etc.
+
+![a](https://i.imgur.com/nUXer79.jpg)
+
+### 6.3.2 - Setup de arquivos
+
+2 arquivos, ``index.html``, que segue estrutura padrão e ``script.js``. O
+``body`` terá o seguinte conteúdo.
+
+![a](https://i.imgur.com/KmuKn99.jpg)
+
+Para adiantar, no arquivo script.js, capturamos todos os elementos do DOM que usaremos, empregando o método getElementById():
+
+```JS
+let elementoClicado = document.getElementById("elemento-clicado");
+
+let botaoTempo = document.getElementById("botao-tempo");
+
+let tempo = document.getElementById("tempo");
+
+```
+
+### 6.3.3 - Propriedade `timeStamp`
+
+``timeStamp`` **retorna um número** que representa o tempo transcorrido desde a renderização da página até o momento em que o evento aconteceu.
+
+Essa informação pode ser útil para **provas on-line,** onde cada questão tem um **tempo máximo permitido** para escolher a resposta.
+
+Para utilizá-la, começamos aplicando o método ``addEventListener()`` ao elemento ``botaoTempo``, passando o evento do tipo ``click`` como primeiro argumento:
+
+```JS
+
+botaoTempo.addEventListener("click", );
+
+```
+
+Para o **segundo parâmetro**, *declaramos diretamente uma função* anônima dentro dos parênteses do ``addEventListener()``. Lembrando que também é possível declarar essa função fora dos parênteses.
+
+```JS
+
+botaoTempo.addEventListener("click", function(){
+
+
+});
+```
+
+1º parâmetro é a string com o tipo de evento que queremos **ESCUTAR**
+2º parâmetro é a **função que define o que deve acontecer** quando o eventos for disparado.
+
+```JS
+
+botaoTempo.addEventListener("click", function(evento){
+
+
+});
+```
+
+Este parâmetro representa um ``objeto`` **com todas as propriedades do evento**. Por isso, é comum chamá-lo de ``evento`` ou de ``e``.
+
+![a](https://i.imgur.com/KTb1bIO.jpg)
+
+No terminal, podemos imprimir todas as propriedades que o evento guarda. Para isso, basta fazer um ``console.log( )`` e passar o parâmetro ``evento`` como argumento:
+
+```JS
+
+botaoTempo.addEventListener("click", function(evento){
+  console.log(evento);
+
+
+});
+```
+
+Depois de salvar as mudanças, abrir nosso projeto no navegador e clicar no botão ``Tempo``, devemos ver um objeto chamado ``PointerEvent`` no terminal. Ele representa o evento em si.
+
+Se clicarmos na seta à esquerda dele, veremos uma lista em ordem alfabética **com todas as propriedades que o evento guarda**. Observe a imagem.
+
+![a](https://i.imgur.com/Et0Gqwd.jpg)
+
+A propriedade timeStamp está quase no fim da lista. Podemos vê-la retornando um número do tipo float, que representa a quantidade de **milissegundos** desde a renderização da página até o momento em que fizemos click no botão e disparamos o evento.
+
+![a](https://i.imgur.com/AQPpADJ.jpg)
+
+>ATENÇÃO:
+>O número retornado pode ser convertido em segundos. Para isso, divida ele por mil e arredonde o resultado
+
+Voltando para o arquivo ``script.js``, sabemos que o parâmetro ``evento`` **salva uma série de propriedades**.
+
+Assim, para acessar a propriedade ``timeStamp``, é preciso usar uma ``dot notation``. Já para imprimir o valor da ``timeStamp``, atualizamos o argumento que passamos no console.log:
+
+```JS
+
+botaoTempo.addEventListener("click", function(evento){
+  console.log(evento.timeStamp);
+
+
+});
+```
+
+Após salvar as mudanças e voltar ao navegador, **cada vez que apertarmos o botão devemos ver um novo valor** em milissegundos no terminal:
+
+![a](https://i.imgur.com/PdiVssa.jpg)
+
+Finalmente, precisamos e**xibir esse valor no corpo da página**. Para isso, ``atribuímos ele`` **à propriedade innerText** do elemento ``tempo``, que foi previamente capturado do DOM.
+
+```JS
+
+botaoTempo.addEventListener("click", function(evento){
+  console.log(evento.timeStamp);
+  tempo.innerText = evento.timeStamp;
+
+
+});
+```
+
+Depois de salvar as mudanças e voltar no navegador, cada vez que clicamos no botão devemos ver o valor em milissegundos sendo apresentado e atualizado no primeiro elemento ``<p>``:
+
+![a](https://i.imgur.com/WjFuPJG.jpg)
+
+### 6.3.4 - Propriedade `target`
+
+A propriedade ``target`` nos permite *acessar informações e propriedades* do **elemento que ativou o evento** ou de qualquer um de seus *elementos filhos*, **que não necessariamente foram capturados do DOM**.
+
+Para isso, é preciso usar um dos métodos estudados, o ``getElementById`` ou o ``QuerySelector``, por exemplo. Uma vez que temos acesso ao elemento, podemos manipular ele à vontade.
+
+![a](https://i.imgur.com/5QG3VOo.jpg)
+
+>Um exemplo do uso da propriedade target é quando passamos o mouse por cima de um elemento no YouTube e ele passa a mostrar uma prévia do vídeo.
+
+Neste exemplo, usaremos *o próprio DOM como elemento pai*, mas poderíamos definir o mesmo comportamento, por exemplo, para uma lista ordenada de itens.
+
+Começamos aplicando o método ``addEventListener()`` ao objeto ``Document`` e passando o evento do tipo ``click`` como primeiro argumento. Como segundo argumento, passamos uma ``função anônima`` com o argumento ``e``, de ``evento``.
+
+```JS
+
+document.addEventListener("click", function(e){
+
+
+});
+```
+
+Dentro da função, acessamos a propriedade *target* do ``evento`` (parâmetro chamado de ``e``), e o imprimimos no terminal para entender o seu funcionamento:
+
+```JS
+
+document.addEventListener("click", function(e){
+  console.log(e.target)
+
+});
+```
+
+Após salvar as mudanças e voltar no navegador, podemos clicar nos elementos da página. Eles vão aparecendo no terminal conforme clicamos neles.
+
+![a](https://i.imgur.com/kHmgdHR.jpg)
+
+>OBSERVE:
+>Como você pode ter observado, a propriedade target retorna o elemento que disparou o evento, no nosso caso, o click.
+
+De volta ao VSCode, vamos querer mostrar na tela só o ``id`` daqueles elementos que foram clicados. Para isso, usamos a propriedade ``id`` da propriedade target (``e.target.id``) e atribuímos ele ao ``innerText`` do ``elementoClicado``, O ``span`` que não tem texto, o qual foi previamente capturado no DOM:
+
+```JS
+
+document.addEventListener("click", function(e){
+
+  console.log(e.target)
+
+  elementoClicado.innerText = e.target.id
+
+})
+```
+
+Ao salvar as mudanças e voltar no navegador, deveríamos ver o id ``subtitulo``, ``botao-tempo`` e ``tempo`` *ao clicarmos nos seus **respectivos** elementos*.
+
+![a](https://i.imgur.com/ypFWBpy.jpg)
+
+>CONCLUSÃO:
+>Embora a propriedade target seja a **mais usada para acessar as informações do elemento que disparou o evento,** outras propriedades (como ``timeStamp``, ``clientX``, ``clientY``, ``type``) podem ser usadas para trabalhar com informações do evento em si.
+
+--
+>lEITURA COMPLEMENTAR
+
+[JAVASCRIPT Básico: Eventos no JavaScript 14 (Parte 2). Mundo JS, 25 jun. 2019](https://www.mundojs.com.br/2019/06/25/javascript-basico-eventos-no-javascript-parte-2/)
+
+>REFERÊNCIA BIBLIOGRÁFICA
+
+[ONYEJIAKU, Theodore Kelechukwu. What is event.target in JavaScript?. Educative](https://www.educative.io/answers/what-is-eventtarget-in-javascript)
+
+[CFB Cursos. Entendo como usar o método target [event.target] em jQuery [jQuery] - Curso de jQuery - Aula 08. 24 fev. 2022](https://www.youtube.com/watch?v=Uvdu9fldy0s&ab_channel=CFBCursos)
+
+#### 6.3.5 - Anotações Exercícios
+
+1. Quando usamos o método addEventListener(), o que precisamos fazer na função passada como segundo parâmetro do eventListener para ter acesso às informações do evento?
+   1. Adicionar um único parâmetro, geralmente, chamado de event ou apenas e.
+      1. Correto. Muito bem! O parâmetro que passamos na nossa função representará o evento em si. Além disso, terá todas suas informações e propriedades.
+2. Usando a propriedade target, como podemos acessar o id de um elemento que disparou um evento?
+   1. event.target.id
+      1. Correto. Isso mesmo! O atributo id e todos os outros do elemento (class, value, name etc.) são facilmente acessados com essa sintaxe.
+3. Ao utilizar a propriedade timeStamp, o que é retornado?
+   1. Um número que representa o tempo transcorrido desde a página carregar até o evento ser disparado.
+      1. Correto. Isso mesmo! O número representa a quantidade de milissegundos e, geralmente, vem com bastantes casas decimais.
 
 ## 6.4 - MÓDULO 04
 
 ### 6.4.1 - Eventos de teclado
+
+Isso mesmo! O número representa a quantidade de milissegundos e, geralmente, vem com bastantes casas decimais.
+
+![a](https://i.imgur.com/mLiGwbv.jpg)
+
+Os eventos de teclado são muito populares na área de desenvolvimento de videogames.
+
+### 6.4.2 - setup de arquivos
+
+três arquivos:
+
+- index.html;
+  
+  ```HTML
+
+  <body>
+    <h2>Tecla apertada:
+      <span id="key-text"></span>
+    </h2>
+    <h2>Código da tecla:
+      <span id="code-text"></span>
+    </h2>
+    <div id="quadrado"></div>
+
+  </body>
+  
+  ```
+  
+- style.css;
+- script.js.
+
+
+
+
 
 #### 6.4.1.1 - Anotações Exercícios
 
@@ -702,8 +934,6 @@ Existem outros eventos de click que podemos usar nos nossos sites. Podemos citar
 ## 6.7 - MÓDULO 07
 
 ### 6.7.1 - Revisão Manipular estilos e classes com JS
-
-
 
 ## 6.8 - MÓDULO 08
 
