@@ -278,7 +278,7 @@ Além disso,**a primeira execução** do método ``toggle()`` verifica se o elem
 
 ### 6.1.7 - Anotações Exercícios
 
-1. Gabriel usou uma estrutura condicional para verificar se o elemento card possui a classe selecionada. Como Gabriel pode fazer isso sem deixar o código mais complexo?
+1. Gabriel usou uma estrutura condicional para verificar se o elemento card possui a classe ``selecionada``. Como Gabriel pode fazer isso sem deixar o código mais complexo?
    1. card.classList("selecionada" || ""); **Errado**! classList não é um método. Portanto, não podemos executalo como uma função.
    2. card.classList.toggle("selecionada"). Correto. O método ``toggle()`` faz, automaticamente, a verificação de uma classe.
 2. Gabriel é programador e deseja verificar se o elemento inputEmail possui a classe input-invalido. Qual é o comando que ele deve usar para fazer isso?
@@ -336,7 +336,7 @@ Faremos um site simples, com um número e um botão que incrementa esse valor em
 
 Começaremos respondendo à pergunta “Quem?”. Para isso, iremos capturar os elementos do DOM que usaremos no nosso projeto.
 
-Nesse caso, queremos capturar o elemento h1, que exibirá o número, e o elemento button, que ativará o comportamento.
+Nesse caso, queremos capturar o elemento ``h1``, que exibirá o número, e o elemento ``button``, que ativará o comportamento.
 
 ```JS
 let numero = document.querySelector("h1");
@@ -414,11 +414,11 @@ Para fazer isso, basta escrever o nome do elemento, seguido de um ponto, o nome 
 
 ``botao.addEventListener();``
 
-O método **addEventListener()** é uma função que precisa de, **no mínimo, dois argumentos** para funcionar.
+O método **addEventListener()** é uma **função** que precisa de, **no mínimo, dois argumentos** para funcionar.
 
-1. O primeiro é uma string, que define o tipo de evento que acionará a função.
+1. O primeiro é uma **string**, que define o tipo de evento que acionará a função.
    1. Usaremos o ``string click``
-2. O segundo, é uma função com o comportamento que queremos executar.
+2. O segundo, é uma **função** com o comportamento que queremos executar.
 
 No nosso exemplo, já declaramos nossa função na etapa anterior, portanto, basta escrever o seu nome sem os parênteses. Assim:
 
@@ -438,7 +438,7 @@ Após salvar as mudanças e voltar no navegador, nosso contador deve estar funci
 
 #### 6.2.1.6 - Anotações Exercícios
 
-1. Qual é a forma correta de aplicar o método addEventListener() no elemento btnSubmit?
+1. Qual é a forma correta de aplicar o método ``addEventListener()`` no elemento ``btnSubmit``?
    1. btnSubmit.addEventListener("click", funcaoSubmeter).
       1. Isso mesmo! A função addEventListener precisa receber, no mínimo, dois argumentos: uma string, que representa o tipo do evento, e uma função que define o comportamento a ser executado.
 2. Para trabalhar com eventos, precisamos capturar, no mínimo, quantos elementos do DOM?
@@ -566,7 +566,7 @@ function ocultarSpan(){
 
 ```
 
-Logo embaixo da função, aplicamos o método addEventListener ao elemento button, passando a string mouseout como primeiro argumento e a função ocultarSpan como segundo argumento.
+Logo embaixo da função, aplicamos o método ``addEventListener`` ao elemento ``button``, passando a string ``mouseout`` como primeiro argumento e a função ``ocultarSpan`` como segundo argumento.
 
 ```JS
 function ocultarSpan(){
@@ -660,7 +660,7 @@ Existem outros eventos de click que podemos usar nos nossos sites. Podemos citar
 1. quando o usuário passa o cursor do mouse por cima de um produto, surge uma ciaxa com o valor dele. Porém, após tirar o cursos, essas informações continuam visíveis. Qual evento precisa ser usado para corrigir isso?
    1. ``mouseout``.
       1. Isso mesmo. Usamos o evento mouseout para definir comportamentos quando o cursor do mouse não está mais em cima de algum elemento.
-2. Declarada a função ``adicionarAoCarrinho()`` em seu código e a adicionou como segundo argumento de uma ``addEventListener``. O código ficou da seguinte forma: button.addEventListener("click", adicionarAoCarrinho()); Porém, o código deu erro após a execução.
+2. Declarada a função ``adicionarAoCarrinho()`` em seu código e a adicionou como segundo argumento de uma ``addEventListener``. O código ficou da seguinte forma: ``button.addEventListener("click", adicionarAoCarrinho());`` Porém, o código deu erro após a execução.
    1. R: Ao Passar a função adicionarAoCarrinho como argumento, não devemos incluir os parênteses após o nome dela.
       1. Correto!. *Se passarmos a função com os parênteses*, **o navegador executará a função automaticamente ao invés de esperar ela ser chamada** com o evento.
 3. Gabriela é programadora de uma empresa e deseja criar um site que, *quando o usuário passe o mouse por cima do botão Categorias, mostre, embaixo dele, quatro botões com links para as categorias disponíveis*. Para essa situação, qual é o evento do mouse mais apropriado?
