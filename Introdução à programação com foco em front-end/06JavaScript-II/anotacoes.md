@@ -749,7 +749,7 @@ Se clicarmos na seta à esquerda dele, veremos uma lista em ordem alfabética **
 
 ![a](https://i.imgur.com/Et0Gqwd.jpg)
 
-A propriedade timeStamp está quase no fim da lista. Podemos vê-la retornando um número do tipo float, que representa a quantidade de **milissegundos** desde a renderização da página até o momento em que fizemos click no botão e disparamos o evento.
+A propriedade ``timeStamp`` está quase no fim da lista. Podemos vê-la retornando um número do tipo float, que representa a quantidade de **milissegundos** desde a renderização da página até o momento em que fizemos click no botão e disparamos o evento.
 
 ![a](https://i.imgur.com/AQPpADJ.jpg)
 
@@ -848,14 +848,16 @@ Ao salvar as mudanças e voltar no navegador, deveríamos ver o id ``subtitulo``
 >CONCLUSÃO:
 >Embora a propriedade target seja a **mais usada para acessar as informações do elemento que disparou o evento,** outras propriedades (como ``timeStamp``, ``clientX``, ``clientY``, ``type``) podem ser usadas para trabalhar com informações do evento em si.
 
---
+----
 >lEITURA COMPLEMENTAR
 
 [JAVASCRIPT Básico: Eventos no JavaScript 14 (Parte 2). Mundo JS, 25 jun. 2019](https://www.mundojs.com.br/2019/06/25/javascript-basico-eventos-no-javascript-parte-2/)
 
+----
+
 >REFERÊNCIA BIBLIOGRÁFICA
 
-[ONYEJIAKU, Theodore Kelechukwu. What is event.target in JavaScript?. Educative](https://www.educative.io/answers/what-is-eventtarget-in-javascript)
+[ONYEJIAKU, Theodore Kelechukwu. What is event.target in JavaScript?. Educative](https://www.educative.io/answwers/what-is-eventtarget-in-javascript)
 
 [CFB Cursos. Entendo como usar o método target [event.target] em jQuery [jQuery] - Curso de jQuery - Aula 08. 24 fev. 2022](https://www.youtube.com/watch?v=Uvdu9fldy0s&ab_channel=CFBCursos)
 
@@ -874,8 +876,6 @@ Ao salvar as mudanças e voltar no navegador, deveríamos ver o id ``subtitulo``
 ## 6.4 - MÓDULO 04
 
 ### 6.4.1 - Eventos de teclado
-
-Isso mesmo! O número representa a quantidade de milissegundos e, geralmente, vem com bastantes casas decimais.
 
 ![a](https://i.imgur.com/mLiGwbv.jpg)
 
@@ -951,7 +951,7 @@ Conectar os arquivos
 Quando trabalhamos com eventos de teclado, temos três tipos de evento que podemos usar como ativadores:
 
 - **keypress**;
-  - Tipo de evento que só reconhece teclas de letras, números ou pontuação, ou seja, **desconsidera** teclas como ``Shift``, ``Alt``, ``setas`` etc.
+  - Tipo de evento que **só reconhece teclas de letras, números ou pontuação**, ou seja, **desconsidera** teclas como ``Shift``, ``Alt``, ``setas`` etc.
 - **keydown**;
   - Tipo de evento disparado ao **apertar uma tecla**. Ele é *executado de forma repetida se a tecla permanece apertada*.
 - **keyup**;
@@ -1055,7 +1055,7 @@ Embora pouco usados no desenvolvimento web, os **eventos de teclado podem destac
 
 >LEITURA COMPLEMENTAR
 [LUIS TAVARES. JavaScript - Aula 16 - Eventos do teclado. 2 set. 2020.](https://www.youtube.com/watch?v=BjpW7-7Q38g&ab_channel=LuisTavares)
----
+----
 >REFERÊNCIA BIBLIOGRÁFICA
 [KARIUKI, Benso. Introduction to Keyboard Events in JavaScript. Section,19 mar. 2021](https://www.section.io/engineering-education/keyboard-events-in-javascript/)
 
