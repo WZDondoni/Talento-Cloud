@@ -1189,7 +1189,7 @@ btnSubmit.addEventListener("click", (e)=>{
 
 [NOLETO, Cairo. Javascript alert, confirm e prompt: caixas de diálogo Popup!. Be Trybe, 25 fev. 2022.](https://blog.betrybe.com/javascript/javascript-alert/)
 
-#### 6.5.5 - Anotações Exercícios
+### 6.5.5 - Anotações Exercícios
 
 1. Sérgio tem um link em sua página com o texto "Inglês". Ele gostaria que, ao clicar nele, o texto de boas-vindas mudasse do português para o inglês. Porém, cada vez que ele clica no link, a página só recarrega. Como podemos ajustar isso?
    1. Usando o método ``preventDefault( )`` para interromper o comportamento padrão do link.
@@ -1201,9 +1201,204 @@ btnSubmit.addEventListener("click", (e)=>{
    1. Porque é necessário passar um argumento que representa o evento e chamar um método a partir de um argumento. Por exemplo, o ``event.preventDefault( )``.
       1. Resposta correta!Isso mesmo! A função ``preventDefault()`` **sempre está atrelada a um evento**. Portanto, devemos definir o evento como parâmetro da função.
 
-### 6.5.2 - Eventos onFocus, onBlur, onChange e onSubmit
+### 6.5.6 - Eventos de formulários
 
-#### 6.5.2.1 - Anotações Exercícios
+*Eventos de mouse e de teclado* são úteis para adicionar diversas interatividades aos nossos sites. Porém, eles **possuem limitações no trabalho com formulários**.
+
+JavaScript tem um grupo de eventos específicos para resolver isso:
+
+EVENTO | DESCRIÇÃO
+----|----
+focus|O elemento é **focado** pelo usuário.
+blur|O elemento **perde o foco** do usuário.
+change|O elemento teve seu **valor alterado depois de perder o foco**.
+
+#### 6.5.6.1 - Setup de arquivos
+
+- index.html
+  - estrutura padrão html ``!``
+  - addcionar no ``head``
+  
+    ```HTML
+    <script src="script.js" defer></script>
+    ```
+
+  - composição do ``body``
+  
+      ```HTML
+      <form action="">
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email">
+      <br>
+      <label for="idade">Idade:</label>
+      <input type="number" id="idade" name="idade" value="35">
+      <br>
+      <button type="submit">Enviar</button>
+      </form>
+    ```
+
+    ![A](https://i.imgur.com/6OqwYZQ.jpg)
+
+- script.js
+
+    ```JS
+    //CAPTURAR ELEMENTOS DO DOM
+    let inputEmail = document.getElementById("email");
+
+    let inputIdade = document.getElementById("idade");
+
+    let formulario = document.querySelector("form");
+
+    ```
+
+#### 6.5.6.2 - Evento ``focus``
+
+Para entender melhor como funciona o evento focus, vamos usar o aplicativo WhatsApp como exemplo.
+
+Quando você quer mandar uma mensagem para alguém, primeiro você clica na caixa de texto vazia para aparecer a barra do teclado. Nesse momento, dizemos que o input ganhou foco.
+
+Depois, você digita o texto e pressiona o botão de enviar. Quando o celular não mostra mais o teclado, ele indica que você não consegue mais inserir dados na caixa de texto, ou seja, o input de texto perdeu o foco.
+
+![a](https://i.imgur.com/2WIVdKq.jpg)
+
+>Quando os inputs de texto ganham foco, geralmente, vemos uma barra vertical indicando a posição do cursor
+
+Para demonstrar o uso do input, precisamos abrir o arquivo script.js e adicionar um eventListener ao elemento inputEmail.
+
+O **primeiro argumento** será a string ``focus`` e o **segundo**, uma ``arrow function``:
+
+```JS
+
+inputEmail.addEventListener("focus", ()=> {
+
+});
+
+```
+
+Agora, vamos mudar a cor de fundo do input quando ele ganhar foco.
+
+Podemos fazer isso chamando o próprio elemento ``inputEmail`` dentro do bloco do código da ``arrow function``.
+
+Outra opção é usar um argumento evento e acessar sua propriedade target. Nesse último caso, chamaremos o próprio elemento:
+
+```JS
+  inputEmail.addEventListener("focus", ()=> {
+
+    inputEmail.style.backgroundColor = "lightgreen"
+
+  });
+
+```
+
+>O ``focus`` é comumente usado para exibir algum tipo de texto que ajude o usuário a preencher o campo. Por exemplo, a mensagem "Não use caracteres especiais nem espaços".
+
+![a](https://i.imgur.com/WAcIQ2p.jpg)
+
+#### 6.5.6.3 - Evento ``blur``
+
+Para definir o que deve acontecer com um elemento após perder o foco, usamos o evento ``blur``.
+
+Assim, chamamos o elemento ``inputEmail`` novamente e adicionamos mais um ``eventListener``.
+
+Porém, desta vez, passaremos a string ``blur`` como primeiro argumento e uma ``arrow function`` como segundo. Dessa forma:
+
+```JS
+inputEmail.addEventListener("blur", (e)=> {
+
+  e.target.style.backgroundColor = ""
+
+});
+
+
+```
+
+>Atribui uma string vazia como valor da propriedade backgroundColor, que **removerá** a estilização aplicada na etapa anterior.
+
+voltar no navegador, devemos ver nosso input de e-mail ganhando e perdendo a estilização cada vez que clicamos dentro e fora dele, independentemente do valor que ele possui.
+
+#### 6.5.6.4 - Evento ``change``
+
+O evento ``change`` é disparado **quando um elemento sofre uma alteração no seu valor**.
+
+Contudo, isso **pode variar** de acordo com o *tipo de input* e da forma como alteramos os seus dados.
+
+Para demonstrar isso, chamamos o elemento ``inputIdade``, aplicamos o método ``addEventListener``, passamos como primeiro argumento a string ``change`` e, como segundo, uma ``arrow function``. Observe:
+Para visualizar o momento em que o evento ``change`` é disparado, executamos a função ``alert()`` com alguma mensagem dentro do bloco de código da ``arrow function``.
+
+```JS
+inputIdade.addEventListener("change", ()=> {
+
+  alert("Certeza que quer alterar seus dados?")
+
+});
+
+```
+
+>Atenção!
+>Entretanto, se você digitar o valor da idade diretamente no ``input``, verá que o evento só é disparado **após** o **input perder o foco**.
+>Esse é um comportamento que devemos levar em consideração quando usamos o evento ``change`` com ``inputs de texto.``
+
+#### 6.5.6.5 - Evento ``submit``
+
+>É sempre IMPORTANTE mostrar algum feedback ao clicar no botão de enviar. Seja para avisar que não foi possível efetivar o envio por falta de informações obrigatórias ou para confirmar que as informações mandadas estão corretas.
+
+Para fazer isso, chamamos o elemento ``formulário``, adicionamos nele o método ``addEventListener``, passamos a string do evento ``submit`` como primeiro parâmetro e, como segundo, uma ``arrow function``.
+
+Depois disso, basta executar um ``alert`` dentro do bloco de código da ``arrow function`` com uma mensagem **confirmando o envio dos dados**.
+
+```JS
+  formulario.addEventListener("submit", ()=> {
+    alert("Dados enviados com sucesso!")
+
+ });
+
+```
+
+![a](https://i.imgur.com/6miRbPU.jpg)
+
+>Conclusão
+Nesses exemplos, usamos os eventos de formulário apenas para aplicar algumas estilizações e mandar mensagens de alerta. Porém, existe uma infinidade de ações que podemos aplicar em conjunto com eles.
+
+Alguns exemplos:
+
+- Limitar um número mínimo ou máximo de caracteres,
+- verificar se um e-mail possui ou não um domínio específico,
+- destacar inputs com valores inválidos e impedir o envio de um formulário,
+- caso algum campo obrigatório esteja vazio,
+
+São apenas algumas das validações que podemos aplicar usando esses eventos.
+
+>Leitura Complementar
+
+[RICARDO. Trabalhando com eventos em JavaScript. Dev Media, 2013.](https://www.devmedia.com.br/trabalhando-com-eventos-em-javascript/28521)
+
+[GALLO, Vanessa. Eventos com JavaScript. Computer Science Master, 6 mar. 2022](https://www.computersciencemaster.com.br/eventos-com-javascript/)
+
+>Referência bibliográfica
+
+[GoPHP. 34 - Form Events | Events in JavaScript | JavaScript Tutorial for Beginners. 11 jun. 2020.](https://www.youtube.com/watch?v=YUIHbcOjdKM)
+
+#### 6.5.6.6 - Anotações Exercícios
+
+1. Estamos desenvolvendo um site para pessoas com deficiência visual e gostaríamos que, ao clicar em um ``input``, o site reproduzisse um áudio explicando qual tipo de informação deve ser inserida. Qual é o evento que devemos usar?
+   1. ``focus``.
+      1. Resposta correta!Isso mesmo! O evento focus será disparado assim que o usuário acessar o input e reproduzir o áudio correspondente.
+2. Você capturou o elemento ``button`` de um formulário, usou o método ``addEventListener``, passou ``submit`` como primeiro argumento e uma ``função anônima`` como segundo e, por fim, usou a função ``alert( )``. Porém, o seu formulário não está mostrando a mensagem de ``alert`` ao enviar os dados do formulário. Por que isso está acontecendo?
+   1. O evento do tipo submit deve ser atribuído ao formulário, não ao botão.
+      1. Resposta correta!Muito bem! Mesmo o botão sendo do tipo submit, o evento precisa estar atrelado ao formulário, não ao botão.
+3. Angélica estava escrevendo as validações de um ``input`` obrigatório de e-mail. Para isso, ela usou um evento e conseguiu disparar uma mensagem de erro caso o ``input`` *perdesse o foco e o texto não tivesse um @*. Porém, se clicar no ``input``, **não digitar e, depois, clicar fora do input**, ele **não mostra ao usuário a mensagem** avisando que o **campo é obrigatório**. Qual evento Angélica usou e qual ela deveria ter usado?
+   1. Ela usou change, mas deveria ter usado focus.
+      1. Resposta incorreta!Na verdade, se o evento focus for usado, a mensagem será mostrada cada vez que o usuário clicar no input. Angélica quer que a mensagem seja escrita quando o input perder o foco e estiver vazia.
+   2. Ela usou o change, mas deveria ter usado o blur.
+         1. Resposta correta! Muito bem! O evento change funciona apenas quando o usuário muda o valor do input. Já o blur será chamado cada vez em que o input perder o foco, independemente de se o valor dele mudou ou não.
+
+
+
+  
+
+
+
+
 
 ## 6.6 - MÓDULO 06
 
