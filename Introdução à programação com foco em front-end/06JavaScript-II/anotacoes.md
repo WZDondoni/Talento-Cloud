@@ -1077,7 +1077,129 @@ Embora pouco usados no desenvolvimento web, os **eventos de teclado podem destac
 
 ### 6.5.1 - Funções preventDefault() e alert()
 
-#### 6.5.1.1 - Anotações Exercícios
+Java oferece uma série de funções/métodos nativas que agilizam o trabalho.
+
+### 6.5.2 - Setup de arquivos
+
+Usaremos dois arquivos:
+
+- index.html
+  - estrutura base ``!``
+  
+  ```HTML
+  <head>
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+      <h2>Visitar o site da
+
+      <a id="link-proz" href="https://prozeducacao.com.br/" target="_blank">Proz</a>
+
+      </h2>
+      <form action="">
+
+        <input type="text" name="input">
+
+        <button type="submit">Enviar</button>
+      </form>
+  
+  
+  </body>
+  ```
+
+  ![A](https://i.imgur.com/MFZd8Ir.jpg)
+
+- script.js
+  
+  ```JS
+  //CAPTURAR
+  let linkProz = document.getElementById("link-proz")
+  let btnSubmit = document.querySelector("button[type=submit]")
+
+  ```
+
+### 6.5.3 - Função ``preventDefault()``
+
+Pode ser traduzida como "impedir o padrão". Ela **serve para desativar o comportamento padrão de algum elemento HTML**.
+abrir index.html pelo LiveServer.
+
+ELEMENTO | COMPORTAMENTO PADRÃO
+:----| :----
+``a`` | é navegar para uma determinada URL, no nosso site ou externa. No nosso exemplo, ao clicarmos na palavra Proz, seremos direcionados ao site da Proz
+``botão tipo submit`` | é enviar as informações do nosso formulário
+
+**Para impedir o comportamento padrão** do link, adicionamos um eventListener ao elemento linkProz. Como o evento que dispara o comportamento padrão do link é o ``click``, o adicionamos como primeiro argumento e uma função anônima como segundo, a qual  tem um argumento evento:
+
+```JS
+
+linkProz.addEventListener("click", (e)=> {
+
+})
+
+btnSubmit.addEventListener("click", (e)=> {
+
+  e.preventDefault()
+
+})
+
+```
+
+### 6.5.4 - Função ``alert()``
+
+A função ``preventDefault()`` **nos ajuda a controlar quais interações queremos fornecer ao nosso usuário** *e quando queremos liberá-las*.
+Contudo, *se não retornarmos um feedback*, o site pode parecer que não está funcionando. Uma forma simples e eficiente de dar esses feedbacks é com a função nativa ``alert()``.
+
+![A](https://i.imgur.com/aw8CgDu.jpg)
+
+No nosso exemplo, para adicionar uma mensagem de feedback ao clicar no elemento ``linkProz``, chamamos a função ``alert()`` embaixo da ``preventDefault()``. Depois, *passamos uma string que tenha a mensagem que queremos exibir como argumento*. Observe:
+
+```JS
+  linkProz.addEventListener("click", (e)=> {
+
+  e.preventDefault();
+
+  alert("Não foi possível acessar o link");
+
+})
+
+btnSubmit.addEventListener("click", (e)=>{
+    e.preventDefault()
+    alert("Não foi possível acessar o link");
+
+})
+
+```
+
+![image-3.png](https://i.imgur.com/9KZGPlk.jpg)
+
+**Interromper** *o comportamento padrão* de um elemento e exibir mensagens de feedback pelo navegador são dois recursos que nos ajudarão a implementar uma camada de segurança nos nossos formulários e evitar problemas.
+
+>EVITAR COMPORTAMENTO PADRÃO E MOSTRAR UMA MENSAGEM, PARA QUANDO HOUVER ERRO NO CAMPO E EVITAR O ENVIO (COMPORTAMENTO PADRÃO), POR EXEMPLO UM LINK SEM OS PONTOS, OU EMAIL SEM ARROBA, OU LETRAS SENDO ENSERIDAS EM CAMPOS DE TEXTO.
+
+----
+
+>Leitura Complementar
+
+[RICARDO. Alert em JavaScript. Devmedia, 2016.](https://www.devmedia.com.br/alert-em-javascript/37208)
+
+----
+>Referência bibliográfica
+
+[Event.preventDefault(). MDN Web Docs, 19 nov. 2022](https://developer.mozilla.org/pt-BR/docs/Web/API/Event/preventDefault)
+
+[NOLETO, Cairo. Javascript alert, confirm e prompt: caixas de diálogo Popup!. Be Trybe, 25 fev. 2022.](https://blog.betrybe.com/javascript/javascript-alert/)
+
+#### 6.5.5 - Anotações Exercícios
+
+1. Sérgio tem um link em sua página com o texto "Inglês". Ele gostaria que, ao clicar nele, o texto de boas-vindas mudasse do português para o inglês. Porém, cada vez que ele clica no link, a página só recarrega. Como podemos ajustar isso?
+   1. Usando o método ``preventDefault( )`` para interromper o comportamento padrão do link.
+      1. Resposta correta!Isso mesmo! O método ``preventDefault()`` interrompe o comportamento padrão de qualquer elemento HTML.
+2. Que tipo de argumento recebe a função ``alert()``?
+   1. Uma string com a mensagem que queremos exibir.
+      1. Resposta correta!Muito bem! A string que passarmos como argumento será exibida como mensagem no pop-up da ``alert()``
+3. Sérgio chamou a função ``preventDefault()`` dentro da função anônima "``( ) => { preventDefault( ) }``". A ``preventDefault()`` está em um ``eventListener``, mas não está funcionando. Por quê?
+   1. Porque é necessário passar um argumento que representa o evento e chamar um método a partir de um argumento. Por exemplo, o ``event.preventDefault( )``.
+      1. Resposta correta!Isso mesmo! A função ``preventDefault()`` **sempre está atrelada a um evento**. Portanto, devemos definir o evento como parâmetro da função.
 
 ### 6.5.2 - Eventos onFocus, onBlur, onChange e onSubmit
 
