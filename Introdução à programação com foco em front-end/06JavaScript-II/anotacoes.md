@@ -1392,19 +1392,286 @@ São apenas algumas das validações que podemos aplicar usando esses eventos.
    2. Ela usou o change, mas deveria ter usado o blur.
          1. Resposta correta! Muito bem! O evento change funciona apenas quando o usuário muda o valor do input. Já o blur será chamado cada vez em que o input perder o foco, independemente de se o valor dele mudou ou não.
 
-
-
-  
-
-
-
-
-
 ## 6.6 - MÓDULO 06
 
-### 6.6.1 - Validação de formulários II
+### 6.6.1 - Validação de formulários
 
-### 6.6.2 - Revisão do módulo - JS II
+[Link arquivo Formulários](https://drive.google.com/file/d/1z6pNCaqIapx_8agj8TWVfBmP6CQTgxkn/view)
+
+### 6.6.2 - Revisão do módulo - JS II - Parte01
+
+- PROPRIEDADE ``style``  
+    1. Essa propriedade é usada para **manipular as propriedades de estilização** dos elementos capturados do DOM:
+
+   ```JS
+   let titulo = document.querySelector("h1");
+   titulo.style
+
+   //Após acessar a propriedade style, podemos acessar qualquer propriedade CSS e atribuir novos valores como strings a ela.
+
+   titulo.style.color = "#D4210D"
+
+   //Propriedades com mais de uma palavra no nome devem ser escritas usando o padrão de escrita camelCase.
+
+   titulo.style.fontSize = "2.4rem"
+
+   ```
+
+   A propriedade ``style`` serve para **adicionar estilizações simples** de forma dinâmica, como sublinhar o item selecionado em uma barra de navegação.
+
+   ![A](https://i.imgur.com/gPOI2wD.jpg)
+
+- PROPRIEDADE ``classList``  
+   Essa propriedade é usada para **manipular** a **lista de classes atribuídas a um elemento capturado** do DOM.  
+
+    A propriedade ``classList`` possui uma série de ``métodos`` que nos permitem **consultar e manipular** a *lista de classes do elemento*. Esses métodos são executados escrevendo um par de parênteses logo após o nome do método e passando uma string como argumento.
+
+    ```JS
+    let section = document.querySelector("section");
+
+    section.classList.
+    ```
+
+   1. Método ``contains()``
+      Recebe uma string com o nome de uma determinada classe, verifica se o elemento possui ou não essa classe e retorna um valor booleano.
+
+      ```JS
+      sections.classList.contains("container-produtos")
+      
+      ```
+
+   2. Método ``add()``  
+      Com o método add(), adicionamos uma classe ao elemento selecionado
+
+      ```JS
+      sections.classList.add("container-produtos")
+      
+      ```
+
+   3. Método ``remove()``  
+      Usamos o método remove() para remover uma classe da lista de classes do elemento.  
+
+      ```JS
+      sections.classList.remove("container-produtos")
+      
+      ```
+
+   4. Método ``toggle()``  
+      O método ``toggle()`` funciona como um interruptor, ou seja, se o elemento possui a classe passada como argumento, o método a remove. Caso ele não a possua, o ``toggle()`` adiciona.
+
+      ```JS
+      sections.classList.toggle("visible")
+      
+      ```
+
+----
+
+- IMPLEMENTAR INTERATIVIDADE  
+  Para implementar a interatividade nos nossos *sites*, precisamos nos fazer três perfuntas:
+  
+  - **QUEM**?  
+  Essa pergunta se refere aos **elementos que participarão da interatividade**. Geralmente, temos **dois elementos**:
+
+    1. um que **ativa** a interatividade
+    2. outro que **sofre** as alterações.
+
+    No código, esse passo equivale **a capturar os elementos do DOM** que serão usados.
+
+    ```JS
+    let botao = document.querySelector("button");
+
+    let texto = document.querySelector("p");
+    
+    ```
+
+    ![A](https://i.imgur.com/G5N9TF3.jpg)
+
+  - **O QUE**?  
+    Com essa pergunta, **definimos o comportamento da interatividade usando a lógica de programação**. Geralmente, está *encapsulado dentro de uma função*.
+
+    ```JS
+    function mudarCor( ){
+    texto.style.color = "blue"
+    }
+    
+    ```
+
+  - **QUANDO**?  
+    Essa pergunta se refere ao **tipo de evento que acionará a interatividade**. Por exemplo: ``click``, input ganhando ``foco``, pressionar uma tecla ( ``keyUp``, ``keyPress`` ou ``keyDown``), entre outros.
+
+    - Método ``.addEventListener()``  
+      Recebe **dois** argumentos:
+      1. uma ``string`` com o **tipo de evento**
+      2. uma ``função``, que define o **comportamento** a ser executado quando o evento for chamado.
+
+      ```JS
+      botao.addEventListener("click", mudarCor)
+
+      ```
+
+      >É IMPORTANTE:  
+      Lembrar que, ao chamar as funções que definem o comportamento como segundo argumento, **não abrimos nem fechamos os parênteses** depois do nome delas.
+
+      Também é possível definir o comportamento DA FUNÇÃO diretamente no segundo argumento do ``eventListener``. Para isso, usamos funções anônimas comuns ou ``()=> 'arrow functions'``.
+
+      ```JS
+      botao.addEventListener("click", ( ) => {
+
+        texto.style.color = "blue"})
+      ```
+
+  - **EVENTOS**  
+    Temos vários **eventos** que nos permitem *definir com precisão os gatilhos das interatividades* que queremos implementar. As três principais categorias são eventos de mouse, de teclado e de formulário.
+
+    ![A](https://i.imgur.com/v4gyDj4.jpg)
+
+    - Eventos de *mouse*
+      eventos gerados por algum tipo de interação do usuário usando o mouse como referência.
+
+      Evento | Descrição
+      ----|----
+      mouseover |Quando o cursor do mouse passa **por cima de um elemento**
+      mouseout | Quando o cursor do mouse **deixa de estar "em cima"** de um elemento
+      click | Quando **pressionamos e soltamos o botão esquerdo do mouse**
+      dblclick |Quando **clicamos duas vezes com o botão esquerdo** do mouse
+
+----
+
+>Leitura Complementar
+
+[FACUL IV2. JavaScript - addEventListener. YouTube, 25 fev. 2022.](https://www.youtube.com/watch?v=RCLZ9h2Z8Ho)
+
+[MATHEUS BATTISTI - HORA DE CODAR. Curso JavaScript #50 - Eventos mouseover e mouseout. YouTube, 30 ago. 2020.](https://www.youtube.com/watch?v=U8-NbkaDJf0&ab_channel=MatheusBattisti-HoradeCodar)
+
+### 6.6.3 - Revisão do módulo - JS II - Parte02
+
+Os **eventos** que usamos para executar comportamentos no nosso site também **possuem propriedades**. Sendo assim, podemos usá-las para personalizar ainda mais as interatividades.
+
+- Capturar informações do evento;
+- Eventos de teclado;
+- Funções ``preventDefault()`` e ``alert()``;
+- Eventos de formulário
+
+#### 6.6.3.1 - Informações do ``evento``
+
+Essas propriedades **fornecem informações específicas sobre o evento**, como o momento em que foi acionado, o elemento a partir do qual foi chamado, a posição do mouse quando ele foi executado etc.
+
+Para acessá-las, devemos definir um parâmetro na função que chamamos dentro do eventListener que representa o evento em si.
+
+```JS
+botaoTempo.addEventListener("click", (evento) => {
+  
+});
+```
+
+Além disso, podemos acessar propriedades do ``evento`` usando a ``dot notation``.
+
+```JS
+botaoTempo.addEventListener("click", (evento) => {
+  console.log(evento.timeStamp)
+})
+```
+
+A propriedade ``timeStamp`` retorna um número que representa a quantidade de milissegundos desde a renderização da página até o momento em que o evento aconteceu.
+
+![A](https://i.imgur.com/iWZ3s8k.jpg)
+
+```JS
+botaoTempo.addEventListener("click", (evento) => {
+  console.log(evento.timeStamp)
+})
+
+```
+
+A propriedade ``target`` nos permite acessar as informações e propriedades tanto do elemento que ativou o evento quanto dos seus elementos filhos. Para ativá-la, usamos:
+
+```JS
+botaoCor.addEventListener("click", (evento) => {
+  console.log(evento.target)
+})
+```
+
+#### 6.6.3.2 - Eventos do Teclado
+
+Os ``eventos de teclado`` **são muito populares na área de desenvolvimento de videogames.**
+
+Esses tipos de eventos nos permitem adicionar interatividades mais sofisticadas aos nossos sites, como navegar usando os controles numéricos ou fechar elementos usando a tecla escape.
+
+Evento |Descrição
+----|----
+keypress |Evento que **só reconhece** as teclas de **letras**, **números** ou **pontuação**, desconsiderando teclas como SHIFT, ALT, setas etc.
+keydown| Evento disparado ao **pressionar uma tecla**. Ele é executado de forma repetida se a tecla permanecer pressionada.
+keyup|Evento disparado **ao soltar uma tecla** após pressioná-la.
+
+```JS
+  document.addEventListener("keyup", (e)=> {
+  console.log(e.key);
+  console.log(e.code);
+})
+```
+
+#### 6.6.3.2.1 - Propriedade ``key``
+
+Essa propriedade representa **o valor que a tecla guarda** e não necessariamente é um valor único.
+
+Por exemplo, a tecla 1 do Numpad e a tecla 1 do teclado alfanumérico **guardam o mesmo valor** na propriedade ``key``.
+
+#### 6.6.3.2.2 - Propriedade ``code``
+
+Essa propriedade **guarda um código único** que *representa a tecla* e **não é repetido por outra tecla.** Podemos comparar com o atributo ``id`` dos elementos HTML.
+
+Por exemplo, a tecla 1 do Numpad e a tecla 1 do teclado alfanumérico guardam valores distintos na propriedade code.
+
+#### 6.6.3.3 - Funções nativas
+
+ aprendemos também sobre o uso de duas funções nativas da linguagem JavaScript para **aplicarmos em conjunto com os eventos de formulário.**
+
+#### 6.6.3.4 - preventDefault()
+
+O método ``preventDefault( )`` **impede o comportamento padrão de qualquer elemento capturado do DOM**, como a navegação de links com a tag ``<a>`` e o envio de formulários.
+
+Esse método é acessado e executado a partir do parâmetro que representa o **evento nas funções**, que foram passadas como segundo parâmetro do ``eventListener``.
+
+```JS
+  link.addEventListener("click", (evento) => {
+
+    evento.preventDefault()
+
+})
+```
+
+#### 6.6.3.5 - alert()
+
+A função ``alert()`` é **usada para exibir uma mensagem de feedback ao usuário.**
+
+Para usá-la, basta executá-la passando uma string, que contém a mensagem que quer exibir, como argumento.
+
+![a](https://i.imgur.com/4Hj3k0V.jpg)
+
+ muito comum usar essas mensagens de feedback para informar aos usuários quando não foi possível executar uma ação do site ou quando uma ação foi executada de forma satisfatória, entre outras formas.
+
+#### 6.6.3.6 - Eventos de formulário
+
+Eventos de formulário são usados, principalmente, para implementar ações de validação nos nossos formulários. Assim, evita o envio de informações erradas, informa aos usuários a inserção errada de dados e o status de envio de informações.
+
+Evento|Descrição|Ativação
+:----|:----|:----
+focus|Quando o **elemento é focado** pelo usuário | Dizemos que um elemento "ganha foco" quando habilitamos a inserção de dados, geralmente clicando nele;
+blur|Quando um **elemento perde o foco** do usuário |
+change|Quando um **elemento teve seu valor alterado** após perder o foco |Os eventos changes são executados de forma um pouco diferente, dependendo do tipo de input e como os dados são inseridos;
+submit|Quando **enviamos as informações do formulário**|Os eventos do tipo submit devem ser executados no elemento do formulário em si, não no botão com tipo submit.
+
+[Tabela Estudo Dirigito](https://drive.google.com/drive/folders/1g6YK6sVSyMG0dZFG_I340_8zrw9HZ_2r)
+
+CONECTAR | EXPANDIR | DESAFIAR
+----|----|----
+Como os conteudos trabalhados aqui te conectam com o que vc já sabia? | Como os conteúdos trabalhados aqui expandem o que você já sabe? | Quais conteúdos ainda te desafiam ou te confundem?
+
+>Leitura Complementar
+
+[MATHEUS BATTISTI - HORA DE CODAR. Curso JavaScript #51 - Eventos keydown e keyup. YouTube, 30 ago. 2020.](https://www.youtube.com/watch?v=0vQMTKeIkcE&t=2s&ab_channel=MatheusBattisti-HoradeCodar)
+
+[ALÉM DO CÓDIGO. Como fazer VALIDAÇÃO DE FORMULÁRIO com Javascript | Validação Formulário Javascript.](https://www.youtube.com/watch?v=SazrvkE7t-g)
 
 #### 6.6.2.1 - Anotações Exercícios
 
