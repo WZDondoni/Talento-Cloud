@@ -316,11 +316,205 @@ Por exemplo: (0, 1) ou (1, n)
    1. Uma entidade pode ser definida como um objeto do mundo real, um objeto concreto ou um abstrato, possuindo existência independente.
       1. Resposta correta!Entidade é o objeto básico tratado pelo Modelo ER.
 
+### 7.1.3 - Normalizar um esquema de banco de dados
 
+#### 7.1.3.1 - Normalização de dados e aplicação das formas normais
 
+>CONTEÚDO VÍDEO INTRODUTÓRIO
 
+Normalização de dados é um processo que serve para evitar o surgimento de anomalias nas tabelas, surgem em três situações:
 
+* Na ``Inserção`` dos dados;
+  * Quando adicionamos um registro na tabela sem que outro registro já esteja disponível;
+  ![a](https://i.imgur.com/xZnuOnL.png)
+  Não poderia ser informado em qual departamento tal funcionário está alocado se não houver a ``entidade Departamento``. Sem ela, haveria uma anomalia de inserção.
 
+* Na ``Exclusão`` dos dados;
+  * Acontece ao excluirmos um registro de uma tabela que acaba por afetar diretamente os registros de outra tabela;
+  ![a](https://i.imgur.com/kgsqKMW.png)
+  ``Entidade Empregado`` depende da ``Entidade Departamento``, se a ``Sigla_departamento`` for excluída da ``Entidade Departamento`` deverá ocorrer a exclusão do atributo ``Sigla_departamento`` de todos os registros da ``Entidade Empregado``, para não incorrer em uma anomalia de exclusão.
 
+* Na ``Alteração`` dos dados;
+* Ocorre na modificação de um registro, fazendo com que registros em outras tabelas também sejam modificados.
+![a](https://i.imgur.com/5CpnT0L.png)
+Se a ``Sigla_departamento`` for alterada na entidade/Tabela ``Departamento`` ela também deve ser alterada na entidade/Tabela ``Empregado``. Ou ocorrerá anomalia.
+
+VANTAGENS DA NORMALIZAÇÃO
+
+* Previnir anomalias;
+* Facilitar a manutenção;
+* Aumentar a performace;
+* Manter a integridade dos dados;
+
+A normalização é baseada em ``Formas normais``, que são REGRAS, que devem ser **seguidas por uma tabela** para que ela seja considerada eficiênte.
+
+DEPENDÊNCIA FUNCIONAL  
+
+Revela qual será a relação **entre** *os atributos dentro de uma tabela*;
+A ``dependência funcional`` é a base na NORMALIZAÇÃO DE DADOS, uma vez que é através dela que é realizada a **conversão de dados** de *estruturas complexas de dados* em *estruturas estáveis e simples* utilizando as ``Formas normais``.
+
+Conceito de BD e fundamental na programação.
+
+>CONTEÚDO HYPERLINK
+
+A ``normalização de dados`` <https://www.devmedia.com.br/guia-simplificado-para-as-5-formas-normais-artigo-revista-sql-magazine-87/21043> é um processo criado em 1970, logo após o reconhecimento das   ``formas normais``  <https://learn.microsoft.com/pt-br/office/troubleshoot/access/database-normalization-description>
+
+As ``formas normais`` são passos descritivios sobre a organização dos dados do banco de dados.
+
+O ato de ``Normalização os dados`` é desmembrar as tabelas em tabelas mais específicas, gerando um aumento do número de tabelas, por consequência o aumento de manutenção e **comprometer a performance inicial**  
+Normalização deve ser realizada por bom senso, e o horizonte de melhorias é de médio longo prazo.
+
+Link slide Proz <https://slides.com/administrador/hipertexto02_banco_de_dados_i_proz?token=k-RpWtJf#/1>
+
+#### 7.1.3.2 - Primeira Forma Normal - 1FN
+
+>Normalização tem como objetivo evitar anomalias nas tabelas.
+
+1FN;
+
+* **não existem grupos de atributos repetidos**;  
+* suas relações **não possuem atributos multivalorados**;
+* cada *linha* **deve** representar **um registro** e cada *célula* **deve** conter um **valor único**;
+
+Uma tabela 1FN deve estar de acordo com as seguintes informações:
+
+* os dados **devem estar em valores atômicos**, ou seja, indivisíveis;
+* ter apenas **um dado por coluna**;
+* deve existir **pelo menos uma chave primária**;
+* se existirem atributos ``multivalorados``, uma **nova tabela será criada**;
+* se existirem atributos ``compostos``, eles serão **desmembrados em novas colunas** de dados.
+
+Exemplo da 1FN
+
+![a](https://i.imgur.com/8pJjEpQ.jpg)
+
+Para que essa tabela esteja na 1FN, precisamos organizar alguns dados. Percebemos que nela existem atributos ``multivalorados``, *que são aqueles que podem ter mais de um valor*, como o **Contato**, e atributos ``compostos``, *que são aqueles que podem ser divididos em atributos menores*, como o **Endereço**. Então, é preciso modificar isso, pois nã**o é permitido** nesse tipo de *forma normal*.
+
+Nos atributos ``compostos`` ocorre a *decomposição dos dados*, em que **cada dado é adicionado em uma coluna**. Assim, o atributo endereço será subdividido em atributos menores.
+
+![a](https://i.imgur.com/4fjjM08.png)
+
+No caso dos atributos ``multivalorados``, **criamos uma nova tabela** com os dados. Na nova tabela **Contato**, a ``chave primária-PK`` é o *identificador* e a ``chave estrangeira-FK`` é o *CPF* correspondente da tabela **Pessoa**. Se um CPF possuir dois contatos, eles devem ser apresentados em linhas diferentes na tabela Contato, como é o caso dos CPFs dos identificadores 4 e 5.
+
+![a](https://i.imgur.com/ILmNM6D.png)
+
+#### 7.1.3.3 - Segunda Forma Normal - 2FN
+
+A 2FN, tem que ter tudo que a 1FN exige.
+
+* não deve ter atributos compostos ou multivalorados e nem dependências parciais.
+
+Explicação sobre chave primária composta:
+![a](https://i.imgur.com/VNMChuB.jpg)
+
+No caso das chaves ``primárias compostas``, a 2FN **exige que todas as relações tenham dependência total**. Ou seja, uma chave primária composta **determina** funcionalmente os atributos, *não podendo existir um atributo que depende apenas de uma parte dessa chave.* Não pode ser composta.
+
+Portanto, na 2FN, os dados:
+
+* já estão na 1FN;
+* a chave primária precisa ser simples.
+
+![a](https://i.imgur.com/hI1Rfen.png)
+
+Essa tabela está na 1FN, **não possuindo dados multivalorados e nem atributos compostos.** Portanto, como não está na 2FN, ela precisa de ajustes.
+
+Nesta tabela, temos chaves primárias compostas, o ``IDENTIFICADOR`` e o ``IDENTIFICADOR_FUNÇÃO``. Com o atributo NOME, conseguimos saber qual é o nome da pessoa, sendo um atributo que depende parcialmente da chave primária.
+
+Também conseguimos saber qual é a função da pessoa pelo número do identificador e a descrição pelo identificador da função. Com isso, podemos ter duas tabelas ao invés de apenas uma.
+
+Para transformar essa tabela na 2FN, será necessário desmembrar alguns dados e construir outra tabela. Assim, nenhuma coluna depende parcialmente de outra.
+
+![a](https://i.imgur.com/8ndto7G.png)
+
+Para que a tabela original fique na 2FN, ela precisa ser dividida em duas. Com esse diagrama, temos a organização de como as duas tabelas seriam criadas com os seus devidos atributos para que não haja chave primária composta. No relacionamento das entidades, uma pessoa pode possuir uma ou várias funções e uma função pode ter uma ou várias pessoas envolvidas.
+
+#### 7.1.3.4 - Terceira Forma Normal - 3FN
+
+A Terceira Forma Normal (3FN) tem que estar, obrigatoriamente, na 2FN e possuir dependência exclusiva da chave primária da tabela.
+
+>Todos os seus atributos  devem ser funcionalmente independentes.
+
+Na 3FN, os dados:
+
+* devem estar na 2FN;
+
+* Os atributos não podem depender de outros que não são chaves.
+
+![a](https://i.imgur.com/eAxl3Ub.png)
+
+Essa tabela não está na 3FN, pois os seus atributos não são todos dependentes. A Nota_fiscal é a chave primária e sabemos o Nome_vendedor através do Identificador_vendedor. Com isso, temos uma dependência. 
+
+Para resolver isso, precisamos criar uma nova tabela com esses atributos que são dependentes.
+
+![a](https://i.imgur.com/7suHDaL.png)
+
+Agora, temos uma tabela ``Vendedor`` com a sua chave primária ``Identificador_vendedor`` e os nomes de cada vendedor.
+
+![a](https://i.imgur.com/OSyYmL3.png)
+
+Os nomes dos vendedores *são excluídos desta tabela*, porém ela continua com o ``Identificador_vendedor``, que **se torna uma chave estrangeira** nesta tabela, pois esse atributo é uma ``chave primária`` na tabela ``Vendedor``.
+
+#### 7.1.3.5 - Forma Normal de Boyce-Cood - FNBC
+
+Cada forma normal é estritamente mais forte do que a anterior, então:
+
+* toda relação da 2FN encontra-se na 1FN;
+  
+* e toda  relação na 3FN encontra-se na 2FN.
+
+O mesmo acontece  com a Forma Normal de Boyce-Codd (FNBC). Toda relação FNBC está na 3FN.
+
+![A](https://i.imgur.com/owCKwr4.png)
+
+Analisando essa tabela, conseguimos entender que:
+
+* descobrimos o professor se soubermos quem é o aluno e qual é a disciplina;
+* descobrimos qual é a disciplina se soubermos quem é o professor;
+
+Assim, existem dependentes entre os atributos.
+
+Para transformar essa tabela na FNBC, é necessário decompor as relações que são dependentes. Neste caso, essa tabela é decomposta da seguinte forma:
+
+* Professor, Disciplina;
+
+* Aluno, Professor.
+
+![A](https://i.imgur.com/ym8cQCv.png)
+
+Após a decomposição, temos uma tabela com a ``chave primária`` Professor e sua respectiva Disciplina.
+
+![A](https://i.imgur.com/Psq96KT.png)
+
+Após a decomposição, temos outra tabela com a chave primária Aluno e Professor como chave estrangeira, pois, a partir do professor, podemos saber qual disciplina o aluno irá cursar.
+
+Vimos no exemplo anterior como transformar uma tabela para a FNBC, utilizando a função de decompor os atributos, construindo novas tabelas para eliminar as dependências.
+
+>leitura Complementar
+
+HEUSER, Carlos Alberto. Projeto de Banco de Dados. 2 ed. Rio de Janeiro: Campus, 2008.
+
+MONTEIRO, Emiliano Soares. Projetos de Sistemas e Bancos de Dados. Rio de Janeiro: Brasport, 2004.
+
+>Referência Bibliográfica
+
+DATE, Christopher J. Introdução a Sistemas de Bancos de Dados. Rio de Janeiro: Campus, 2004.
+
+ELMASRI, Ramez E., NAVATHE, Shamkant B. Sistemas de Banco de Dados. 4 ed. São Paulo: Pearson Addison-Wesley, 2008.
+
+OPPEL, Andy. Banco de Dados Desmistificado. Rio de Janeiro: Alta Books, 2004.
+
+SILBERSCHATZ, Abraham, KORTH, Henry F., SUDARSHAN, S. Sistema de Banco de Dados. 5 ed. Rio de Janeiro: Campus, 2006.
+
+#### 7.1.3.6 - Anotação Exercícios
+
+1. O que causaria uma anomalia de atualização nessa tabela? ![a](https://i.imgur.com/r3g7xpW.png)
+   1. Se o endereço de uma das agências for atualizado, ele precisa ser atualizado para todos os funcionários ou ocorrerá uma anomalia de atualização.
+      1. Resposta correta!Isso mesmo! Se o local não for atualizado para os funcionários, eles podem ter o mesmo número de agência com endereços diferentes.
+2. Podem surgir diversas anomalias em um banco de dados. Analisando as tabelas, o que causaria uma anomalia de exclusão?![a](https://i.imgur.com/zmYIbT9.png)
+   1. Excluir NUMERO_AGENCIA da tabela Agência, pois, assim, o funcionário não teria vínculo com a agência.
+      1. Resposta correta!Isso mesmo! A tabela Funcionário depende de um registro da tabela Agência, que, caso seja excluído, tudo que estiver relacionado a ele também deve ser excluído para a anomalia não ocorrer.
+3. Qual é a função da normalização no desenvolvimento de um banco de dados?
+   1. Prevenir anomalias e aumentar o desempenho do banco de dados.
+      1. Resposta correta!Isso mesmo! Com o uso da normalização, a manutenção do banco de dados se torna mais prática.
 
 
