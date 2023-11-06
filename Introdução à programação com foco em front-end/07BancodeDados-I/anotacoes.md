@@ -36,8 +36,6 @@ O modelo também explica os tipos de relações entre essas tabelas, incluindo r
 
 ![a](https://d2slcw3kip6qmk.cloudfront.net/marketing/pages/chart/seo/database/discovery/relational-model.svg)
 
-
-
 #### 7.1.1.3 - Abstração de Dados
 
 A abstração de dados garante uma visão intangível de um banco de dados para seu usuário.
@@ -132,7 +130,6 @@ SILBERSCHATZ, Abraham; KORTH, Henry F.; SUDARSHAN, S. Sistema de Banco de Dados.
                   1. Sua existência **depende** de outra pra existir;
                3. ASSOSSIATIVAS;
                   1. Surgem quando existe a necessidade de associar uma entidade a um relacionamento.
-            3. 
          2. CÍRCULOS - Atributos;
             1. Servem para caracterizar e escrever a entidade dentro de um **domínio**, e possuem algumas **funções**:
                1. Descritivas;
@@ -256,7 +253,6 @@ Aqui, temos a conversão do modelo conceitual muitos para muitos **(n, n)** para
 
 ![a](https://i.imgur.com/uR5OlLh.jpg)
 Uma nova tabela é criada para que ocorra o relacionamento entre as outras tabelas. Por isso, **ela possui apenas as chaves estrangeiras.**
-
 
 Aqui, temos a conversão do modelo conceitual um para um **(1,1)** para o modelo lógico. Neste modelo, todas as entidades se tornam uma única tabela, ou seja, ocorre uma união dos dados.
 
@@ -442,7 +438,7 @@ Na 3FN, os dados:
 
 ![a](https://i.imgur.com/eAxl3Ub.png)
 
-Essa tabela não está na 3FN, pois os seus atributos não são todos dependentes. A Nota_fiscal é a chave primária e sabemos o Nome_vendedor através do Identificador_vendedor. Com isso, temos uma dependência. 
+Essa tabela não está na 3FN, pois os seus atributos não são todos dependentes. A Nota_fiscal é a chave primária e sabemos o Nome_vendedor através do Identificador_vendedor. Com isso, temos uma dependência.
 
 Para resolver isso, precisamos criar uma nova tabela com esses atributos que são dependentes.
 
@@ -517,4 +513,221 @@ SILBERSCHATZ, Abraham, KORTH, Henry F., SUDARSHAN, S. Sistema de Banco de Dados.
    1. Prevenir anomalias e aumentar o desempenho do banco de dados.
       1. Resposta correta!Isso mesmo! Com o uso da normalização, a manutenção do banco de dados se torna mais prática.
 
+## 7.2 - MÓDULO 02 - QUAL SERIA A MELHOR FERRAMENTA PARA IMPLEMENTAR O BANCO?
 
+Realizar cálculos de consultas em banco de dados
+
+### 7.2.1 - Linguagens formais de consulta a bancos de dados - Álgebra relacional e Cálculo relacional
+
+Na *criação de um banco de dados*,**o  principal objetivo é o armazenamento.** Os dados devem ser persistentes e íntegros, pois as suas informações serão trabalhadas.  
+**Usando as consultas** que são implementadas na linguagem SQL, **esses dados podem ser recuperados para o usuário ou para a aplicação** do banco de dados.  
+Essa linguagem foi desenvolvida com base em outras de ``consultas formais`` como a **álgebra relacional**.  
+
+![A](https://i.imgur.com/yyXL9Xb.jpg)
+
+### 7.2.2 - Álgebra relacional
+
+A ``álgebra relacional`` **é uma linguagem de consulta**, onde *os usuários passam instruções* para o sistema executar e o mesmo executa o conjunto de instruções *a fim de se obter um resultado desejado pelo usuário*.  
+O **objetivo das instruções** é *acessar o banco de dados e coletar a informação* que o usuário deseja.  
+A álgebra relacional é a base formal para IMPLEMENTAÇÃO da linguagem ``SQL``. Essa que é uma linguagem comercial usada para **aplicar estratégias disponíveis**  no módulo de processamento de consultas interno dos Sistemas de Gerenciamento de Banco de Dados (SGBDs).  
+Esses ``módulos`` **incluem a funcionalidade da otimização de consultas**, as quais são realizadas com o SGBD para extrair os dados que estão no banco.  
+[Otimização de consultas]<https://www.devmedia.com.br/10-tecnicas-de-otimizacao-de-consultas-sql/39499>  
+
+Nomeclaturas encontradas na Algebra Relacional
+
+Algebra|MER
+----|----
+Tuplas| Linhas da Tabela
+Atributos| Colunas da Tabela
+Relação| A Tabela
+
+>LEMBRE-SE  
+> O **DER** é uma representação mais simples e visual das relações entre entidades, enquanto o **MER** é mais detalhado e abstrato, descrevendo a estrutura do banco de dados de uma maneira mais técnica. Ambos são usados no processo de design de banco de dados para ajudar na compreensão e implementação de um sistema de banco de dados.  
+
+#### 7.2.2.1 - Operação *select*
+
+O operador ``select``, ou a o``peração de seleção``, seleciona tuplas das tabelas para atender a uma solicitação e extrair informações.
+
+![a](https://i.imgur.com/iVhHdhH.jpg)
+
+[Operador select]  
+<https://www.devmedia.com.br/algebra-relacional-tutorial/2663>
+
+![a](https://i.imgur.com/kfQP8uy.jpg)
+
+No exemplo, podemos entender que em uma tabela de nome ``EMPREGADO``, serão selecionadas as tuplas que possuem o valor de salário maior que dois mil.
+
+A letra grega ``σ`` (sigma) representa a operação select, e a sua representação é da seguinte forma :
+
+![a](https://i.imgur.com/FY9NvkW.jpg)
+
+A expressão booleana  ``<condição da seleção>`` é aplicada sobre atributos da tabela e  ``<nome da relação>``  é em qual tabela a operação select será aplicada.  
+Neste exemplo, temos um operador ``select`` para selecionar as tuplas de uma tabela ``Aluno`` que possuem a nota do aluno **maior que 7,0.** Observe como o comando é utilizado em álgebra relacional:  
+![a](https://i.imgur.com/LnZB5TO.jpg)  
+Como resultado da extração, temos a seguinte tabela:  
+![a](https://i.imgur.com/dayKmnL.jpg)
+
+Neste caso, o operador ``select`` seleciona as tuplas de uma tabela de nome ``DEPENDENTE``. Os dados extraídos devem ser de filho e que seja do *sexo masculino*, utilizando o camando ``AND``, pode-se consultar uma informação juntamente com outra, sendo *filho* e do sexo masculino.  
+![a](https://i.imgur.com/tSMkvpy.jpg)
+
+Resultado:
+![a](https://i.imgur.com/RGnjPGA.jpg)
+
+Os **operadores relacionais** utilizados nas operações select são ``<``, ``>``, ``≤``, ``≥``, ``=`` e ``≠``, e os **operadores booleanos** são ``and``, ``or`` e ``not``.
+
+#### 7.2.2.2 - Operação *project*
+
+A operação de **projeção**, ou ``project``, *permite **escolher e separar** um conjunto determinado de **colunas** de uma tabela*. Observe a representação:
+  ![a](https://i.imgur.com/1USB5OZ.jpg)
+  No exemplo, podemos entender que em uma tabela de nome ``EMPREGADO``, **serão selecionadas as colunas** que possuem o ``nome`` e o ``salário`` dos empregados.
+
+![a](https://i.imgur.com/U2SIpGk.jpg)  
+
+[Operação de projeção]  <https://www.youtube.com/watch?v=v-CaKZG8k_s>
+
+ A operação ``project`` é representada pela letra grega π (pi), e a sua representação é da seguinte forma:
+
+ ![a](https://i.imgur.com/m4fJPzL.jpg)
+
+ A parte ``<lista de atributos>`` representa a lista de atributos que o usuário selecionará na tabela.
+
+ A parte ``<nome da relação>`` é em qual tabela vai ser aplicada a operação project.
+
+Neste exemplo, temos um project para selecionar as colunas **Nome** e **Nota** da tabela **Aluno**. Então, para que as colunas sejam extraídas, **a nota do aluno deve ser maior que 7,0**:  
+![a](https://i.imgur.com/9CXyiNq.jpg)
+![a](https://i.imgur.com/2RigRHu.jpg)
+
+#### 7.2.2.3 - Sequencialidade de operações
+
+Na sequencialidade de operações, podemos combinar as operações de project e select. Assim, é possível extrair tuplas e colunas ao mesmo tempo.
+
+Sua forma geral é:
+
+![a](https://i.imgur.com/d14donS.jpg)
+
+[Sequencialidade de operações]  <https://www.youtube.com/watch?v=E-tIwv8jDhE&t=15s>
+
+Neste exemplo, temos uma **combinação de operações**, onde dados são extraídos de uma tabela (``func``)Funcionário.
+As **colunas** desta tabela a serem extraídas são:
+
+* Nome,
+* Depto(departamento) e
+* Salário.
+
+as **tuplas** que serão extraídas deve apresentar o *valor de salário menor que dois mil*
+
+![a](https://i.imgur.com/v8ko2Db.jpg)
+
+Ao realizar essa extração, será apresentada a seguinte consulta, com o nome de dois funcionários, o departamento em que trabalham e o salário que recebem.
+
+![a](https://i.imgur.com/OXQqxZC.jpg)
+
+#### 7.2.2.4 - Como funcionalm as operações matemáticas dentro dos conjuntos
+
+**As relações** também **podem ser tratadas como conjuntos**, logo, pode-se aplicar operações matemáticas sobre elas.  
+
+As operações são:
+
+* **União** - representada pelo símbolo ``U``;
+* **Interseção** - representada pelo símbolo ``∩``; e
+* **diferença** - representada pelo símbolo ``≠``.  
+
+Esses operadores são **NÃO UNÁRIOS**, isso quer dizer que eles **podem ser utilizados em mais de uma tabela**.
+
+#### 7.2.2.5 - Operações não unárias
+
+As operações não unárias **precisam**, **necessariamente**, **de mais de uma relação para acontecer**.  
+
+Elas ``atuam em relações compatíveis``, ou seja, **aquelas que possuem o mesmo** grau, ou mesmo **número**, de **atributos** que têm o mesmo domínio.  
+
+#### 7.2.2.6 - Operações matemáticas: União
+
+A união entre os conjuntos **R** ``U`` **S**, por exemplo, vai **retornar** **todas** as ``tuplas de R``, ``de S`` e as em ``comum entre R e S``, ou seja, a ``intersecção``.
+
+![a](https://i.imgur.com/Lm2NAEm.jpg)
+
+[União entre Conjuntos]  <https://www.youtube.com/watch?v=J3BlrfLkC0A>
+
+Neste exemplo, temos a união das tabelas ``Aluno`` e ``Professor``. Observe que a tabela ``Aluno`` **U** ``Prof``, criada com a união dos dados, contém todos os dados de ambas. **Porém, se existir dados iguais** nas duas, é mostrado **apenas um** na tabela de resultado.  
+
+![a](https://i.imgur.com/UzoZ5sC.jpg)
+
+OBERVAÇÃO
+![A](https://i.imgur.com/cmOfSQV.jpg)
+Não entendi o motivo desse resultado. Entrei em contado com o grupo.
+
+#### 7.2.2.6 - Operações matemáticas: Intersecção
+
+A operação de ``intersecção`` **retorna** **apenas o que existe em comum entre duas tabelas** ``R`` **∩** ``S``.
+
+[Operação de Intersecção]  <https://www.youtube.com/watch?v=I93r3XilNxA>  
+
+Então, o seu **resultado** é uma ``nova relação`` que inclui todas as tuplas que estão em R, em S e na intersecção entre ambas, **retornando** **apenas o que existe em comum entre as duas relações**.
+
+![a](https://i.imgur.com/aI9Qh0r.jpg)
+
+Aqui, temos a intersecção das tabelas Aluno e Professor. Observe que a tabela ``Aluno`` **∩** ``Professor``, criada com a intersecção dos dados, **contém todos os dados que são iguais em ambas as tabelas**.
+
+![A](https://i.imgur.com/9Le0mM8.jpg)
+
+#### 7.2.2.7 - Operações matemáticas: Diferença
+
+A operação de ``diferença`` também é não unária, ou seja, precisa de mais de uma tabela. Ela **retorna** ``todas as tuplas pertencentes a R`` mas que **não pertencem a S**.
+
+[Operação de diferença]  <https://www.youtube.com/watch?v=fr29QmtyPlw>
+
+>É importante saber!  
+> que ela **NÃO É COMUTATIVA**, diferente das operações de **união** e de **intersecção**. logo R - S é Diferente de S - R.  
+>**RELEMBRE**:
+Comutatividade : É a propriedade que diz que a ordem em que você coloca os blocos sobre a mesa não importa, o resultado é o mesmo. Igual a os números, independente da ordem na adição ou multiplicação é o mesmo.
+
+![A](https://i.imgur.com/hKLOegn.jpg)
+
+Aqui, temos a diferença das tabelas ``Aluno`` e ``Professor``. Observe que a tabela ``resultado da diferença`` **contém** **todos os dados que pertencem à tabela Aluno** e ``não pertencem à tabela Professor``.
+
+![A](https://i.imgur.com/O7u4zoe.jpg)
+
+#### 7.2.2.8 - Cálculo relacional
+
+``Cálculo relacional`` **é uma linguagem formal de consultas** para banco de dados *relacionais*. Ela é ``não procedimental``, ou seja, **a ordem não importa**, diferentemente da **álgebra relacional** que as operações **devem ser executadas em uma determinada ordem**.
+
+[Cálculo relacional]  <https://www.youtube.com/watch?v=doJ1dI00Xbg>
+
+A expressão criada para executar uma operação em cálculo relacional **independe** **da ordem e específica** o que deve ser recuperado, invés de como recuperar.  
+
+Além disso, **toda expressão criada em cálculo relacional** ``consegue se expressar na álgebra  relacional``, o mesmo acontece ao contrário.
+
+O ``cálculo`` e a ``álgebra relacionais`` **são linguagens que definiram a base de consultas para bancos de dados relacionais**.
+
+#### 7.2.2.8 - Álgebra relacional e o cálculo relacional
+
+A ``álgebra relacional`` é responsável por **definir as operações do modelo relacional** e o ``cálculo relacional``, por **especificar uma consulta declarativa**, já que *é uma linguagem de consulta formal e utiliza a expressão declarativa*.
+
+[Álgebra relacional]  
+<https://sites.google.com/site/fkbancodedados1/algebrarelacional>  
+
+[Cálculo relacional]  
+<https://www.ime.usp.br/~jef/calcrelac.pdf>  
+
+[Cálculo]  
+<https://www.youtube.com/watch?v=4B5PJREk2YI&list=PLz7W_DVMdJkHUmwwzgi8ZgiYSkA7zFLD7>
+
+>Leitura Complementar
+
+[DESCOMPLICA, OLIBA!. Álgebra Relacional em Bancos de Dados - Operações Unárias (Seleção, Projeção). YouTube, 6 jul. 2020.]  <https://www.youtube.com/watch?v=E-tIwv8jDhE&list=PLsVF4k1EODtGJcnizYVGjgAexY9idkEYH>  
+
+[DESCOMPLICA, OLIBA!. Operações sobre Conjuntos de Dados - União, Intersecção e Diferença - Álgebra Relacional de Dados. YouTube, 20 jul. 2020.]  <https://www.youtube.com/watch?v=J3BlrfLkC0A&list=PLsVF4k1EODtGJcnizYVGjgAexY9idkEYH&index=3>
+
+>Referências Bibliográficas
+
+DATE, Christopher J. Introdução a Sistemas de Bancos de Dados. Rio de Janeiro: Campus, 2004.
+
+ELMASRI, Ramez E., NAVATHE, Shamkant B. Sistemas de Banco de Dados. 4 ed. São Paulo: Pearson Addison-Wesley, 2008.
+
+HEUSER, Carlos Alberto. Projeto de Banco de Dados. 2 ed. Rio de Janeiro: Campus, 2008.
+
+MONTEIRO, Emiliano Soares. Projetos de Sistemas e Bancos de Dados. Rio de Janeiro: Brasport, 2004.
+
+OPPEL, Andy. Banco de Dados Desmistificado. Rio de Janeiro: Alta Books, 2004.
+
+SILBERSCHATZ, Abraham, KORTH, Henry F., SUDARSHAN, S. Sistema de Banco de Dados. 5 ed. Rio de Janeiro: Campus, 2006.
