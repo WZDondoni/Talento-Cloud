@@ -125,16 +125,16 @@ Atentar **quando precisamos utilizar as chaves primárias compostas e as chaves 
 
 1. Em relação às tabelas de um banco de dados, assinale a alternativa correta sobre a chave estrangeira.
    1. Em uma tabela, a chave estrangeira faz referência a uma chave primária de outra tabela.
-      1. Resposta correta!A chave estrangeira cria uma relação entre tabelas.
+      1. ✅A chave estrangeira cria uma relação entre tabelas.
 2. Para que serve uma chave estrangeira na tabela do banco de dados?
    1. Para criar uma relação entre tabelas através da chave primária.
-      1. Resposta correta!A chave estrangeira relaciona tabelas por meio da chave primária.
+      1. ✅A chave estrangeira relaciona tabelas por meio da chave primária.
 3. A chave estrangeira relaciona tabelas por meio da chave primária.
    1. A chave primária identifica e garante a unicidade de um registro em tabela, enquanto a estrangeira promove o relacionamento entre tabelas.
-      1. Resposta correta!A chave primária relaciona-se com a chave estrangeira por ser um dado único associado entre tabelas. Como exemplo, o CPF, um registro único, que é possível relacionar com compras ou pagamentos do seu dono.
+      1. ✅A chave primária relaciona-se com a chave estrangeira por ser um dado único associado entre tabelas. Como exemplo, o CPF, um registro único, que é possível relacionar com compras ou pagamentos do seu dono.
 4. Assinale a alternativa correta sobre a chave primária.
    1. A chave primária é única e não nula, ou seja, deve haver um valor válido.
-      1. Resposta correta!Na chave primária, deve sempre existir um valor válido, pois um valor único é relacionado a esse dado.
+      1. ✅Na chave primária, deve sempre existir um valor válido, pois um valor único é relacionado a esse dado.
 
 ### 8.1.2 - Compreender e aplicar todas as condições para execução de junções
 
@@ -420,10 +420,10 @@ Criar BD, Criar Tabelas e seus atributos e Criar Triggers.
 
 1. Qual o procedimento que se deve usar para atualizar uma tabela de banco de dados, automaticamente, sempre que um produto for cadastrado?
    1. Trigger.
-      1. Resposta correta!Isso mesmo! Com o trigger, a tabela sempre será atualizada de forma automática.
+      1. ✅Isso mesmo! Com o trigger, a tabela sempre será atualizada de forma automática.
 2. Quando um trigger pode ser ativado?
    1. Quando um procedimento DML é executado.
-      1. Resposta correta!A linguagem DML é a responsável por ativar o trigger.
+      1. ✅A linguagem DML é a responsável por ativar o trigger.
 3. Assinale a alternativa que apresenta corretamente a sintaxe de um trigger.
    1.
 
@@ -438,11 +438,11 @@ Criar BD, Criar Tabelas e seus atributos e Criar Triggers.
 
   ```
 
-1. Resposta correta!Isso mesmo! Assim, basta definir se o trigger será de insert, delete ou update. Depois, ele será executado.
+1. ✅Isso mesmo! Assim, basta definir se o trigger será de insert, delete ou update. Depois, ele será executado.
 
 ## 8.2 - MÓDULO 02
 
-### 8.2.1 - Assimilar o conceito da Function e Procedure e saber a melhor hora para utilizar.
+### 8.2.1 - Assimilar o conceito da Function e Procedure e saber a melhor hora para utilizar
 
 #### 8.2.1.1 - Conceitos de Function e Procedure
 
@@ -624,10 +624,10 @@ Já o `procedure` **nem sempre retorna um valor**, **pois é opcional**, **neces
 
 1. Qual é o principal papel da function?
    1. Sempre retornar um valor.
-      1. Resposta correta!A function é importante quando for necessário retornar um dado e requisições como essa são frequentes. Por exemplo, quando se extrai o número de itens que foram vendidos no dia e seus nomes.
+      1. ✅A function é importante quando for necessário retornar um dado e requisições como essa são frequentes. Por exemplo, quando se extrai o número de itens que foram vendidos no dia e seus nomes.
 2. Para que usamos um select em uma function?
    1. Para executar uma `function` onde precisamos passar o nome da função e os parâmetros que devem ser executados.
-      1. Resposta correta!Isso mesmo! Dos comandos SQL, o select é um dos mais simples. Sua utilização na function também não é complicada, basta informar o nome da função e os parâmetros.
+      1. ✅Isso mesmo! Dos comandos SQL, o select é um dos mais simples. Sua utilização na function também não é complicada, basta informar o nome da função e os parâmetros.
 3. Quando se usa um procedure?
    1. Quando um update, insert ou delete for recorrente numa tabela
       1. Procedure é uma das principais ferramentas utilizadas do banco de dados. Com ela, é possível otimizar o desempenho e a segurança.
@@ -707,10 +707,10 @@ Ao utilizar um procedimento de armazenamento OUTROS USUÁRIOS E APLICAÇÕES NÃ
 
 1. Por que usar um procedure é mais seguro?
    1. Porque as aplicações e os usuários não conseguem acessar as tabelas do banco de dados de forma direta.
-      1. Resposta correta!Apenas o nome do procedure e os parâmetros são disponibilizados.
+      1. ✅Apenas o nome do procedure e os parâmetros são disponibilizados.
 2. O que é um procedure?
    1. É uma biblioteca de comandos em SQL que são utilizados para executar uma ou mais tarefas.
-       1. Resposta correta!Isso mesmo! Procedure armazena tarefas repetitivas e aceita parâmetros de entrada para que a tarefa seja efetuada de acordo com a necessidade individual.
+       1. ✅Isso mesmo! Procedure armazena tarefas repetitivas e aceita parâmetros de entrada para que a tarefa seja efetuada de acordo com a necessidade individual.
 3. Assinale a alternativa que apresenta a sintaxe correta para criar um procedure.
     1. ```SQL
 
@@ -721,7 +721,7 @@ Ao utilizar um procedimento de armazenamento OUTROS USUÁRIOS E APLICAÇÕES NÃ
       END $$
       DELIMITER ;
        ```
-        1. Resposta correta!Correto! Essa é a sintaxe correta para criar um procedure.
+        1. ✅Correto! Essa é a sintaxe correta para criar um procedure.
 
 ### 8.2.3 - Relacionamento N:N em SQL - Luíz
 
@@ -932,20 +932,232 @@ CREATE OR REPLACE FUNCTION calculo
 
 1. É correto dizer que uma função permite que o programador altere a tabela com o insert, update ou delete no banco de dados?
    1. Não. Para alterar o estado global da base de dados, deve-se usar um procedure.
-      1. Resposta correta! Uma `function` pode ser utilizada para **realizar operações** ou **retornar uma tabela**.
+      1. ✅ Uma `function` pode ser utilizada para **realizar operações** ou **retornar uma tabela**.
 2. O que deve ser feito para criar um código em SQL que sempre retorna um valor?
    1. Criar uma function.
-      1. Resposta correta!Isso mesmo! Uma function **sempre** **retorna** um valor.
+      1. ✅Isso mesmo! Uma function **sempre** **retorna** um valor.
 3. O que é uma function?
    1. É uma rotina que realiza uma operação e retorna o resultado como valor ou tabela.
-      1. Resposta correta!A `function` **sempre deve retornar algo**, sendo um **valor** ou uma **tabela**.
+      1. ✅A `function` **sempre deve retornar algo**, sendo um **valor** ou uma **tabela**.
 
 ## 8.3 - MÓDULO 03
 
 ### 8.3.1 - ENTENDER A IDEIA DA INTEGRIDADE, CONFIABILIDADE E DISPONIBILIADE E ENTENDER A IMPORTANCIA DELA NO DIA A DIA DE QUEM TRABALHA COM DADOS
 
-#### 8.3.1.1 - aaaa
+#### 8.3.1.1 - Segurança dos dados: Integridade, Confiabilidade e Disponibilidade
 
+Para quem utiliza um banco de dados em sua rotina de trabalho, **é importante garantir a segurança dele**. Para isso, **três pilares** devem funcionar adequadamente: *integridade, disponibilidade e confiabilidade.*
+
+* Integridade, é a **garantia** de que **os dados alterados** no sistema **serão retidos** em sua forma original. Esse componente está intrinsecamente relacionado ao controle das modificações do sistema e à preservação total do ciclo de vida dos dados, ou seja, na origem, manutenção e destruição.
+
+>Controle de Modificações
+
+* Disponibilidade, garante que os dados **estejam sempre disponíveis** para fins legais. Portanto, apenas os indivíduos que foram devidamente aprovados terão acesso ao sistema em qualquer momento.
+
+>Portanto, apenas os indivíduos que foram devidamente aprovados terão acesso ao sistema em qualquer momento.
+
+* Confiabilidade, exige a **imposição de restrições sobre quem tem acesso aos dados** em questão. Então, apenas indivíduos confiáveis e com uma necessidade legítima de alterar os dados terão acesso a eles, se necessário.
+
+>Os indivíduos que acessam os dados devem ser confiáveis.
+
+#### 8.3.1.2 - Importância da segurança
+
+A **segurança do banco de dados é associada às medidas para proteção dos dados.** Dessa forma, se evita que o sistema seja manuseado por pessoas indevidas.
+
+O controle dos dados está relacionado à sobrevivência de grandes negócios. Isso porque os dados armazenados podem orientar como um determinado serviço se comporta no mercado, ou facilitar o conhecimento sobre o perfil dos consumidores e ajudar a traçar estratégias competitivas no mercado.
+
+Por isso, existe a necessidade de mantê-los protegidos.
+
+#### 8.3.1.3 - Garantir a segurança do banco
+
+Para garantir isso, é necessário prestar **atenção às evoluções dos sistemas de segurança**, como:
+
+* realizar **backups** de dados periódicos;
+* implementar a **criptografia** no banco;
+* ter políticas de **senhas fortes**.
+
+Dessa forma, evitamos que pessoas indevidas possam acessar informações importantes e confidenciais do banco de dados.
+
+>Leitura Complementar
+
+[TEDX TALKS. Por que proteção de dados pessoais importa? | Bruno Bioni | TEDxPinheiros. 17 out. 2018]<https://www.youtube.com/watch?v=TzI5VfvQA6I>
+
+>Referência Bibliográfica
+
+[NETSUPPORT. SEGURANÇA EM BANCO DE DADOS: COM O QUE SE PREOCUPAR.]<https://netsupport.com.br/seguranca-em-banco-de-dados/>
+
+[SENHA SEGURA. Os pilares da Segurança da Informação. 26 jul. 2021. D]<https://senhasegura.com/pt-br/os-pilares-da-seguranca-da-informacao>
+
+[UNIVESP. Bancos de Dados - Aula 21 - Aspectos de Segurança para Bancos de Dados. 9 jun. 2017.]<https://www.youtube.com/watch?v=tvEpRQinYk4>
+
+### 8.3.2 - COMPREENDER O BACKUP E ENTENDER SUA IMPORTÂNCIA. ENTENDER A IMPORTÂNCIA DE SENHAS FORTES NO DIA A DIA
+
+#### 8.3.2.1 - O que é backup?
+
+**Backup** de dados **é uma cópia de segurança de qualquer tipo de dado**, que é feita na nuvem ou em outros dispositivos, como pen drive e HD externo.
+
+Sua finalidade principal é restaurar arquivos digitais, através da recuperação de dados, em caso de perda dos arquivos originais.
+
+>A cópia de segurança pode ser feita em um HD secundário.
+
+#### 8.3.2.2 - Importância do backup
+
+Os registros podem ser recuperados através do backup se algum hardware falhe ou um sistema seja corrompido. Por isso, é importante **criar essas cópias para a segurança digital de dados** pessoais ou de uma empresa.
+
+Existem três tipos para armazenamento de cópias de segurança:
+
+* `completo` (ou full), esse tipo de backup **realiza a cópia completa de todos os arquivos** para destinos estabelecidos, como servidores, sistemas de discos e tapes LTO.
+  * **vantagem principal** é ter uma cópia exata do ambiente de produção. Isso facilita a localizar arquivos que precisam ser restaurados.
+* `incremental`, esse tipo é **realizado após o completo**. Assim, a cada nova instrução de backup, **o sistema verifica quais arquivos foram alterados e copia os mais recentes.**, **O backup aumenta gradativamente**.
+* `diferencial`, Já esse tipo tem comportamento semelhante ao incremental, mas e**le faz uma cópia desde o backup completo até todas as alterações mais recentes**.Assim, ele armazena mais dados, requer mais espaço e tempo para ser realizado.
+
+>O backup diferencial une o incremental e completo.
+
+#### 8.3.2.3 - Política de senhas fortes
+
+A política de senhas fortes visa evitar senhas fáceis de serem descobertas, como datas de nascimento.
+
+Algumas práticas para construir senhas fortes são:
+
+* utilizar caracteres diferentes;
+* estabelecer um número máximo e mínimo de dígitos;
+* evitar dados pessoais;
+* trocar periodicamente as senhas.
+
+>Leitura Complementar
+
+[O HUB IDEIAS. 9 principais tipos de backup: como proteger dados da empresa.]  <https://www.ohub.com.br/ideias/tipos-de-backup/>
+
+>Referencias Bibliográficas
+
+[BACKUP GARANTIDO. Tipos de backup: compare as modalidades e saiba qual a melhor para a sua empresa. 19 set. 2019.]  <https://backupgarantido.com.br/blog/tipos-de-backup-compare-as-modalidades-e-saiba-qual-a-melhor-para-a-sua-empresa/>
+
+[CONTROLE NET. Tipos de backup: Completo ou Full, Incremental e Diferencial.]  <https://www.controle.net/faq/tipos-de-backup-o-que-e-backup-full-incremental-e-diferencial>
+
+#### 8.3.2.4 - Anotação Exercício
+
+1. O que é backup?
+   1. É o processo de copiar os dados de uma mídia de armazenamento ou sistema para outro. Assim, caso os originais sejam perdidos ou danificados, eles são restaurados.
+      1. ✅ Esse procedimento deve ser realizado periodicamente para manter todos os dados em segurança.
+2. Assinale a alternativa que corresponde o funcionamento do backup incremental.
+   1. Neste backup o sistema verifica quais arquivos foram alterados e copia a versão mais recente.
+      1. ✅ Muito bem! Essa é uma função fundamental para proteção dos dados em um banco.
+3. Por que é necessário fazer backup com frequência?
+   1. Para manter o dado atualizado em caso de perda.
+      1. ✅ Caso aconteça algo grave, é possível subir o backup para o sistema sem impactar os registros.
+
+### 8.3.3 - COMPREENDER O PORQUE DA CRIPTOGRAFIA NOS DADOS MAIS IMPORTANTES E APLICAR ESSA CRIPTOGRAFIA
+
+#### 8.3.3.1 - Criptografia em banco de dados
+
+Ao construir um Banco de Dados-BD, é necessário que dados pessoais, informações confidenciais, sejam tratadas com maior rigor, uma camada adicional de segurança.
+
+Nesse caso, para garantir a confidencialidade e a integridade é usado a criptografia. Ela altera o material original o qual só passa a ser visualizado por aqueles que tiverem a permissão.
+
+No SQL, podemos fazer uso da criptografia, o qual se divide em Chave Mestra, Certificado e Chave Simétrica ou assimétrica.
+
+**Chave Mestra**, 1º na hierarquia de criptografia. É uma chave exclusiva da criptografia do SQL. Cada banco de dados tem a sua, é a Raiz hierárquica da criptografia SQL. Essa chave protege as chaves privadas de certificados e as chaves assimétricas e simétricas.
+
+```SQL
+-- Gerando uma Chave Mestra
+CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'senha'
+
+
+```
+
+**Certificado**, 2º na hierarquia de criptografia. Reponsável por proteger as chave simétricas e assimétricas. Para construir um, deve-se ter uma chave mestra e uma senha que será para proteger os objetos gerados abaixo dele.
+
+```SQL
+-- Criando o Certificado
+CREATE CERTIFICATE MeuCertificado
+
+ENCRYPTION BY PASSWORD = 'SENHA@123'
+
+WITH SUBJECT = 'Meu Certificado'
+
+```
+
+**Chave Simétrica**, utilizada para criptografar e discriptografar dados no banco de dados. Ao ser criada, deve ser protegida com criptografia através de certificado, uma senha, outra chave simétrica ou chave assimétrica.
+
+**É necessário conhecer algum método de criptografia** que especifique como os dados se tornam ilegíveis para indivíduos não autorizados.
+
+Alternativas para esse parâmetros: DES, TRIPLE_DES, TRIPLE_DES_3KEY, RC2, RC4, RC4_128, DESX, AES_128, AES_192 e **AES_256**. O AES_256 é um dos mais utilizados.
+
+```SQL
+-- Criando uma chave Simétrica
+CREATE SYMMETRIC KEY MinhaChave
+
+WITH ALGORITHM = AES_256
+
+ENCRYPTION BY CERTIFICATE MeuCertificado
+
+```
+
+#### 8.3.3.2 - Alternativas de Criptografia
+
+DES, TRIPLE_DES, TRIPLE_DES_3KEY, RC2, RC4, RC4_128, DESX, AES_128, AES_192 e **AES_256**. O AES_256 é um dos mais utilizados.
+
+#### 8.3.3.3 - Criptografia no SQL
+
+```SQL
+-- Criar a tabela usuário
+CREATE TABLE usuario
+(
+  ID INT IDENTITY,
+  LOGIN VARCHAR (MAX),
+  SENHA VARBINARY (MAX)
+)
+
+-- Criar a Chave Mestra
+CREATE MASTER KEY
+ENCRYPTION BY PASSWORD = 'PASSWORD@123';
+
+-- Criar o Certificado
+CREATE CERTIFICATE Certificado
+ENCRYPTION BY PASSWORD = 'SENHA@123'
+WITH SUBJECT = 'Certificado Senha Usuario';
+
+-- Chave Simétrica
+CREATE SYMMETRIC KEY ChaveSenha
+WITH ALGORITHM = AES_256
+ENCRYPTION BY CERTIFICATE Certificado;
+
+-- Consultandos os objetos de criptografia
+
+SELECT * FROM sys.symmetric_keys;
+SELECT * FROM sys.certificates;
+
+-- Descriptografar
+
+OPEN SYMMETRIC KEY ChaveSenha
+
+DECRYPTION BY CERTIFICATE Certificado
+
+GO
+
+SELECT    *    senhadescriptografada = CAST (DECRYPTBYKEY(SENHA) AS varchar(50))
+
+FROM Usuario
+
+CLOSE SYMMETRIC KEY ChaveSenha
+
+    -- é necessário reabrir a chave simétrica, ler esse campo com a função DECRYPTBYKEY, converter o valor para varchar e fechar a chave.
+
+```
+
+Efetuando a criptografia tornamos mais dificil o acesso de tercerios sem autorização.
+
+#### 8.3.3.4 - Importância da Criptografia
+
+Imagine o funcionamento de um sistema de vendas onde CPFs, senhas e números de cartões de crédito são algumas das informações confidenciais mantidas durante toda a construção desse sistema. Esses dados exigem uma segurança adicional que garanta a integridade e a confidencialidade dos documentos.
+
+>A criptografia é essencial para manter a segurança.
+
+Para isso, técnicas de criptografia são usadas. **Elas alteram o material original para ocultá-lo de usuários indesejados** e os **revela apenas para quem possui permissão prévia**.
+
+>Leitura Complementar
+
+[DANIEL MORAIS INFOCOTIDIANO. Curso MySQL Server #31 - Criptografia. 27 nov. 2019]  <https://www.youtube.com/watch?v=hWka8OguXCo>
 
 
 

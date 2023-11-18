@@ -8,7 +8,6 @@ header: Turma 02 - Grupo A <br> Anderson Rodrigues, Fábio Abreu, Itamar Maximo 
 ---
 
 <style>
-    
     @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
     * {
@@ -37,8 +36,6 @@ header: Turma 02 - Grupo A <br> Anderson Rodrigues, Fábio Abreu, Itamar Maximo 
         font-size: 16px;
         font-weight: 800;
     }
-
-
 </style>
 
 # Projeto Banco de Dados
@@ -53,9 +50,7 @@ A construção do banco de dados foi realizada através do abaixo:
 
 ```SQL
 CREATE DATABASE BR_Minerais;
-
 ```
-
 
 ---
 
@@ -64,7 +59,7 @@ CREATE DATABASE BR_Minerais;
 As entidades foram construídas levando em conta o segmento da mineração, ficando assim em sinergia com o projeto do site. As entidades foram: Mina, Funcinário, Mineral e Produção.
 <!-- _backgroundImage: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%); -->
 
-![ bg right w:450 ](https://i.imgur.com/KaPcX5m.png)
+![ bg right w:750 ](./img/DER.png)
 
 ---
 
@@ -109,7 +104,6 @@ nome VARCHAR(50) NOT NULL,
 localizacao VARCHAR(50) NOT NULL,
 tipo_minerio VARCHAR(50) NOT NULL
 );
-
 ```
 
 ---
@@ -124,10 +118,11 @@ CREATE TABLE mineral(
 mineral_ID int AUTO_INCREMENT PRIMARY KEY,
 nome_mineral VARCHAR(50) NOT NULL,
 tipo VARCHAR(50) NOT NULL,
-grau_pureza VARCHAR(50) NOT NULL
+grau_pureza VARCHAR(50) NOT NULL,
+FK_Mineral_MinaID INT NOT NULL,
+CONSTRAINT FOREIGN KEY (FK_Mineral_MinaID)
+REFERENCES mina (mina_ID)
 );
-
-
 ```
 
 ---
@@ -138,18 +133,17 @@ A chave primária é FuncionarioID.
 Não há dependências transitivas, e os atributos não chave (Nome, Cargo, Salário, Departamento) dependem diretamente da chave primária.
 
 ```SQL
-
-
 CREATE TABLE funcionario(
 funcionario_ID int AUTO_INCREMENT PRIMARY KEY,
 nome_funcionario VARCHAR(50) NOT NULL,
 cargo VARCHAR(50) NOT NULL,
 salario DOUBLE NOT NULL,
-departamento VARCHAR(50) NOT NULL
+departamento VARCHAR(50) NOT NULL,
+FK_Funcionario_MinaID INT NOT NULL,
+CONSTRAINT FOREIGN KEY (FK_Funcionario_MinaID)
+REFERENCES mina (mina_ID)
 );
-
 ```
-
 
 ---
 
@@ -180,8 +174,6 @@ REFERENCES mineral (mineral_ID),
 CONSTRAINT FOREIGN KEY (FK_FuncionarioID)
 REFERENCES funcionario (funcionario_ID)
 );
-
-
 ```
 
 ---
@@ -189,11 +181,12 @@ REFERENCES funcionario (funcionario_ID)
 ## Inserindo os dados - Tabela Mina
 <!-- _backgroundImage: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%); -->
 ```SQL
-INSERT INTO mina (nome, localizacao, tipo_minerio) VALUES ('Teste','teste local 01', 'minerio de ferro');
-INSERT INTO mina (nome, localizacao, tipo_minerio) VALUES ('Teste','teste local 02', 'calcopirita');
-INSERT INTO mina (nome, localizacao, tipo_minerio) VALUES ('Teste','teste local 03', 'bauxita');
-
-
+INSERT INTO mina (nome, localizacao, tipo_minerio) VALUES ('Teste A','teste local 01',
+'minerio de ferro');
+INSERT INTO mina (nome, localizacao, tipo_minerio) VALUES ('Teste B','teste local 02',
+'calcopirita');
+INSERT INTO mina (nome, localizacao, tipo_minerio) VALUES ('Teste C','teste local 03',
+'bauxita');
 ```
 
 ---
@@ -202,11 +195,12 @@ INSERT INTO mina (nome, localizacao, tipo_minerio) VALUES ('Teste','teste local 
 ## Inserindo os dados - Tabela Mineral
 
 ```SQL
-
-INSERT INTO mineral (nome_mineral, tipo, grau_pureza) VALUES ('ferro','2', 'media');
-INSERT INTO mineral (nome_mineral, tipo, grau_pureza) VALUES ('cobre','1', 'Alta');
-INSERT INTO mineral (nome_mineral, tipo, grau_pureza) VALUES ('Aluminio','1', 'Alta');
-
+INSERT INTO mineral (nome_mineral, tipo, grau_pureza, FK_Mineral_MinaID) VALUES
+('ferro','2', 'media', 1);
+INSERT INTO mineral (nome_mineral, tipo, grau_pureza, FK_Mineral_MinaID) VALUES
+('cobre','1', 'Alta', 2);
+INSERT INTO mineral (nome_mineral, tipo, grau_pureza, FK_Mineral_MinaID) VALUES
+('Aluminio','1', 'Alta', 3);
 ```
 
 ---
@@ -215,19 +209,32 @@ INSERT INTO mineral (nome_mineral, tipo, grau_pureza) VALUES ('Aluminio','1', 'A
 
 <!-- _backgroundImage: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%); -->
 ```SQL
-INSERT INTO funcionario (nome_funcionario, cargo, salario, departamento) VALUES ('Alfa','minerador', 3000, 'mineracao');
-INSERT INTO funcionario (nome_funcionario, cargo, salario, departamento) VALUES ('Beta','minerador', 3002, 'mineracao');
-INSERT INTO funcionario (nome_funcionario, cargo, salario, departamento) VALUES ('Gama','minerador', 3001, 'mineracao');
-
+INSERT INTO funcionario (nome_funcionario, cargo, salario, departamento,
+FK_Funcionario_MinaID) VALUES ('Alfa','minerador Chefe', 3000, 'mineracao', 1);
+INSERT INTO funcionario (nome_funcionario, cargo, salario, departamento,
+FK_Funcionario_MinaID) VALUES ('Beta','minerador Chefe', 3002, 'mineracao', 2);
+INSERT INTO funcionario (nome_funcionario, cargo, salario, departamento,
+FK_Funcionario_MinaID) VALUES ('Gama','minerador Chefe', 3001, 'mineracao', 3);
+INSERT INTO funcionario (nome_funcionario, cargo, salario, departamento,
+FK_Funcionario_MinaID) VALUES ('Gama','minerador', 3001, 'mineracao', 2);
+INSERT INTO funcionario (nome_funcionario, cargo, salario, departamento,
+FK_Funcionario_MinaID) VALUES ('Gama','minerador', 3001, 'mineracao', 1);
+INSERT INTO funcionario (nome_funcionario, cargo, salario, departamento,
+FK_Funcionario_MinaID) VALUES ('Gama','minerador', 3001, 'mineracao', 3);
 ```
 
+---
+
+<!-- _backgroundImage: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%); -->
 ## Inserindo os dados - Tabela Produção
 
-```SQL 
-INSERT INTO producao (data, hora, quant_extraida, departamento, FK_MinaID, FK_MineralID, FK_FuncionarioID) VALUES ('01-08-2023','08:00hs', 3100, 'M3',1, 1, 1);
-INSERT INTO producao (data, hora, quant_extraida, departamento, FK_MinaID, FK_MineralID, FK_FuncionarioID) VALUES ('02-08-2023','09:00hs', 30002, 'M2',2, 2, 2);
-INSERT INTO producao (data, hora, quant_extraida, departamento, FK_MinaID, FK_MineralID, FK_FuncionarioID) VALUES ('03-09-2023','10:00hs', 30003, 'M3',3, 3, 3);
-
+```SQL
+INSERT INTO producao (data, hora, quant_extraida, departamento, FK_MinaID,
+FK_MineralID, FK_FuncionarioID) VALUES ('01-08-2023','08:00hs', 3100, 'M3',1, 1, 1);
+INSERT INTO producao (data, hora, quant_extraida, departamento, FK_MinaID,
+FK_MineralID, FK_FuncionarioID) VALUES ('02-08-2023','09:00hs', 30002, 'M2',2, 2, 2);
+INSERT INTO producao (data, hora, quant_extraida, departamento, FK_MinaID,
+FK_MineralID, FK_FuncionarioID) VALUES ('03-09-2023','10:00hs', 30003, 'M3',3, 3, 3);
 ```
 
 ---
@@ -263,18 +270,33 @@ INSERT INTO producao (data, hora, quant_extraida, departamento, FK_MinaID, FK_Mi
 <!-- _backgroundImage: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%); -->
 
 ```SQL
+SELECT * FROM producao 
 INNER JOIN mina
-ON producao.producao_ID  = mina.mina_ID
+ON producao.producao_ID = mina.mina_ID
 RIGHT JOIN funcionario
-ON FK_FuncionarioID = funcionario_ID 
+ON FK_FuncionarioID = FK_Funcionario_MinaID 
 WHERE producao.producao_ID = 2;
 ```
 
-![a](img/producao--inner-join--rightjoin--producao.jpeg)
+![a](img/select_from_Producao--Inner_Mina--RigthJoin--Funcionario_Where-Producao.png)
 
 ---
 <!-- _backgroundImage: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%); -->
 
-# Obrigado :smile:
+```SQL
+SELECT * FROM producao
+INNER JOIN mina
+ON producao.producao_ID = mina.mina_ID
+RIGHT JOIN funcionario
+ON FK_FuncionarioID = FK_Funcionario_MinaID
+WHERE producao.producao_ID = 2 AND funcionario.cargo = 'minerador Chefe';
+```
+
+![a](img/select_from_Producao--Inner_Mina--RigthJoin--Funcionario--where_prod-funcionario.png)
+
+---
+
+# 🎉Obrigado :smile: 
+<!-- _backgroundImage: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%); -->
 
 slides criados com auxíio da extensão [Marp for VSCode](https://marp.app)
