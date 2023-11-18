@@ -1,0 +1,286 @@
+@import url("https://fonts.googleapis.com/css2?family=Borel&family=Lobster&family=Maven+Pro&family=Poppins:wght@200;300;400;500;600;700;800;900&family=Roboto+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+  box-sizing: border-box; /*incorpotar as margem/padding dentro da contagem do tamnanho da caixa*/
+}
+
+body {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+}
+
+.navbar {
+  display: flex;
+  /* flex-flow: row wrap; */
+  height: 100px;
+  background-color: white;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  /* border: 1px solid rgb(71, 117, 255); */
+}
+
+.logo {
+    flex: 20%;
+    margin-left: 10%;
+   
+
+}
+
+.logo h1 {
+  font-family: "Lobster", cursive;
+  color: #180f4a;
+  font-size: 64px;
+  text-align: left;
+}
+
+.gradient {
+  /* Permalink - use to edit and share this gradient. Link permanente - use para editar e compartilhar este gradiente: https://colorzilla.com/gradient-editor/#7d43b4+2,7131a9+3,6d26a6+4,7926b2+5,771fb1+6,7c1fb5+8,7d1fb3+10,7923ac+13,801fac+28,811fa8+29,841ea5+38,8b1aa6+55,8e1aa1+58,981798+80,981798+84,9914a3+87,9d1498+89,a0119e+92,a417a3+93,9d1599+95,9d1a8e+97,921772+100 */
+  background: linear-gradient(
+    45deg,
+    #43b47c 2%,
+    #7131a9 3%,
+    #6d26a6 4%,
+    #7926b2 5%,
+    #771fb1 6%,
+    #7c1fb5 8%,
+    #7d1fb3 10%,
+    #7923ac 13%,
+    #801fac 28%,
+    #811fa8 29%,
+    #841ea5 38%,
+    #8b1aa6 55%,
+    #8e1aa1 58%,
+    #981798 80%,
+    #981798 84%,
+    #9914a3 87%,
+    #9d1498 89%,
+    #a0119e 92%,
+    #a417a3 93%,
+    #9d1599 95%,
+    #9d1a8e 97%,
+    #921772 100%
+  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+
+  background-clip: text;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-border {
+  border-inline-start: 4px;
+  border-block-start: 4px;
+  border-image-source: linear-gradient(
+    45deg,
+    #7d43b4 2%,
+    #7131a9 3%,
+    #6d26a6 4%,
+    #7926b2 5%,
+    #771fb1 6%,
+    #7c1fb5 8%,
+    #7d1fb3 10%,
+    #7923ac 13%,
+    #801fac 28%,
+    #811fa8 29%,
+    #841ea5 38%,
+    #8b1aa6 55%,
+    #8e1aa1 58%,
+    #981798 80%,
+    #981798 84%,
+    #9914a3 87%,
+    #9d1498 89%,
+    #a0119e 92%,
+    #a417a3 93%,
+    #9d1599 95%,
+    #9d1a8e 97%,
+    #921772 100%
+  );
+  border-image-slice: 1;
+  padding: 10px;
+}
+
+.menu {
+  flex: 70%;
+  text-align: right;
+  padding: 20px;
+}
+
+.menu a {
+  color: #3939d4;
+  text-decoration: none;
+  font-size: 20px;
+  padding: 20px 16px;
+}
+
+.menu a:hover {
+  color: #9e1397;
+  border-top: 4px solid #3939d4;
+}
+
+#botao {
+  background-color: #3939d4;
+  padding: 10px 25px;
+  color: white;
+  border-radius: 5px;
+  margin-right: 10%;
+  margin-left: 5%;
+}
+
+#botao:hover {
+  border: none;
+  background: #9e1397;
+}
+
+.header {
+  padding-top: 100px;
+  height: auto;
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  /* flex: row wrap; */
+  justify-content: center;
+  align-items: center;
+}
+
+.headline {
+  margin-left: 10%;
+  flex: 40%;
+}
+.contact-btn {
+  padding: 20px;
+  color: white;
+  text-transform: uppercase;
+  border-radius: 5px;
+  text-decoration: none;
+  background-color: #3939d4;
+  display: inline-block;
+}
+.headline h2 {
+  font-weight: 900;
+  font-size: 20px;
+  color: #041339;
+  margin: 0;
+  padding: 0;
+}
+
+.headline p {
+  color: #316e95;
+  text-align: left;
+}
+
+.img-headline {
+  margin-right: 10%;
+  flex: 40%;
+
+  text-align: center;
+}
+
+.section {
+  display: inline-block;
+  margin-top: 80px;
+  /* border: 1px solid black; */
+  margin-left: 5%;
+  margin-right: 5%;
+  padding: 5%;
+  /* width: 90%; */
+  text-align: center;
+}
+
+.section h2 {
+  width: 100%;
+  font-size: 50px;
+  margin: 0;
+  font-family: "lobster", cursive;
+  font-weight: bolder;
+  color: #316e95;
+  /* border: 1px solid tomato; */
+}
+
+.servicos {
+  display: flex;
+  margin-top: 5%;
+  /* border: 1px solid tomato; */
+}
+
+.card {
+  display: inline-block;
+  width: 30%; /*30 por que terá pargem de 1%*/
+  margin: 1%;
+  padding: 20px;
+  border: 2px solid #7131a9;
+  border-radius: 10px;
+  cursor: pointer;
+  /* border: 1px solid tomato; */
+}
+
+.card:hover .texto-oculto {
+  display: block;
+}
+.texto-oculto {
+  display: none;
+}
+
+.card:hover {
+  background-color: #7131a9;
+  color: white;
+  /* transform: scale(1.3); */
+  padding: 40px;
+}
+
+.card:hover img {
+  display: none;
+}
+
+.card:hover .card-text {
+  display: none;
+}
+
+footer {
+  /* border: 1px solid tomato; */
+  /* margin-top: 200px; */
+  margin-top: 100px;
+
+  padding: 10px;
+  height: 400px;
+  background-image: linear-gradient(
+    90deg,
+    #7d43b4 2%,
+    #7131a9 3%,
+    #6d26a6 4%,
+    #7926b2 5%,
+    #771fb1 6%,
+    #7c1fb5 8%,
+    #7d1fb3 10%,
+    #7923ac 13%,
+    #801fac 28%,
+    #811fa8 29%,
+    #841ea5 38%,
+    #8b1aa6 55%,
+    #8e1aa1 58%,
+    #981798 80%,
+    #981798 84%,
+    #9914a3 87%,
+    #9d1498 89%,
+    #a0119e 92%,
+    #a417a3 93%,
+    #9d1599 95%,
+    #9d1a8e 97%,
+    #921772 100%
+  );
+
+  text-align: center;
+}
+
+.logo-rodape {
+  padding: 100px;
+  font-family: "lobster", sans-serif;
+  color: white;
+}
+
+.whats {
+  position: fixed;
+  bottom: 5px;
+  right: 5px;
+  width: 100px;
+}
