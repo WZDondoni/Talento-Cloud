@@ -1,10 +1,11 @@
 ---
 marp: true
+transition: fade
 author: Watiley Zanelato Dondoni
 size: 16:9
 description: Demonstração da Sprint V sobre banco de dados
-footer: ![w:35](./img/github-logo-24.png) https://github.com/fabioabreu13/Nexa 
-header: Turma 02 - Grupo A <br> Anderson Rodrigues, Fábio Abreu, Itamar Maximo de Sena, Lucas Araújo, Victor Hugo, Watiley Zanelato Dondoni.
+footer: ![w:35](./img/github-logo-24.png) [  Link do Projeto Br Minerais](https://github.com/fabioabreu13/Nexa)  
+header: Turma 02 - Grupo A <br> Anderson Rodrigues, Fábio Abreu, Itamar Maximo de Sena, Lucas Araújo,<br> Victor Hugo, Watiley Zanelato Dondoni.
 ---
 
 <style>
@@ -25,6 +26,8 @@ header: Turma 02 - Grupo A <br> Anderson Rodrigues, Fábio Abreu, Itamar Maximo 
      }
 
     footer {
+        display:flex;
+        align-items:center;
         color:black;
         font-size: 16px;
         font-weight: 800;
@@ -46,7 +49,7 @@ header: Turma 02 - Grupo A <br> Anderson Rodrigues, Fábio Abreu, Itamar Maximo 
 ## Construção do Banco de Dados
 <!-- _backgroundImage: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%); -->
 
-A construção do banco de dados foi realizada através do abaixo:
+A construção do banco de dados foi realizada através do comando abaixo:
 
 ```SQL
 CREATE DATABASE BR_Minerais;
@@ -59,7 +62,7 @@ CREATE DATABASE BR_Minerais;
 As entidades foram construídas levando em conta o segmento da mineração, ficando assim em sinergia com o projeto do site. As entidades foram: Mina, Funcinário, Mineral e Produção.
 <!-- _backgroundImage: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%); -->
 
-![ bg right w:750 ](./img/DER.png)
+![bg right w:90% drop-shadow:0,5px,10px,rgba(0,0,0,.4)](./img/DER.png)
 
 ---
 
@@ -209,18 +212,19 @@ INSERT INTO mineral (nome_mineral, tipo, grau_pureza, FK_Mineral_MinaID) VALUES
 
 <!-- _backgroundImage: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%); -->
 ```SQL
-INSERT INTO funcionario (nome_funcionario, cargo, salario, departamento,
+INSERT INTO funcionario (nome_funcionario, cargo, salario, departamento, 
 FK_Funcionario_MinaID) VALUES ('Alfa','minerador Chefe', 3000, 'mineracao', 1);
-INSERT INTO funcionario (nome_funcionario, cargo, salario, departamento,
+INSERT INTO funcionario (nome_funcionario, cargo, salario, departamento, 
 FK_Funcionario_MinaID) VALUES ('Beta','minerador Chefe', 3002, 'mineracao', 2);
-INSERT INTO funcionario (nome_funcionario, cargo, salario, departamento,
+INSERT INTO funcionario (nome_funcionario, cargo, salario, departamento, 
 FK_Funcionario_MinaID) VALUES ('Gama','minerador Chefe', 3001, 'mineracao', 3);
-INSERT INTO funcionario (nome_funcionario, cargo, salario, departamento,
-FK_Funcionario_MinaID) VALUES ('Gama','minerador', 3001, 'mineracao', 2);
-INSERT INTO funcionario (nome_funcionario, cargo, salario, departamento,
-FK_Funcionario_MinaID) VALUES ('Gama','minerador', 3001, 'mineracao', 1);
-INSERT INTO funcionario (nome_funcionario, cargo, salario, departamento,
-FK_Funcionario_MinaID) VALUES ('Gama','minerador', 3001, 'mineracao', 3);
+INSERT INTO funcionario (nome_funcionario, cargo, salario, departamento, 
+FK_Funcionario_MinaID) VALUES ('Gama Teste','minerador', 2000, 'mineracao', 2);
+INSERT INTO funcionario (nome_funcionario, cargo, salario, departamento, 
+FK_Funcionario_MinaID) VALUES ('Beta Teste','minerador', 2002, 'mineracao', 1);
+INSERT INTO funcionario (nome_funcionario, cargo, salario, departamento, 
+FK_Funcionario_MinaID) VALUES ('Alfa Teste','minerador', 2001, 'mineracao', 3);
+
 ```
 
 ---
@@ -243,26 +247,26 @@ FK_MineralID, FK_FuncionarioID) VALUES ('03-09-2023','10:00hs', 30003, 'M3',3, 3
 <!-- _backgroundImage: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%); -->
 ### select * from mina
 
-![w:700](img/select_from_Mina.png)
+![w:100% drop-shadow:0,5px,10px,rgba(0,0,0,.4)](img/select_from_Mina.png)
 
 ---
 ### select * from mineral
 <!-- _backgroundImage: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%); -->
 
-![w:700](img/select_from_Mineral.png)
+![w:100% drop-shadow:0,5px,10px,rgba(0,0,0,.4) ](img/select_from_Mineral.png)
 
 ---
 ### select * from funcionario
 <!-- _backgroundImage: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%); -->
 
-![w:700](img/select_from_Funcionarios.png)
+![w:100% drop-shadow:0,5px,10px,rgba(0,0,0,.4)](img/select_from_Funcionarios.png)
 
 ---
 
 ### select * from producao
 <!-- _backgroundImage: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%); -->
 
-![w:700](img/select_from_Producao.png)
+![w:100% drop-shadow:0,5px,10px,rgba(0,0,0,.4)](img/select_from_Producao.png)
 
 ---
 
@@ -270,15 +274,15 @@ FK_MineralID, FK_FuncionarioID) VALUES ('03-09-2023','10:00hs', 30003, 'M3',3, 3
 <!-- _backgroundImage: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%); -->
 
 ```SQL
-SELECT * FROM producao 
+SELECT * FROM producao
 INNER JOIN mina
-ON producao.producao_ID = mina.mina_ID
+ON producao.FK_MinaID = mina.mina_ID
 RIGHT JOIN funcionario
-ON FK_FuncionarioID = FK_Funcionario_MinaID 
+ON funcionario.FK_Funcionario_MinaID = mina.mina_ID
 WHERE producao.producao_ID = 2;
 ```
 
-![a](img/select_from_Producao--Inner_Mina--RigthJoin--Funcionario_Where-Producao.png)
+![a drop-shadow:0,5px,10px,rgba(0,0,0,.4)](img/select_from_Producao--Inner_Mina--RigthJoin--Funcionario_Where-Producao.jpeg)
 
 ---
 <!-- _backgroundImage: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%); -->
@@ -286,13 +290,14 @@ WHERE producao.producao_ID = 2;
 ```SQL
 SELECT * FROM producao
 INNER JOIN mina
-ON producao.producao_ID = mina.mina_ID
+ON producao.FK_MinaID = mina.mina_ID
 RIGHT JOIN funcionario
-ON FK_FuncionarioID = FK_Funcionario_MinaID
+ON funcionario.FK_Funcionario_MinaID = mina.mina_ID
 WHERE producao.producao_ID = 2 AND funcionario.cargo = 'minerador Chefe';
+
 ```
 
-![a](img/select_from_Producao--Inner_Mina--RigthJoin--Funcionario--where_prod-funcionario.png)
+![a drop-shadow:0,5px,10px,rgba(0,0,0,.4)](img/select_from_Producao--Inner_Mina--RigthJoin--Funcionario--where_prod-funcionario.jpeg)
 
 ---
 

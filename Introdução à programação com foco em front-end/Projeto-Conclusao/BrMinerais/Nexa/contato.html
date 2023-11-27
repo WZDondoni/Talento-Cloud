@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BR Minérios</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="validacao.js" defer></script>
+
+  </head>
+  <body id="bodyContato">
+    <div class="fullContainer banner2" id="homeSection">
+      <header>
+        <div class="container">
+          <div class="logo">
+            <img src="./images/logo.png" alt="logo da empresa" />
+          </div>
+          <nav>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="who.html">Quem Somos</a></li>
+              <li><a href="new.html">Notícias</a></li>
+              <li><a href="cultura.html">Meio Ambiente</a></li>
+              <li><a href="galeria.html">Galeria</a></li>
+              <li><a href="contato.html">Contato</a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+    </div>
+    <section class="join" id="joinSection">
+      <div class="container">
+        <div class="wrapper">
+          <div class="wrapperLeft">
+            <div class="joinTitle">
+              É HORA DE <span>ABRAÇAR ESSA IDÉIA</span>
+            </div>
+            <p >
+              A adoção de políticas ESG não é apenas uma escolha moral, mas
+              também uma estratégia inteligente para empresas que desejam
+              prosperar em um mundo cada vez mais consciente e preocupado com
+              questões sociais e ambientais.
+            </p>
+          </div><!-- Final wrapperLeft -->
+
+          <div class="wrapperRight">
+            <form onsubmit="return validarFormulario()">
+              <label for="nome">Nome</label>
+              <input
+                type="text"
+                id="nome"
+                name="nome"
+                placeholder="Insira seu nome*"
+                class="input-box"
+              />
+              <label for="sobrenome">Sobrenome</label>
+              <input
+                type="text"
+                name="sobrenome"
+                id="sobrenome"
+                placeholder="Insira seu sobrenome*"
+                class="input-box"
+              />
+              <label for="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                placeholder="Insira seu email*"
+                class="input-box"
+              />
+              <button type="submit" class="btn-form">Enviar</button>
+            </form>
+          </div><!-- Final wrapperRight -->
+        </div> <!-- Final Wrapper -->
+
+
+        <!-- <button class="joinNow">JOIN US</button>
+        <button class="adoptBtn">ADOPT A CHILD</button> -->
+      </div>
+    </section>
+    <!-- join section end -->
+    <footer>
+      <div class="container">
+        <div class="newsLetterContainer">
+          <img src="./images/logo.png" alt="" />
+          <p>
+            Quer falar conosco ou saber mais sobre nossos produtos e serviços?
+          </p>
+          <input type="email" placeholder="Ensira seu email" />
+        </div>
+        <!-- .newsLetterContainer -->
+
+        <div class="linksContainer">
+          <div class="title">Links úteis</div>
+          <ul>
+            <li>
+              <a href="index.html">Home</a>
+            </li>
+            <li>
+              <a href="who.html">Quem Somos</a>
+            </li>
+            <li>
+              <a href="new.html">Notícias</a>
+            </li>
+            <li>
+              <a href="cultura.html">Meio Ambiente</a>
+            </li>
+            <li>
+              <a href="galeria.html">Galeria</a>
+            </li>
+            <li>
+              <a href="contato.html">Contato</a>
+            </li>
+          </ul>
+        </div>
+        <!-- .linksContainer -->
+
+        <div class="connectContainer">
+          <div class="title">Fale conosco</div>
+          <p>
+            Goianésia do Pará, Pará, Brasil<br />
+            CEP:68.639-000, Região dos sete lagos
+          </p>
+          <p>info@brminerais.com.br</p>
+          <p>(+55) 94999999999</p>
+        </div>
+        <!-- .connectContainer -->
+      </div>
+    </footer>
+  </body>
+</html>
