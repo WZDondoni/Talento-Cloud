@@ -1288,3 +1288,5 @@ OPPEL, Andy. Banco de Dados Desmistificado. Rio de Janeiro: Alta Books, 2004.
         1. ?
 
 10 ACERTOS
+
+## 7.4
