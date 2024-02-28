@@ -1,0 +1,30 @@
+[
+    {
+      "id": 1,
+      "nome": "Smartphone XYZ",
+      "marca": "XYZ Electronics",
+      "categoria": "Eletrônicos",
+      "preço": 799.99,
+      "quantidade_em_estoque": 50,
+      "disponibilidade": true
+    },
+    {
+      "id": 2,
+      "nome": "Tênis Esportivo ABC",
+      "marca": "ABC Sports",
+      "categoria": "Calçados",
+      "preço": 89.99,
+      "quantidade_em_estoque": 100,
+      "disponibilidade": true
+    },
+    {
+      "id": 3,
+      "nome": "Camiseta Casual DEF",
+      "marca": "DEF Fashion",
+      "categoria": "Vestuário",
+      "preço": 29.99,
+      "quantidade_em_estoque": 200,
+      "disponibilidade": true
+    }
+]
+  
