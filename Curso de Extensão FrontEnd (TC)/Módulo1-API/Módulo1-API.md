@@ -345,7 +345,7 @@ Utilizando API SliptDevice
 
 Utilizando API ReqRes
 
-Muitas vezes as API havera um link chamado Swagger, é uma ferramenta que serve pra criar API e suas documentações padrões. Nela há várias informações sobre a API como demonstrado na imagem. 
+Muitas vezes as API havera um link chamado Swagger, é uma ferramenta que serve pra criar API e suas documentações padrões. Nela há várias informações sobre a API como demonstrado na imagem.
 
 ![a](https://i.imgur.com/qtXvIJP.jpg)
 
@@ -371,8 +371,7 @@ Imagine que você está acessando a API de um mercado e que deseja receber a lis
 
 Pois é, fazer uma rota GET diferente para cada produto certamente acabaria gerando uma lista imensa de rotas: loja/mouse, loja/teclado, loja/monitor e mais!
 
-Esse é um cenário muito comum, então o que fazer? **Para começar, consultamos uma lista de registros**, seja ela de produtos, usuários, matrículas, endereços ou outros. Em seguida, **acessamos um registro específico dessa lista**, utilizando uma solução comum: *acessando a mesma rota e passando uma ou mais informações extras para definir o recurso específico que buscamos acessar, geralmente o id*. Assim, fazemos a primeira requisição, vemos que o mouse possui o id 18 e realizamos uma segunda requisição à mesma rota, adicionando o id da seguinte forma: https://www.loja/produtos/18.
-
+Esse é um cenário muito comum, então o que fazer? **Para começar, consultamos uma lista de registros**, seja ela de produtos, usuários, matrículas, endereços ou outros. Em seguida, **acessamos um registro específico dessa lista**, utilizando uma solução comum: *acessando a mesma rota e passando uma ou mais informações extras para definir o recurso específico que buscamos acessar, geralmente o id*. Assim, fazemos a primeira requisição, vemos que o mouse possui o id 18 e realizamos uma segunda requisição à mesma rota, adicionando o id da seguinte forma: <https://www.loja/produtos/18.>
 Nesse tipo de requisição em que reaproveitamos uma mesma rota e passamos informações mais específicas separadas por uma barra (/), c**hamamos as informações extras de parâmetros da rota**.
 
 >Dica  
@@ -392,7 +391,7 @@ Imagine que você não **quer acessar** um produto específico, mas, sim, **a li
 
 As query strings geralmente são utilizadas para realizar buscas mais específicas, definindo uma ou mais características do(s) recurso(s) procurados. Para definir uma query string, devemos **adicionar** um sinal de interrogação (`?`) **no final de uma rota,** seguido por uma estrutura “`chave=valor`”, como em <https://www.loja/produtos?marca=logitech.>
 
-Ao fazer isso, esperamos que a API nos retorne uma lista filtrada apenas com produtos da marca Logitech. Se quisermos filtrar essa lista de produtos para exibir apenas os valores abaixo de R$ 50,00, **podemos concatenar mais termos de busca,** separando cada par chave-valor com um E comercial (`&`). Desse modo, o URL ficaria assim: <https://www.loja/produtos?marca=logitech&precoMax=50.> 
+Ao fazer isso, esperamos que a API nos retorne uma lista filtrada apenas com produtos da marca Logitech. Se quisermos filtrar essa lista de produtos para exibir apenas os valores abaixo de R$ 50,00, **podemos concatenar mais termos de busca,** separando cada par chave-valor com um E comercial (`&`). Desse modo, o URL ficaria assim: <https://www.loja/produtos?marca=logitech&precoMax=50.>
 
 Vale lembrar que o ``nome de cada chave`` permitida **é definido previamente pela API** e pelo **back-end.** Isso significa que *podemos enviar quantos pares chave-valor quisermos*,**mas apenas aqueles reconhecidos pela API** afetarão a busca.
 
@@ -421,7 +420,7 @@ SILVESTRE, Guilherme. O Básico: Express - Rotas. Dev.to. 16 mar. 2022. Disponí
 
 ### 1.4.4 - Vídeos Luís
 
-Query Strings, deixa mais refinado a busca através pela url. 
+Query Strings, deixa mais refinado a busca através pela url.
 
 ![a](https://i.imgur.com/XgQaJ5r.jpg)
 
@@ -429,4 +428,351 @@ Para se realizar o filtro de uma lista de informação usamos as QueryString inc
 
 ![a](https://i.imgur.com/5x0yGgu.jpg)
 
+Uma das vantagens de tralahar com Query String é poder passar vários argumentos chave:valor no mesmo caminho. A quantidade que a API permitir e os argumentos que ele permitir.
 
+![a](https://i.imgur.com/278eISI.jpg)
+
+## 1.5 - ENTENDER O CONCEITO E AS VANTANGES DO ASSINCRONISMO
+
+Sincrono, é quando só se passa para uma próxima etapa se completar a anterior. Assincronismo, é quando se completa mais de uma etapa ao mesmo tempo, mesmo não tendo completado ela. É o exemplo do bolo que se esquece de comprar limão para cobertura. Se eu parar de fazer o bolo pra comprar limão e depois voltar e completar a massa do bolo é Sincrono. Se eu enquanto preparo o bolo pedir pra alguém comprar limão, seria o Assincrono, pois não deixo de fazer a etapa mesmo faltando limão.
+
+### 1.5.1 - Promises
+
+O último conceito que devemos compreender antes de trabalhar com o assincronismo é o de *promises*, que significa **“promessas”** em português.
+
+Pense nas promises como se fossem um cupom que vale um picolé. De vez em quando, podemos até pensar que sim, mas ter um cupom não é a mesma coisa que ter um picolé em si, certo?
+
+Na verdade, pode ser que, ao tentarmos trocar o cupom na loja, nos digam que todos os picolés da marca estão esgotados. Há, ainda, a possibilidade da loja não participar da promoção ou até mesmo do cupom ter passado do prazo de validade
+
+>Vamos praticar?
+Ter um cupom que vale por um produto é, na prática, o mesmo que ter o produto em si. Falso. Parabéns! Um cupom não é necessariamente uma garantia do produto que ele representa. Como mencionado anteriormente, existem diversas possibilidades de cenários nos quais tentamos trocar o cupom pelo produto prometido, mas não conseguimos.
+
+Pois é, as funções que fazem requisições assíncronas funcionam da mesma forma. Imagine só uma função que faz uma requisição assíncrona, retornando os dados de um cliente para salvá-los em uma variável chamada clienteBanco.
+
+```JS
+const clienteBanco = requisicaoAssincrona()
+
+```
+
+Podemos pensar que o valor salvo em clienteBanco foi os dados do cliente, mas o que salvamos, na verdade, foi uma `promise`, o equivalente ao cupom do picolé. Isso quer dizer que *a requisição pode, de fato, retornar os dados do cliente, mas pode, também, retornar um erro avisando que o cliente não foi encontrado ou que o usuário não possui permissão para acessar os dados do cliente etc.*
+
+Sendo assim, dizemos que uma promise **pode ser resolvida** ou **rejeitada**. Quando a promessa é **resolvida**, *ela retorna o recurso solicitado*. Já quando a promessa é **rejeitada**, *retorna um código de erro*.
+
+>Vamos praticar?  
+As promises podem ser resolvidas, mas também podem ser… Rejeitadas..Você está indo muito bem! Dizemos que uma promise é resolvida quando a requisição é tratada com sucesso, o que geralmente retorna um status da classe 2XX. Ela é considerada rejeitada quando a requisição não retorna com a resposta esperada.
+
+---
+
+>Referência bibliográfica
+
+DEVMEDIA. JavaScript: Promise. [s.d.]. Disponível em: <https://www.devmedia.com.br/javascript-promise/41205.> Acesso em: 3 ago. 2023.
+
+COSTA, Cassio. O que é Programação Assíncrona e como utilizá-la?. SoftPlan, 29 set. 2022. Disponível em: <https://www.softplan.com.br/tech-writers/o-que-e-programacao-assincrona-e-como-utiliza-la/.> Acesso em: 3 ago. 2023.
+
+### 1.5.1 - Exemplos de assincronismo
+
+Existem **duas** situações comuns nas quais podemos perceber as vantagens do assincronismo no desenvolvimento web.
+
+Em **primeiro** lugar, *podemos citar sites com recursos externos muito pesados*, como vídeos.
+
+Ao optar por uma abordagem assíncrona, o resto da página não precisa esperar o recurso terminar de carregar para exibir os outros dados, como o canal e o título do vídeo, as notificações do usuário, os vídeos relacionados etc.
+
+![a](https://i.imgur.com/5nkyu1R.jpg)
+
+Em **segundo** lugar, trabalhar com um código assíncrono **nos permite carregar e recarregar recursos específicos, sem a necessidade de carregar todo o site** novamente.
+
+Exemplo:  
+Imagine o seguinte: você digita "hom" em uma barra de busca de filmes e o site inteiro carrega novamente para mostrar resultados que começam com “hom”. Você continua digitando "homem" e o site inteiro é carregado mais uma vez, mostrando os novos resultados.
+
+Ao trabalhar com as `funções assíncronas`,**conseguimos recarregar apenas a parte do site que exibe os resultados da busca**. Assim, *não há a necessidade de carregar, novamente, os recursos que não dependem desse elemento externo.*
+
+>Vamos praticar?  
+Funções assíncronas nos permitem recarregar as partes de um site que dependem de recursos externos, sem que toda a página precise ser carregada novamente. Verdadeiro. Correto! Uma das duas principais vantagens de implementar o assincronismo nos nossos projetos **é que as partes as mais leves ou independentes de um site** `carregam primeiro`, enquanto as partes que dependem de recursos externos carregam depois. Tudo isso ocorre sem a necessidade de recarregar a página inteira.
+
+---
+
+>Dica!
+Assincronismo é como cozinhar! Nós não precisamos esperar o arroz ficar pronto para começar cozinhar o feijão, podemos realizar ambas as tarefas em paralelo.
+
+---
+
+Como você pode ver, o assincronismo é um conceito simples que pode ser aplicado em diversas áreas do mundo da programação.
+
+>Referência bibliográfica
+
+DEVMEDIA. JavaScript: promise. [S.d.]. Disponível em: <https://www.devmedia.com.br/javascript-promise/41205.> Acesso em: 03 ago. 2023.
+
+SOFTPLAN. O que é programação assíncrona e como utilizá-la?. 19 set. 2022. Disponível em: <https://www.softplan.com.br/tech-writers/o-que-e-programacao-assincrona-e-como-utiliza-la/.> Acesso em: 3 ago. 2023.
+
+## 1.6 - REQUISIÇÕES ASSINCRONAS EM JS
+
+### 1.6.1 - Conhecer a estrurura e uso da Fetch API
+
+Entender Asynchronous JavaScript and XML-AJAX fica mais fácil de compreender quando se sabe sobre assincronismo. Pois ele é um conjunto de técncas no desenvolvimento web. Essas técnicas nos **permitem enviar e processar requisições de forma assíncrona.**
+
+Hoje o JSON tomou o lugar do XML, porém o conceito ainda continua.
+**AJAX** **nao é uma linguágem de programação**, *mas um conceito relacionado a assincronismo*
+
+#### 1.6.1.1 - Fetch API:Requisição simples
+
+Existe mais de uma forma de implementar os conceitos do AJAX ao desenvolver um site. A seguir, veremos uma das mais conhecidas: a Fetch API.
+
+A `Fetch API` é uma **API nativa da JavaScript** e que pode ser utilizada facilmente sem a instalação de nenhum terceiro.
+
+As requisições mais simples que podemos fazer são as do tipo GET sem nenhum tipo de cabeçalho definido. Para fazer esse tipo de requisição com a API Fetch, começamos usando a função fetch() em um arquivo JavaScript. Em seguida, passamos como argumento o URL para o qual desejamos fazer uma requisição.
+
+```JS
+fetch('https://random-data-api.com/api/v2/users')
+```
+
+Como visto em um momento anterior, a função fetch() **não vai retornar o recurso** que estamos tentando acessar, **mas a resposta do servidor**. Essa informação terá dados como, por exemplo, o header e o código HTTP.
+
+>Vamos praticar?
+Fetch API, é uma ferramenta popular para consumir APIs com JavaScript. Para usa-la é preciso primeiro instala-la em nosso projeto. Falso. Correto! A Fetch API é uma API **nativa**da JavaScript. Isso quer dizer que **não é necessário fazer nenhum tipo de instalação para usá-la** quando trabalhamos com a linguagem de programação JavaScript.
+
+Precisamos, então, utilizar o método `then()`, que *recebe como argumento* uma **função** responsável por converter a resposta do servidor que está em formato JSON para um **objeto** ou um **array** `JavaScript`. Esse método pode ser encadeado diretamente à função `fetch()`, retornando uma promise.
+
+```JS
+fetch('https://random-data-api.com/api/v2/users')
+.then(response => response.json())
+
+```
+
+Já que **o retorno do método then() é uma promessa** que pode ou não conter o recurso solicitado, precisamos encadear um segundo then(). No caso da promise ser resolvida, ele receberá os dados solicitados. Aqui, é possível utilizar e manipular esses dados da forma que quisermos. Nesse caso, vamos apenas imprimi-los no terminal.
+
+```JS
+fetch('https://random-data-api.com/api/v2/users')
+.then(response => response.json())
+.then(data => console.log(data))
+
+```
+
+>Vamos praticar?  
+
+Quando usamos a Fetch API, quantos métodos then() precisamos encadear para poder acessar o recurso solicitado no caso da promise ser resolvida? Dois. Isso mesmo! Quando fazemos a requisição via Fetch API, **devemos sempre lembrar de encadear dois métodos .then( ) nela**. *O **primeiro** será responsável por converter a resposta do servidor do formato JSON para um array ou um objeto literal JavaScript*. *O **segundo** será responsável por lidar com os dados do recurso solicitado em si*.
+
+---
+
+>Dica  
+then em inglês significa "depois" ou "em seguida".  Pense nele como uma forma de dizer ao nosso código "faz isso aqui e, na sequência, faz isso aí".
+
+---
+
+>Referênias bibliográficas
+
+HOSTINGER TUTORIAIS. O que é AJAX e como funciona?. 19 maio 2023. Disponível em: <https://www.hostinger.com.br/tutoriais/o-que-e-ajax.> Acesso em: 4 ago. 2023.
+
+SHAIKH, Reem. Is AJAX getting replaced by fetch API()?. Medium, 8 mar. 2022. Disponível em: <https://medium.com/@reemshakes/is-ajax-getting-replaced-by-fetch-api-55207234793f#:~:text=The%20Fetch%20API%2C%20is%20a,the%20official%20Fetch%20API%20Standard.> Acesso em: 4 ago. 2023.
+
+DEVMEDIA. JavaScript: Fetch. [S.d.]. Disponível em: <https://www.devmedia.com.br/javascript-fetch/41206.> Acesso em: 4 ago. 2023.
+
+RANDOM DATA API. V2 Documentation. [S.d.]. Disponível em: <https://random-data-api.com/documentation.> Acesso em: 4 ago. 2023.
+
+REQRES. Home. [S.d.]. Disponível em: <https://reqres.in/.> Acesso em: 4 ago. 2023.
+
+#### 1.6.1.2 - Fetch API:Requisição completa
+
+Para definirmos um método HTTP diferente, assim como o cabeçalho, o corpo da requisição e qualquer outra informação da nossa requisição, precisamos passar um objeto como segundo argumento na função fetch():
+
+```JS
+
+fetch('https://reqres.in/api/users', {})
+
+
+```
+
+>Vamos praticar?  
+Vamos simular a criação de um novo usuário. Qual é o método HTTP que devemos usar para fazer isso? `POST`. Correto! **Para criar** novos registros, o método HTTP mais apropriado é o POST.
+
+**O primeiro que precisamos definir é o método da requisição**. Para fazer isso, incluímos a chave “method” com o valor “POST”.
+
+```JS
+
+fetch('https://reqres.in/api/users', {
+   method: 'POST',
+})
+
+
+```
+
+Ao criar um registro, é preciso **sempre enviar o corpo da requisição**. Ela contém os dados que pretendemos criar, que são, nesse caso, os dados do usuário.
+
+Para isso, adicionamos a chave `body` e o valor estruturado da forma que a API externa espera receber as informações. Nesse caso, sabemos que ela aguarda receber um objeto com apenas duas informações: o nome e o emprego do usuário.
+
+```JS
+
+fetch('https://reqres.in/api/users', {
+   method: 'POST',
+   body: {
+      name: 'House',
+      job: 'doctor'
+   },
+   headers: {
+      "Authorization":"API Key çakdjfaçdjfaçsldkfjaçsldfj",
+      "Content-Type":"application/json"
+   }
+})
+
+ 
+
+
+```
+
+Nesse caso em particular, isso já seria tudo o que é necessário para conseguirmos fazer a nossa requisição; contudo, a maioria das APIs **pede algum tipo de autenticação para requisições desse tipo.** Também pode ser necessário definir *o formato no qual estamos enviando os dados* (por exemplo, JSON ou XML). Ambos precisam ser definidos nos `headers` (ou cabeçalhos) da nossa requisição, ficando mais ou menos como no exemplo a seguir.
+
+**Embora estejamos criando um registro** e não solicitando, **o servidor nos mandará uma resposta** avisando se a requisição foi atendida com sucesso ou não, isto é, se o usuário foi criado. Por esse motivo, **ainda é necessário encadear ambos os métodos then()** para interpretar a resposta do servidor, como no exemplo a seguir.
+
+```JS
+
+fetch('https://reqres.in/api/users', {
+   method: 'POST',
+   body: {
+      name: 'House',
+      job: 'doctor'
+   },
+   headers: {
+      "Authorization":"API Key çakdjfaçdjfaçsldkfjaçsldfj",
+      "Content-Type":"application/json"
+   }
+})
+
+.then((response) => response.json())
+.then((data) => console.log(data));
+
+
+```
+
+>Vamos praticar?  
+Quando fazemos requisições do tipo "POST", não esperamos que o servidor retorne nenhum tipo de dado, portanto, não é necessário encadear dois métodos .then( ) à requisição. `Falso`. Muito bem! Mesmo *se não estivermos solicitando acesso a um recurso*, sempre precisamos saber se a nossa requisição foi tratada com sucesso ou não. Além disso, quando usamos o método "POST", o servidor pode nos mandar informações sobre o recurso que foi criado, tais como o seu id ou a data e hora exata em que foi adicionado ao banco de dados. Por esse motivo, **é sempre importante usar o método .then( ) para interpretar a resposta do servidor.**
+
+---
+
+>Referência bibliográfica
+
+HOSTINGER TUTORIAIS. O que é AJAX e como funciona?. 19 maio 2023. Disponível em: <https://www.hostinger.com.br/tutoriais/o-que-e-ajax.> Acesso em: 4 ago. 2023.
+
+SHAIKH, Reem. Is AJAX getting replaced by fetch API()?. Medium, 8 mar. 2022. Disponível em: <https://medium.com/@reemshakes/is-ajax-getting-replaced-by-fetch-api-55207234793f#:~:text=The%20Fetch%20API%2C%20is%20a,the%20official%20Fetch%20API%20Standard.> Acesso em: 4 ago. 2023.
+
+DEVMEDIA. JavaScript: Fetch. [S.d.]. Disponível em: <https://www.devmedia.com.br/javascript-fetch/41206.> Acesso em: 4 ago. 2023.
+
+RANDOM DATA API. V2 Documentation. [S.d.]. Disponível em:<https://random-data-api.com/documentation.> Acesso em: 4 ago. 2023.
+
+REQRES. Home. [S.d.]. Disponível em: <https://reqres.in/.> Acesso em: 4 ago. 2023.
+
+---
+
+>Material complementar: Fetch API
+
+<https://drive.google.com/file/d/10GLOQhPUvPHMW2kuqGTiMhM3lhJrqntb/view>
+
+#### 1.6.1.2 - Fetch API: Lidando com erros
+
+Sabemos que quando usamos a função fetch(), devemos encadear o método then() para tratar o recurso solicitado. Contudo, caso o servidor não responda enviando o dado pedido, a segunda chamada do método then() não conseguirá manipular os dados recebidos da forma esperada.
+
+>Vamos praticar?  
+O segundo dos dois métodos .then( ) encadeados em uma requisição via Fetch API sempre será executado, independentemente da resposta do servidor. Resposta:Falso. Correto! O segundo método .then( ) que incluímos em uma requisição feita com o Fetch API *é o responsável por tratar os dados recebidos do servidor quando a nossa requisição é atendida com sucesso.* Caso a requisição fosse rejeitada, não haveria os dados necessários para tratar e, portanto, a Fetch API não executaria o segundo método .then( ) para evitar possíveis problemas.
+
+Nesses casos, também podemos usar o método catch(), que nos permite **definir um comportamento, caso a promise seja rejeitada,** e pode ser encadeado depois do segundo then().
+
+```JS
+fetch('https://random-data-api.com/api/v2/users')
+   .then(response => response.json())
+   .then( data => console.log())
+   .cath()
+
+
+```
+
+O método catch() recebe como argumento uma função que será executada caso a **promessa seja rejeitada**. Essa função, por sua vez, tem um parâmetro que representa a resposta do servidor, que frequentemente pode conter uma mensagem de erro explicando o porquê da requisição ter sido rejeitada. Por esse motivo, é comum imprimirmos a resposta no terminal.
+
+```JS
+fetch('https://random-data-api.com/api/v2/users')
+   .then(response => response.json())
+   .then( data => console.log())
+   .cath(error => console.log(error))
+
+
+```
+
+>Dica  
+Vale lembrar que, da mesma forma que podemos manipular o recurso recebido e processado do servidor no segundo bloco then(), também podemos lidar com o erro da forma que acharmos mais pertinente no bloco catch(). A*lém de imprimir a mensagem do erro no terminal, também é possível exibir um alerta no navegador, notificar o usuário sobre a impossibilidade de realizar a requisição, redirecioná-lo para uma outra parte do site* etc.
+
+---
+
+>Vamos praticar?
+Qual é o método que devemos encadear depois do segundo .then( ) para lidar com as requisições quando a nossa promise for rejeitada? Resposta:cath(). Muito bem! O método que a Fetch API nos oferece para lidar com promises rejeitadas é o .catch( ).
+
+Nos próximos vídeos, usaremos a Fetch API para consumir duas APIs gratuitas, fazendo requisições do tipo GET e POST e manipulando os dados recebidos por ambas no contexto de desenvolvimento web. Veremos, também, uma forma simples de lidar com as promessas rejeitadas e como incluir cabeçalhos com dados de autenticação em nossas requisições.
+
+>Referênia Bibliográfica
+
+HOSTINGER TUTORIAIS. O que é AJAX e como funciona?. 19 maio 2023. Disponível em: <https://www.hostinger.com.br/tutoriais/o-que-e-ajax.> Acesso em: 4 ago. 2023.
+
+SHAIKH, Reem. Is AJAX getting replaced by fetch API()?. Medium, 8 mar. 2022. Disponível em: <https://medium.com/@reemshakes/is-ajax-getting-replaced-by-fetch-api-55207234793f#:~:text=The%20Fetch%20API%2C%20is%20a,the%20official%20Fetch%20API%20Standard.> Acesso em: 4 ago. 2023.
+
+DEVMEDIA. JavaScript: Fetch. [S.d.]. Disponível em: <https://www.devmedia.com.br/javascript-fetch/41206.> Acesso em: 4 ago. 2023.
+
+RANDOM DATA API. V2 Documentation. [S.d.]. Disponível em: <https://random-data-api.com/documentation.> Acesso em: 4 ago. 2023.
+
+REQRES. Home. [S.d.]. Disponível em: <https://reqres.in/.> Acesso em: 4 ago. 2023.
+
+### 1.6.2 - Solicitar dados - REQUISIÇÕES DO TIPO GET
+
+Vídeos Luis.
+
+Abrir arquivo fetch_api
+fetch faz a ponte entre JS e as API.
+
+Requisições do tipo GET não precisamos enviar nenhum dado para o servidor para receber a resposta, pois sempre solicitam informação. Podemos enviar complementos, como query strings, etc.
+
+Requisições do tipo POST, estamos querendo CRIAR algum tipo de dados, e TEMOS QUE ENVIAR ALGO. No body. RAW, é o dado cru, nós que iremos informar do zero ele.
+
+![a](https://i.imgur.com/cPsG7Av.jpg)
+
+![a](https://i.imgur.com/IjnEM2a.jpg)
+
+lembrar que o botão do formulário tem um comportamento padrão que é de enviar os dados digitados para a url ao clicar nele.
+
+![a](https://i.imgur.com/Md6vxxt.jpg)
+
+ao gerar o posto a primeira coisa é evitar o comportamento padrão do botao enviar do formulário.
+
+no fetch deve-se add o segundo parâmetro que ´o método.
+além do método ou body tem que ter o cabeçalho informando
+
+```JS
+
+headers: {
+      "Content-Type": "application/json"
+      //informando A api que receberá uma ARQUIVO EM FORMATO JSON.
+
+    },
+    body: {
+      body: jsonBody
+      //receberá o título e o corpo da mensagem que estão salvos na constante postTitle e postBody.
+
+
+
+      //   }
+    }
+
+
+    const jsonBody = JSON.stringify({
+    titulo: postTitle.value,
+    mensagem: postBody.value
+  })
+  
+
+```
+
+a interatividade será quando clicado no botão
+lembrar que o botão do formulário tem um comportamento padrão que é de enviar os dados digitados para a url ao clicar nele
+uma função antes da fnção gerar post tem que ser exeutada para quebrar o comportamento padrão do botão enviar no formulário
+
+Segundo bloco `.then` é tudo que acontece quando a requisição temsucesso.
+
+```js
+postContainer.appendChild(post) // ao inserir o mais recente é o último.
+postContainer.preprend(post) // ao inserir o posto o mais recente fica na parte de cima
+
+```
