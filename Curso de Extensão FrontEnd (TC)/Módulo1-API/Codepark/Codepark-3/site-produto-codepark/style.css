@@ -1,0 +1,47 @@
+* {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    box-sizing: border-box;
+}
+body {
+
+    background-color: cornflowerblue;
+    padding: 3px;
+    width: 500px;
+
+}
+#container-listarCadastrados {
+    background-color: aquamarine;
+    width: 400px;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+#container-listarCadastrados div {
+    background-color: cornflowerblue;
+    padding: 1px;
+    border-radius: 4px;
+    margin: 5px;
+    
+    
+    
+    
+    
+}
+
+#container-inserirCadastro {
+    background-color: aquamarine;
+    border-radius: 8px;
+    width: 400px;
+    margin-bottom: 5px;
+    padding: 10px;
+
+}
+
+.error {
+    color: red;
+}
+
+.ok {
+    color: rgb(47, 36, 209);
+}
+

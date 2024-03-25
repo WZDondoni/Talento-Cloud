@@ -776,3 +776,13 @@ postContainer.appendChild(post) // ao inserir o mais recente é o último.
 postContainer.preprend(post) // ao inserir o posto o mais recente fica na parte de cima
 
 ```
+
+### 1.6.3 - Enviar dados - REQUISIÇÕES DO TIPO POST
+
+<https://jsonplaceholder.typicode.com>
+
+Rotas da API //EndPoints
+![A](https://i.imgur.com/yekAXnl.jpg)
+
+`/posts` é o complemento da URL base.
+

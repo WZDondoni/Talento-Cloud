@@ -6,6 +6,6 @@ Para cadastrar um produto é necessário enviar uma requisição do tipo POST pa
 
 Crie um site simples com **inputs** para o **nome**, o **valor**, a **descrição do produto** e um **botão para enviar as informações**, além de um **elemento textual vazio para mostrar um feedback**. 
 
-Escreva o código JavaScript necessário para capturar as informações inseridas pelo usuário, enviá-las para o Back End usando a Fetch API, e tratar a resposta da requisição avisando ao usuário se o cadastro do produto foi ou não realizado com sucesso. Lembre de limpar os inputs caso a requisição seja tratada com sucesso, e de manter os valores preenchidos pelo usuário caso a requisição for rejeitada.
+Escreva o código JavaScript necessário para `capturar as informações inseridas pelo usuário`, enviá-las para o Back End usando a Fetch API, e `tratar a resposta da requisição` avisando ao usuário se o cadastro do produto foi ou não realizado com sucesso. Lembre de limpar os inputs caso a requisição seja tratada com sucesso, e de manter os valores preenchidos pelo usuário caso a requisição for rejeitada.
 
 Se preferir, pode baixar um template do projeto com um HTML simples e o JavaScript inicial já prontos no link em anexo. Como **desafio extra**, caso a requisição for tratada com sucesso, pode **adicionar os produtos no site numa seção chamada 'Produtos Cadastrados'.**

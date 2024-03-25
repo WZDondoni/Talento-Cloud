@@ -16,14 +16,15 @@ const falsastringjson = {
     "idade": 28,
     "estrangeiro": true
 }
-//não é porque escreveu como json, que é json. objserve que é classificado como objeto abaixo.
 console.log(typeof (falsastringjson))
+//não é porque escreveu como json, que é json. objserve que é classificado como objeto abaixo.
 
 //CRIANDO JSON DE VERDADE COM O USO DO STRINGFY
 const stringJSON = JSON.stringify(objetoJS)
 console.log(typeof (stringJSON))
+console.log(stringJSON)
 console.log(stringJSON.nome)
-//acima percebe "undefined", uma vez que vc esta´tentando acessar uma propriedade via dot dotation de um texto(string). Não entende como objeto e sim como string.
+//acima percebe "undefined", uma vez que vc esta´tentando acessar uma propriedade via dot notation de um texto(string). Não entende como objeto e sim como string.
 
 
 //observe que mudou de  objeto para string.
@@ -31,6 +32,8 @@ console.log(stringJSON.nome)
 //tranformando JSON em Objeto novamente
 const parsedJSON = JSON.parse(stringJSON)
 console.log(parsedJSON)
+console.log(typeof (parsedJSON))
+
 
 console.log(parsedJSON.nome)
 //acima acessamos a propriedade por conta da transformação..stringfy para mandar dados para outro sistema. Quem receber vai fazer o "parse" para transformar em objeto literal.

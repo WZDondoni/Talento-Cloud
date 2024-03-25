@@ -1,5 +1,0 @@
-{
-    "nome":"luis",
-    "idade":28,
-    "COMENTÁRIO":"Em json, toda vírgula informada diz que está esperando um valor próximo. Se tiver virgula e não tiver valor dá erro, pois é esperado valor. Json não aceita comentário. pdrão ECMA404"
-}

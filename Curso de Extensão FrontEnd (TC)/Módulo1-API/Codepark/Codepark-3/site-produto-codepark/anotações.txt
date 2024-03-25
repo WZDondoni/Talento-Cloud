@@ -1,0 +1,27 @@
+https://httpbin.org/post
+
+
+function enviarProdutoParaCadastro() {
+    const resposta = fetch(url)
+    console.log(resposta);
+    //1º recebeu uma promessa
+
+    //2º tratar a resposta, utilizado apenas se a promessa foi cumprida, é a resposta da requisição. onfullfied quer dizer que deu certo, mas ainda não é o corpo que precisamos, do produto.
+    // resposta.then((res) => {
+    //     console.log(res);
+    // })
+
+    //3º tratar a resposta acima para ter acesso ao conteúdo, as bebidas no caso. Salvar a resposta em outra variável.
+    const tratamentoResposta = resposta.then((res) => {
+        console.log(res)
+        return res.json()
+    })
+
+    tratamentoResposta.then((data) => {
+        console.log(data);
+    })
+
+    
+  
+        
+}
