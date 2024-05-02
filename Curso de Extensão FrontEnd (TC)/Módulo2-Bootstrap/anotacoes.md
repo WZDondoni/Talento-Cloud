@@ -156,18 +156,20 @@ PACHECO, Andrea. Um guia completo sobre grids para design responsivo. UX Collect
 
 O sistema de grid funciona com 3 classes: `container`, `row`, column(`col`)
 
-container row e col vao espremer os itens que são colocados. Se for 3 divide-se a largura para os três. Se colocar 5 vai espremer os itens e seus conteúdos até dar na largura.
+**row recebe display flex automaticamente**.
+Conforme for colocando os itens(notícias) no container detro da linha `row` e eles vao ficar espremidos, pois como é flex vão querer ocupar toda a largura da tela. Se for 3 divide-se a largura para os três. Se colocar 5 vai espremer os itens e seus conteúdos até dar na largura. Serão divididos equitativamente até a largura. Mesmo no menor BP terá mais de uma notícia na linha.
+
+![a](https://i.imgur.com/ATDJsoY.png)
+
+Abaixo as várias disposições de layout.
 ![a](https://i.imgur.com/mjh5EBI.png)
 
-No primeiro, Cada noticia ocupa a largura máxima, no segundo, tablet, 3 colunas. No último Note/Monitor, seriam 4 itens.
+Na primeira imagem acima, Cada noticia ocupa a largura máxima, no segundo, tablet, 3 colunas. No último Note/Monitor, seriam 4 itens.
 
 ![a](https://i.imgur.com/F7q1cfc.png)
 
 Utilizando a idéia de desing mobilefirst, aplicaremos as notícias toda a largura possível, uma vez que partimos do tamanho do smartphone pra cima. Idependente da largura da viewport, notícia 1  ocupará toda a largura, uma vez que se tem como limite 12 unidades de colunas.(largúra máxima da tela INDEPENDENTE DO BREAKPOINT)
 
-
 ## 4.0 Componentes
 
 ## 5.0 Barra de navegação
-
-
